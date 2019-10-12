@@ -1,26 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [lists, setLists] = useState([{
+        name: 'main',
+        active: true,
+        todos: [{
+            name: 'test',
+            completed: false
+        },{
+            name: 'test2',
+            completed: false
+        }]
+    }])
+    const [todos, setTodos] = useState([]);
+    const [todo, setTodo] = useState('');
+
+
+    useEffect(() => {
+        const allLists = [...lists];
+        const activeList = allLists.filter(list => list.active === true);
+        console.log(activeList)
+        const activeTodos = activeList[0].todos; 
+        setTodos(activeTodos);
+    }, [lists])
+
+    function addTodo() {
+        const newLists = [...lists];
+        const newTodos = newLists[0].todos;
+        const newTodo = {name:todo, completed:false};
+        newTodos.push(newTodo);
+        setTodos(newTodos);
+    }
+
+    function onChange(e) {
+        setTodo(e.target.value);
+    }
+
+    function handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            addTodo(e);
+            setTodo('');
+        }
+    }
+
+    return (
+        <div className="App">
+            {
+                lists.map((list,i) =>
+                        <div>{list.name}</div>
+            )}
+                        <input
+                            type="text"
+                            value={todo}
+                            onChange={onChange}
+                            onKeyDown={e => handleKeyDown(e)}
+                        />
+                        <ul>
+                            {
+                                todos.map((todo,i) =>
+                                    <li>{todo.name}</li>
+                                )
+                            }
+                        </ul>
+        </div>
+    );
 }
 
 export default App;
+
