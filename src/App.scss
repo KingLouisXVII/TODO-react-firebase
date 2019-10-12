@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|VT323&display=swap');
+
+@keyframes fade {
+    from {opacity:1;}
+    to {opacity:0.5;}
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.App {
+    font-family: 'Anton', sans-serif;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 100vw;
+    height: 100vh;
+}
+
+#sidebar {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: beige;
+    border-right: 2px solid #000;
+    input {
+    background-color: #000;
+    color: #fff;
+    font-weight: 900;
+    outline: none;
+    border: 0;
+    margin: 0.5em;
+    padding: 0.3em;
+
+    }
+}
+
+#todos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ul {
+        list-style-type: none;
+        li {
+            font-weight: 900;
+        padding: 0.3em;
+        margin: 0.2em;
+        cursor: pointer;
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid;
+        box-shadow: 5px 5px;
+        align-self: center;
+        &:hover, &:active {
+            box-shadow: 3px 3px;
+        }
+
+        }
+    }
+}

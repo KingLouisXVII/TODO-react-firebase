@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './App.scss';
 
 
 function App() {
@@ -47,24 +47,28 @@ function App() {
 
     return (
         <div className="App">
-            {
-                lists.map((list,i) =>
+            <div id="sidebar">
+                {
+                    lists.map((list,i) =>
                         <div>{list.name}</div>
-            )}
-                        <input
-                            type="text"
-                            value={todo}
-                            onChange={onChange}
-                            onKeyDown={e => handleKeyDown(e)}
-                        />
-                        <ul>
-                            {
-                                todos.map((todo,i) =>
-                                    <li>{todo.name}</li>
-                                )
-                            }
-                        </ul>
-        </div>
+                    )}
+                    <input
+                        type="text"
+                        value={todo}
+                        onChange={onChange}
+                        onKeyDown={e => handleKeyDown(e)}
+                    />
+                </div>
+                <div id="todos">
+                    <ul>
+                        {
+                            todos.map((todo,i) =>
+                                <li>{todo.name}</li>
+                            )
+                        }
+                    </ul>
+                </div>
+            </div>
     );
 }
 
