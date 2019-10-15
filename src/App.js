@@ -13,46 +13,35 @@ const reorder = (list, startIndex, endIndex) => {
 
 
 function App() {
-  const [lists, setLists] = useState({
-    main: {
-      todos: [ 
-      ]
-    }
-  })
+  const [lists, setLists] = useState({main: {todos: []}});
   const [todo, setTodo] = useState('');
   const [active, setActive] = useState('main');
 
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
-    console.log(JSON.parse(localTodos));;
+    console.log(JSON.parse(localTodos));
     localTodos ?
       setLists(JSON.parse(localTodos))
       :
-      setLists({
-    main: {
-      todos: [ 
-      ]
-    }
-  });
+      setLists({main: {todos: []}})
   }, []);
 
   useEffect(() => {
     localStorage.setItem('lists', JSON.stringify(lists));
   }, [lists]);
 
-  // useEffect(() => {
-  //   const activeList  = lists.active.todos;
-  //   setActive(activeList);
-  //   console.log(activeList);
-  // }, [lists])
-
   function addList() {
     const allLists = {...lists};
-    const newList = {todo:{todos:[{}]}};
+    const newList = {todo:{todos:[]}};
     allLists[todo] = newList;
-    setLists(allLists);
-    setActive(Object.keys(lists)[0])
+    todo && setLists(allLists);
+    // setActive(todo);
     setTodo('');
+  }
+
+  function switchList(list) {
+    console.log(list);
+    setActive(list);
   }
 
   function addTodo() {
@@ -122,7 +111,7 @@ function App() {
         />
         {
           Object.keys(lists).map((list,i) =>
-            <div key={i} className="list">{list}</div>
+            <div key={i} className="list" onClick={e => switchList(list)}>{list}</div>
           )}
           <button onClick={addList}>add list</button>
         </div>
