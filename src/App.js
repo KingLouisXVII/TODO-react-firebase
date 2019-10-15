@@ -4,11 +4,11 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './App.scss';
 
 const reorder = (list, startIndex, endIndex) => {
-    const result = list;
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
+  const result = list;
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
 
-    return result;
+  return result;
 };
 
 
@@ -16,13 +16,29 @@ function App() {
   const [lists, setLists] = useState({
     main: {
       todos: [ 
-        {name:'test', completed:false},
-        {name:'schmest', completed:false}
       ]
     }
   })
   const [todo, setTodo] = useState('');
   const [active, setActive] = useState('main');
+
+  useEffect(() => {
+    const localTodos = localStorage.getItem('lists');
+    console.log(JSON.parse(localTodos));;
+    localTodos ?
+      setLists(JSON.parse(localTodos))
+      :
+      setLists({
+    main: {
+      todos: [ 
+      ]
+    }
+  });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(lists));
+  }, [lists]);
 
   // useEffect(() => {
   //   const activeList  = lists.active.todos;
@@ -57,7 +73,6 @@ function App() {
     todos.splice(i,1);
     console.log(allLists);
     setLists(allLists);
-    // setActive(todos => todos.slice(0, i).concat(todos.slice(i + 1, todos.length)));
   }
 
   function onChange(e) {
@@ -87,7 +102,7 @@ function App() {
       return;
     }
     const allLists = {...lists};
-    const newTodos  = reorder(
+    reorder(
       allLists[active].todos,
       result.source.index,
       result.destination.index
@@ -109,7 +124,7 @@ function App() {
           Object.keys(lists).map((list,i) =>
             <div key={i} className="list">{list}</div>
           )}
-            <button onClick={addList}>add list</button>
+          <button onClick={addList}>add list</button>
         </div>
         <div id="todos">
           <DragDropContext onDragEnd={onDragEnd}>
@@ -148,4 +163,3 @@ function App() {
 }
 
 export default App;
-
