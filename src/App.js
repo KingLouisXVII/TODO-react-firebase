@@ -13,9 +13,9 @@ const reorder = (list, startIndex, endIndex) => {
 
 
 function App() {
-  const [lists, setLists] = useState({main: {todos: []}});
+  const [lists, setLists] = useState({todo: {todos: []}});
   const [todo, setTodo] = useState('');
-  const [active, setActive] = useState('main');
+  const [active, setActive] = useState('todo');
 
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
@@ -23,7 +23,7 @@ function App() {
     localTodos ?
       setLists(JSON.parse(localTodos))
       :
-      setLists({main: {todos: []}})
+      setLists({todo: {todos: []}})
   }, []);
 
   useEffect(() => {
@@ -32,15 +32,14 @@ function App() {
 
   function addList() {
     const allLists = {...lists};
-    const newList = {todo:{todos:[]}};
+    const newList = {todos:[]};
     allLists[todo] = newList;
     todo && setLists(allLists);
-    // setActive(todo);
+    setActive(todo);
     setTodo('');
   }
 
   function switchList(list) {
-    console.log(list);
     setActive(list);
   }
 
@@ -122,7 +121,7 @@ function App() {
                 <ul ref={provided.innerRef} {...provided.droppableProps}>
                   {
                     lists[active].todos.map((todo,i) =>
-                      <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
+                      <Draggable key={todo} draggableId={i.toString()} index={i}>
                         {provided => (
                           <div className="todo"
                             key={i}
