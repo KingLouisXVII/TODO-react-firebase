@@ -35,7 +35,13 @@ body {
     border: 0;
     margin: 0.5em;
     padding: 0.3em;
-
+  }
+  .list {
+    cursor: pointer;
+  }
+  .active {
+    color: white;
+    background-color: black;
   }
 }
 
@@ -56,9 +62,8 @@ body {
       box-shadow: 5px 5px;
       align-self: center;
       &:hover, &:active {
-        box-shadow: 3px 3px;
+        box-shadow: 5px 5px red;
       }
-
     }
   }
 }
@@ -76,13 +81,17 @@ body {
 }
 
 .delete {
+  opacity: 0;
   text-shadow: 5px 4px #000;
   cursor: pointer;
   font-size: 1.5em;
   color: indianred;
   align-self: center;
+  position: relative;
+  left: -40px;
+  transition: all 0.2s ease;
   &:hover {
-    text-shadow: 3px 2px #000;
+    opacity: 1;
   }
 }
 

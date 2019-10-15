@@ -110,7 +110,7 @@ function App() {
         />
         {
           Object.keys(lists).map((list,i) =>
-            <div key={i} className="list" onClick={e => switchList(list)}>{list}</div>
+            <div key={i} className={list===active?"list active":"list"} onClick={e => switchList(list)}>{list}</div>
           )}
           <button onClick={addList}>add list</button>
         </div>
