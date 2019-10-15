@@ -3,64 +3,61 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import './App.scss';
 
+const reorder = (list, startIndex, endIndex) => {
+    const result = list;
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+};
+
 
 function App() {
-  const [lists, setLists] = useState([
-  {
-    name: 'main',
-    active: true,
-    todos: []
-  },
-  {
-    name: 'schmain',
-    active: false,
-    todos: []
-  },
-  ])
-  const [todos, setTodos] = useState([]);
+  const [lists, setLists] = useState({
+    main: {
+      todos: [ 
+        {name:'test', completed:false},
+        {name:'schmest', completed:false}
+      ]
+    }
+  })
   const [todo, setTodo] = useState('');
+  const [active, setActive] = useState('main');
 
-
-  useEffect(() => {
-    const localTodos = localStorage.getItem('todos');
-    localTodos !== null ?
-      setTodos(JSON.parse(localTodos))
-      :
-      setTodos([]);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-
-  useEffect(() => {
-    localStorage.setItem('lists', JSON.stringify(lists));
-  }, [lists]);
-
+  // useEffect(() => {
+  //   const activeList  = lists.active.todos;
+  //   setActive(activeList);
+  //   console.log(activeList);
+  // }, [lists])
 
   function addList() {
-    const allLists = [...lists];
-    const newList = {
-      name: todo,
-      active: true,
-      todos: []
-    }; 
-    allLists.push(newList);
+    const allLists = {...lists};
+    const newList = {todo:{todos:[{}]}};
+    allLists[todo] = newList;
     setLists(allLists);
-    setTodos([]);
+    setActive(Object.keys(lists)[0])
     setTodo('');
   }
 
   function addTodo() {
-    const newLists = [...lists];
-    const newTodos = newLists[0].todos;
-    const newTodo = {name:todo, completed:false};
-    newTodos.push(newTodo);
-    setTodos(newTodos);
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
+    const newTodo = {
+      name: todo,
+      completed: false
+    }
+    todos.push(newTodo);
+    setLists(allLists);
   }
 
   function deleteTodo(i) {
-    setTodos(todos => todos.slice(0, i).concat(todos.slice(i + 1, todos.length)));
+    console.log(i)
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
+    todos.splice(i,1);
+    console.log(allLists);
+    setLists(allLists);
+    // setActive(todos => todos.slice(0, i).concat(todos.slice(i + 1, todos.length)));
   }
 
   function onChange(e) {
@@ -75,10 +72,11 @@ function App() {
   }
 
   function toggleTodo(i) {
-    const newTodos = [...todos];
-    newTodos[i].completed = !newTodos[i].completed;
-    newTodos.sort(function(a,b){return a.completed-b.completed});
-    setTodos(newTodos);
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
+    todos[i].completed = !todos[i].completed;
+    todos.sort(function(a,b){return a.completed-b.completed});
+    setLists(allLists);
   }
 
   function onDragEnd(result) {
@@ -88,21 +86,14 @@ function App() {
     if (result.destination.index === result.source.index) {
       return;
     }
+    const allLists = {...lists};
     const newTodos  = reorder(
-      todos,
+      allLists[active].todos,
       result.source.index,
       result.destination.index
     );
-    setTodos(newTodos);
+    setLists(allLists);
   }
-
-  function reorder(list, startIndex, endIndex) {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-    return result;
-  };
-
 
   return (
     <div className="App">
@@ -115,10 +106,10 @@ function App() {
           onKeyDown={e => handleKeyDown(e)}
         />
         {
-          lists.map((list,i) =>
-            <div key={i} className="list">{list.name}</div>
+          Object.keys(lists).map((list,i) =>
+            <div key={i} className="list">{list}</div>
           )}
-          <button onClick={addList} id="add-list">+</button>
+            <button onClick={addList}>add list</button>
         </div>
         <div id="todos">
           <DragDropContext onDragEnd={onDragEnd}>
@@ -126,7 +117,7 @@ function App() {
               {provided => (
                 <ul ref={provided.innerRef} {...provided.droppableProps}>
                   {
-                    todos.map((todo,i) =>
+                    lists[active].todos.map((todo,i) =>
                       <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                         {provided => (
                           <div className="todo"
