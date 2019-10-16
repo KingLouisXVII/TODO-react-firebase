@@ -17,6 +17,7 @@ function App() {
   const [todo, setTodo] = useState('');
   const [active, setActive] = useState('todo');
   const [addingTodo, setAddingTodo] = useState(false);
+  const [addingList, setAddingList] = useState(false);
 
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
@@ -31,6 +32,10 @@ function App() {
     localStorage.setItem('lists', JSON.stringify(lists));
   }, [lists]);
 
+  function addEmptyList() {
+     setAddingList(true);
+  }
+
   function addList() {
     const allLists = {...lists};
     const newList = {todos:[]};
@@ -38,6 +43,7 @@ function App() {
     todo && setLists(allLists);
     setActive(todo);
     setTodo('');
+     setAddingList(false);
   }
 
   function switchList(list) {
@@ -70,8 +76,12 @@ function App() {
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.target.name === 'todo') {
       addTodo(e);
+      setTodo('');
+    }
+    if (e.key === 'Enter' && e.target.name === 'list') {
+      addList();
       setTodo('');
     }
   }
@@ -112,7 +122,21 @@ function App() {
           Object.keys(lists).map((list,i) =>
             <div key={i} className={list===active?"list active":"list"} onClick={e => switchList(list)}>{list}</div>
           )}
-          <button onClick={addList}>add list</button>
+          { addingList ?
+          <input
+            autoFocus
+            type="text"
+            value={todo}
+            onChange={onChange}
+            onKeyDown={e => handleKeyDown(e)}
+            id="new-list"
+            name="list"
+          />
+              :
+              null
+          }
+
+          <button onClick={addEmptyList}>add list</button>
         </div>
         <div id="todos">
           <DragDropContext onDragEnd={onDragEnd}>
@@ -127,6 +151,7 @@ function App() {
                     onChange={onChange}
                     onKeyDown={e => handleKeyDown(e)}
                     id="new-todo"
+                    name="todo"
                   />
                     :
                     null
