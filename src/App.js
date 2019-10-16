@@ -50,7 +50,7 @@ function App() {
       name: todo,
       completed: false
     }
-    todos.push(newTodo);
+    todos.unshift(newTodo);
     setLists(allLists);
   }
 
