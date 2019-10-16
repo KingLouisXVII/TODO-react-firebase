@@ -96,11 +96,31 @@ body {
   }
 }
 
+.delete-list{
+  opacity: 0;
+  text-shadow: 5px 4px #000;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: indianred;
+  align-self: right;
+  transition: all 0.2s ease;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+#lists {
+  display: flex;
+  flex-direction: column;
+}
+
 .list {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 #add-todo {
