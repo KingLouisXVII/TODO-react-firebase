@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import './App.scss';
@@ -16,6 +16,7 @@ function App() {
   const [lists, setLists] = useState({todo: {todos: []}});
   const [todo, setTodo] = useState('');
   const [active, setActive] = useState('todo');
+  const [addingTodo, setAddingTodo] = useState(false);
 
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
@@ -52,6 +53,7 @@ function App() {
     }
     todos.unshift(newTodo);
     setLists(allLists);
+    setAddingTodo(false);
   }
 
   function deleteTodo(i) {
@@ -82,6 +84,10 @@ function App() {
     setLists(allLists);
   }
 
+  function addEmptyTodo() {
+    setAddingTodo(true);
+  }
+
   function onDragEnd(result) {
     if (!result.destination) {
       return;
@@ -102,12 +108,6 @@ function App() {
     <div className="App">
       <div id="sidebar">
         <h1>TODO!</h1>
-        <input
-          type="text"
-          value={todo}
-          onChange={onChange}
-          onKeyDown={e => handleKeyDown(e)}
-        />
         {
           Object.keys(lists).map((list,i) =>
             <div key={i} className={list===active?"list active":"list"} onClick={e => switchList(list)}>{list}</div>
@@ -119,6 +119,18 @@ function App() {
             <Droppable droppableId="list">
               {provided => (
                 <ul ref={provided.innerRef} {...provided.droppableProps}>
+                  { addingTodo ?
+                  <input
+                    autoFocus
+                    type="text"
+                    value={todo}
+                    onChange={onChange}
+                    onKeyDown={e => handleKeyDown(e)}
+                    id="new-todo"
+                  />
+                    :
+                    null
+                  }
                   {
                     lists[active].todos.map((todo,i) =>
                       <Draggable key={todo} draggableId={i.toString()} index={i}>
@@ -146,6 +158,7 @@ function App() {
             </Droppable>
           </DragDropContext>
         </div>
+        <button id="add-todo" onClick={addEmptyTodo}>+</button>
       </div>
   );
 }

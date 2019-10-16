@@ -52,6 +52,7 @@ body {
     width: 300px;
     list-style-type: none;
     li {
+      height: 1.5em;
       font-weight: 900;
       padding: 0.3em;
       margin: 0.2em;
@@ -100,4 +101,31 @@ body {
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid;
+}
+
+#add-todo {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  background-color: black;
+  color: white;
+  border-radius: 100%;
+  font-size: 2em;
+  padding: 0;
+}
+
+#new-todo {
+  font-size: 0.9em;
+  font-weight: 900;
+  width: 81.7%;
+  height: 1.8em;
+  font-weight: 900;
+  padding: 0.3em;
+  margin: 0.2em;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 5px 5px;
+  align-self: center;
 }
