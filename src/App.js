@@ -215,6 +215,7 @@ function App() {
             {provided => (
               <ul ref={provided.innerRef} {...provided.droppableProps}>
                 { addingTodo ?
+                <div id="input-todo-wrap">
                 <input
                   autoFocus
                   type="text"
@@ -223,7 +224,7 @@ function App() {
                   onKeyDown={e => handleKeyDown(e)}
                   id="new-todo"
                   name="todo"
-                />
+                /></div>
                   :
                   null
                 }
