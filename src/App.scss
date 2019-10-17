@@ -181,6 +181,9 @@ button:focus, button:active {
   padding: 0;
   cursor: pointer;
   align-self: center;
+      &:hover, &:active {
+        text-shadow: 4px 3px #000;
+      }
 }
 
 #buttons-left {
@@ -202,6 +205,9 @@ button:focus, button:active {
   font-size: 2em;
   padding: 0;
   cursor: pointer;
+      &:hover, &:active {
+        text-shadow: 4px 3px #000;
+      }
 }
 
 #clear-done {
@@ -213,6 +219,9 @@ button:focus, button:active {
   font-size: 2em;
   padding: 0;
   cursor: pointer;
+      &:hover, &:active {
+        text-shadow: 4px 3px #000;
+      }
 }
 
 
