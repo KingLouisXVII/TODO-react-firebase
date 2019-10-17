@@ -19,7 +19,7 @@ button:focus, button:active {
 .App {
   font-family: 'Anton', sans-serif;
   display: grid;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 25% 60% 15%;
   width: 100vw;
   height: 100vh;
 }
@@ -49,6 +49,7 @@ button:focus, button:active {
   }
   .list {
     cursor: pointer;
+    word-break: break-all;
   }
   .active {
     color: white;
@@ -63,7 +64,7 @@ button:focus, button:active {
     width: 300px;
     list-style-type: none;
     li {
-      height: 1.5em;
+      height: auto;
       font-weight: 900;
       padding: 0.3em;
       margin: 0.2em;
@@ -73,6 +74,7 @@ button:focus, button:active {
       border: 1px solid #000;
       box-shadow: 5px 5px;
       align-self: center;
+      word-break: break-all;
       &:hover, &:active {
         box-shadow: 5px 5px red;
       }
