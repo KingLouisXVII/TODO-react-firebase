@@ -26,23 +26,17 @@ const reorderLists = (list, startIndex, endIndex) => {
 };
 
 function App() {
-  const [lists, setLists] = useState({todo: {todos: []}});
+  const [lists, setLists] = useState({});
   const [todo, setTodo] = useState('');
   const [active, setActive] = useState('');
   const [addingTodo, setAddingTodo] = useState(false);
   const [addingList, setAddingList] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem('lists') === null) {
-      setActive('todo');
-      setLists({todo: {todos: []}})
-    }
-    else {
-      const localTodos = localStorage.getItem('lists');
-      const firstActive = Object.entries(JSON.parse(localTodos))[0][0];
-      setActive(firstActive);
-      setLists(JSON.parse(localTodos))
-    }
+    const localTodos = localStorage.getItem('lists');
+    localTodos?
+    setLists(JSON.parse(localTodos))
+    : setLists({})
   }, []);
 
   useEffect(() => {
@@ -97,11 +91,11 @@ function App() {
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter' && e.target.name === 'todo') {
+    if (e.key === 'Enter' && e.target.name === 'todo' && todo.length !== 0) {
       addTodo(e);
       setTodo('');
     }
-    if (e.key === 'Enter' && e.target.name === 'list') {
+    if (e.key === 'Enter' && e.target.name === 'list' && todo.length !== 0) {
       addList();
       setTodo('');
     }
@@ -239,7 +233,10 @@ function App() {
           </Droppable>
         </DragDropContext>
       </div>
+      {active?
       <button id="add-todo" onClick={addEmptyTodo}>+</button>
+      : null
+      }
     </div>
   );
 }
