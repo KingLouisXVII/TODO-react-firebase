@@ -154,6 +154,8 @@ function App() {
     const newTodos = allLists[active].todos.filter(removeCompleted);
     allLists[active].todos = newTodos;
     setLists(allLists);
+    setTodo('');
+    setAddingTodo(false);
   }
 
   return (
