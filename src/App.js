@@ -197,13 +197,13 @@ function App() {
                       :
                       null
                   }
-                  <div id="button-wrapper">
-                    <button id="add-list" onClick={addEmptyList}>+</button>
-                  </div>
                 </div>
             )}
           </Droppable>
         </DragDropContext>
+        <div id="button-wrapper">
+          <button id="add-list" onClick={addEmptyList}>+</button>
+        </div>
       </div>
       <div id="todos">
         {active?

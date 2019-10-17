@@ -14,7 +14,7 @@ body {
   background-color: #243447;
 }
 
-#sidebar::-webkit-scrollbar, #todos::-webkit-scrollbar {
+#sidebar::-webkit-scrollbar, #todos::-webkit-scrollbar, #lists::-webkit-scrollbar {
   display: none;
 }
 
@@ -45,6 +45,8 @@ button:focus, button:active  {
   h1 {
     font-size: 8vw;
     margin: 0;
+    background-color: #243447;
+    border-bottom: 2px solid #141d26;
   }
   input {
     font-size: 0.9em;
@@ -59,6 +61,7 @@ button:focus, button:active  {
     display: flex;
     flex-direction: column;
     background-color: #141d26;
+  overflow: scroll;
     #button-wrapper {
       background-color: #243447;
     }
@@ -67,6 +70,7 @@ button:focus, button:active  {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.8em;
     background-color: #243447;
     border-bottom: 2px solid #141d26;
     padding-left: 0.5em;
@@ -91,17 +95,17 @@ button:focus, button:active  {
   box-shadow: 5px 5px #141d26;
   display: flex;
   justify-content: center;
-  width: 92%;
+  width: 90%;
 }
 #todos {
   display: flex;
   justify-content: center;
   overflow: scroll;
+  margin-bottom: 0.5em;
   #new-todo {
-    font-size: 0.9em;
-    height: 1.8em;
-    padding: 0.3em;
-    margin: 0.2em;
+    width: 90%;
+    font-size: 1em;
+    height: 2em;
     background-color: #243447;
     border: 0;
     color: #83adb5;
