@@ -230,10 +230,9 @@ function App() {
                 }
                 { lists[active] &&
                     lists[active].todos.map((todo,i) =>
-                      <Draggable key={todo.name} draggableId={todo.name} index={i}>
+                      <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                         {provided => (
                           <div className="todo"
-                            key={i}
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
@@ -261,14 +260,6 @@ function App() {
             : null
         }
       </div>
-      {/* {active? */}
-      {/* <div id="buttons"> */}
-      {/* <button id="clear-done" onClick={clearDone}>*</button> */}
-      {/* <button id="clear-all" onClick={clearAll}>-</button> */}
-      {/* <button id="add-todo" onClick={addEmptyTodo}>+</button> */}
-      {/* </div> */}
-      {/* : null */}
-      {/* } */}
     </div>
   );
 }
