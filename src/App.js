@@ -163,7 +163,7 @@ function App() {
                           {...provided.dragHandleProps}
                             key={i} className={list===active?"list active":"list"} onClick={e => switchList(list)}>
                             <div>{list}</div>
-                            <div onClick={(e)=>deleteList(list)} className="delete-list">X</div>
+                            <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteList(list) }} className="delete-list">X</div>
                           </div>
                       )}
                     </Draggable>

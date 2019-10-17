@@ -49,7 +49,7 @@ button:focus, button:active {
   }
   .list {
     cursor: pointer;
-    word-break: break-all;
+    word-break: break-word;
   }
   .active {
     color: white;
@@ -61,7 +61,7 @@ button:focus, button:active {
   display: flex;
   justify-content: center;
   ul {
-    width: 300px;
+    width: 350px;
     list-style-type: none;
     li {
       height: auto;
@@ -74,7 +74,7 @@ button:focus, button:active {
       border: 1px solid #000;
       box-shadow: 5px 5px;
       align-self: center;
-      word-break: break-all;
+      word-break: break-word;
       &:hover, &:active {
         box-shadow: 5px 5px red;
       }
@@ -166,7 +166,7 @@ button:focus, button:active {
 #new-todo {
   font-size: 0.9em;
   font-weight: 900;
-  width: 81.7%;
+  width: 84%;
   height: 1.8em;
   font-weight: 900;
   padding: 0.3em;
@@ -176,4 +176,10 @@ button:focus, button:active {
   color: #fff;
   box-shadow: 5px 5px;
   align-self: center;
+}
+
+@media (max-width: 800px) {
+  .App {
+      grid-template-columns: 35% 60% 5%;
+  }
 }
