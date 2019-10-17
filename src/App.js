@@ -50,7 +50,9 @@ function App() {
   function addList() {
     const allLists = {...lists};
     const newList = {todos:[]};
-    allLists[todo] = newList;
+    if ( !( todo in allLists ) ) {
+      allLists[todo] = newList;
+    }
     todo && setLists(allLists);
     setActive(todo);
     setTodo('');
@@ -216,15 +218,15 @@ function App() {
               <ul ref={provided.innerRef} {...provided.droppableProps}>
                 { addingTodo ?
                 <div id="input-todo-wrap">
-                <input
-                  autoFocus
-                  type="text"
-                  value={todo}
-                  onChange={onChange}
-                  onKeyDown={e => handleKeyDown(e)}
-                  id="new-todo"
-                  name="todo"
-                /></div>
+                  <input
+                    autoFocus
+                    type="text"
+                    value={todo}
+                    onChange={onChange}
+                    onKeyDown={e => handleKeyDown(e)}
+                    id="new-todo"
+                    name="todo"
+                  /></div>
                   :
                   null
                 }
