@@ -56,7 +56,7 @@ button:focus, button:active {
   #lists {
     display: flex;
     flex-direction: column;
-    background-color: #243447;
+    background-color: #141d26;
     #button-wrapper {
       background-color: #243447;
     }
@@ -99,7 +99,7 @@ button:focus, button:active {
       width: 100%;
       background-color: #243447;
       border: 1px solid #141d26;
-      box-shadow: 5px 5px;
+      box-shadow: 5px 5px #141d26;
       align-self: center;
       word-break: break-word;
       color: #83adb5;
