@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import './App.scss';
 
-const reorder = (list, startIndex, endIndex) => {
+const reorderTodos = (list, startIndex, endIndex) => {
   const result = list;
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -11,21 +11,38 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
+const reorderLists = (list, startIndex, endIndex) => {
+  const result = list;
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  const reducedArray = result.reduce(function(acc, item){
+    acc[item[0]] = item[1];
+
+    return acc;
+  }, {});
+
+  return reducedArray;
+};
 
 function App() {
   const [lists, setLists] = useState({todo: {todos: []}});
   const [todo, setTodo] = useState('');
-  const [active, setActive] = useState('todo');
+  const [active, setActive] = useState('');
   const [addingTodo, setAddingTodo] = useState(false);
   const [addingList, setAddingList] = useState(false);
 
   useEffect(() => {
-    const localTodos = localStorage.getItem('lists');
-    console.log(JSON.parse(localTodos));
-    localTodos ?
-      setLists(JSON.parse(localTodos))
-      :
+    if(localStorage.getItem('lists') === null) {
+      setActive('todo');
       setLists({todo: {todos: []}})
+    }
+    else {
+      const localTodos = localStorage.getItem('lists');
+      const firstActive = Object.entries(JSON.parse(localTodos))[0][0];
+      setActive(firstActive);
+      setLists(JSON.parse(localTodos))
+    }
   }, []);
 
   useEffect(() => {
@@ -110,7 +127,23 @@ function App() {
       return;
     }
     const allLists = {...lists};
-    reorder(
+    const orderedLists = reorderLists(
+      Object.entries(allLists),
+      result.source.index,
+      result.destination.index
+    );
+    setLists(orderedLists);
+  }
+
+  function onDragEnd2(result) {
+    if (!result.destination) {
+      return;
+    }
+    if (result.destination.index === result.source.index) {
+      return;
+    }
+    const allLists = {...lists};
+    reorderTodos(
       allLists[active].todos,
       result.source.index,
       result.destination.index
@@ -121,78 +154,93 @@ function App() {
   return (
     <div className="App">
       <div id="sidebar">
-        <h1>TODO!</h1>
-        <div id="lists">
-          {
-            Object.keys(lists).map((list,i) =>
-              <div key={i} className={list===active?"list active":"list"} onClick={e => switchList(list)}>
-                <div>{list}</div>
-                <div onClick={(e)=>deleteList(list)} className="delete-list">X</div>
-              </div>
-            )}
-            { addingList ?
-            <input
-              autoFocus
-              type="text"
-              value={todo}
-              onChange={onChange}
-              onKeyDown={e => handleKeyDown(e)}
-              id="new-list"
-              name="list"
-            />
-                :
-                null
-            }
-            <button onClick={addEmptyList}>add list</button>
-          </div>
-        </div>
-        <div id="todos">
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="list">
-              {provided => (
-                <ul ref={provided.innerRef} {...provided.droppableProps}>
-                  { addingTodo ?
+        <DragDropContext onDragEnd={onDragEnd}>
+          <h1>TODO!</h1>
+          <Droppable droppableId="list2">
+            {provided => (
+              <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
+                { lists &&
+                  Object.keys(lists).map((list,i) =>
+                    <Draggable key={i+99} draggableId={i+99} index={i}>
+                      {provided => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                            key={i} className={list===active?"list active":"list"} onClick={e => switchList(list)}>
+                            <div>{list}</div>
+                            <div onClick={(e)=>deleteList(list)} className="delete-list">X</div>
+                          </div>
+                      )}
+                    </Draggable>
+                  )}
+                  {provided.placeholder}
+                  { addingList ?
                   <input
                     autoFocus
                     type="text"
                     value={todo}
                     onChange={onChange}
                     onKeyDown={e => handleKeyDown(e)}
-                    id="new-todo"
-                    name="todo"
+                    id="new-list"
+                    name="list"
                   />
-                    :
-                    null
+                      :
+                      null
                   }
-                  { lists[active] &&
-                      lists[active].todos.map((todo,i) =>
-                        <Draggable key={todo} draggableId={i.toString()} index={i}>
-                          {provided => (
-                            <div className="todo"
-                              key={i}
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                            >
-                              <li
-                                onClick={e=>toggleTodo(i)}
-                                className={todo.completed?'completed':''}
-                              >{todo.name}</li>
-                              <div onClick={e=>deleteTodo(i)} className="delete">X</div>
-                            </div>
-                          )
-                          }
-                        </Draggable>
-                      )
-                  }
-                  {provided.placeholder}
-                </ul>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </div>
-        <button id="add-todo" onClick={addEmptyTodo}>+</button>
+                  <button onClick={addEmptyList}>add list</button>
+                </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </div>
+      <div id="todos">
+        <DragDropContext onDragEnd={onDragEnd2}>
+          <Droppable droppableId="list">
+            {provided => (
+              <ul ref={provided.innerRef} {...provided.droppableProps}>
+                { addingTodo ?
+                <input
+                  autoFocus
+                  type="text"
+                  value={todo}
+                  onChange={onChange}
+                  onKeyDown={e => handleKeyDown(e)}
+                  id="new-todo"
+                  name="todo"
+                />
+                  :
+                  null
+                }
+                { lists[active] &&
+                    lists[active].todos.map((todo,i) =>
+                      <Draggable key={todo.name} draggableId={todo.name} index={i}>
+                        {provided => (
+                          <div className="todo"
+                            key={i}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <li
+                              onClick={e=>toggleTodo(i)}
+                              className={todo.completed?'completed':''}
+                            >{todo.name}</li>
+                            <div onClick={e=>deleteTodo(i)} className="delete">X</div>
+                          </div>
+                        )
+                        }
+                      </Draggable>
+                    )
+                }
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
+      <button id="add-todo" onClick={addEmptyTodo}>+</button>
+    </div>
   );
 }
 
