@@ -61,7 +61,7 @@ button:focus, button:active  {
     display: flex;
     flex-direction: column;
     background-color: #141d26;
-  overflow: scroll;
+    overflow: scroll;
     #button-wrapper {
       background-color: #243447;
     }
@@ -78,7 +78,7 @@ button:focus, button:active  {
     cursor: pointer;
     word-break: break-word;
     color: #83adb5;
-    // outline: 0;
+    transition: all 0.3s ease;
     &:hover, &:active {
       background-color: #243447;
       color: #c51f5d;
@@ -127,6 +127,7 @@ button:focus, button:active  {
       align-self: center;
       word-break: break-word;
       color: #83adb5;
+      transition: all 0.3s ease;
       &:hover, &:active {
         box-shadow: 5px 5px #c51f5d;
         text-shadow: 4px 3px #000;
@@ -182,13 +183,13 @@ button:focus, button:active  {
   background-color: #243447;
   border-color: #243447;
   color:#c51f5d;
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 0;
   cursor: pointer;
   align-self: center;
-      &:hover, &:active {
-        text-shadow: 4px 3px #000;
-      }
+  &:hover, &:active {
+    text-shadow: 4px 3px #000;
+  }
 }
 
 #buttons-left {
@@ -210,9 +211,9 @@ button:focus, button:active  {
   font-size: 2em;
   padding: 0;
   cursor: pointer;
-      &:hover, &:active {
-        text-shadow: 4px 3px #000;
-      }
+  &:hover, &:active {
+    text-shadow: 4px 3px #000;
+  }
 }
 
 #clear-done {
@@ -224,9 +225,9 @@ button:focus, button:active  {
   font-size: 2em;
   padding: 0;
   cursor: pointer;
-      &:hover, &:active {
-        text-shadow: 4px 3px #000;
-      }
+  &:hover, &:active {
+    text-shadow: 4px 3px #000;
+  }
 }
 
 
