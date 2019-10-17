@@ -163,12 +163,30 @@ button:focus, button:active {
   align-self: center;
 }
 
+#buttons-left {
+  display: flex;
+  padding-top: 1em;
+}
+
+#buttons-right {
+  display: flex;
+  padding-top: 1em;
+}
+
 #add-todo {
   width: 70px;
   height: 70px;
-  position: absolute;
-  right: 22px;
-  bottom: 22px;
+  background-color: #243447;
+  border-color: #243447;
+  color:#c51f5d;
+  font-size: 2em;
+  padding: 0;
+  cursor: pointer;
+}
+
+#clear-done {
+  width: 70px;
+  height: 70px;
   background-color: #243447;
   border-color: #243447;
   color:#c51f5d;

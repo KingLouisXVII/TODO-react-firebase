@@ -35,8 +35,8 @@ function App() {
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
     localTodos?
-    setLists(JSON.parse(localTodos))
-    : setLists({})
+      setLists(JSON.parse(localTodos))
+      : setLists({})
   }, []);
 
   useEffect(() => {
@@ -145,6 +145,17 @@ function App() {
     setLists(allLists);
   }
 
+  function removeCompleted(todo) {
+    return todo.completed === false;
+  } 
+
+  function clearDone() {
+    const allLists = {...lists};
+    const newTodos = allLists[active].todos.filter(removeCompleted);
+    allLists[active].todos = newTodos;
+    setLists(allLists);
+  }
+
   return (
     <div className="App">
       <div id="sidebar">
@@ -183,7 +194,7 @@ function App() {
                       null
                   }
                   <div id="button-wrapper">
-                  <button id="add-list" onClick={addEmptyList}>+</button>
+                    <button id="add-list" onClick={addEmptyList}>+</button>
                   </div>
                 </div>
             )}
@@ -191,6 +202,12 @@ function App() {
         </DragDropContext>
       </div>
       <div id="todos">
+        {active?
+        <div id="buttons-left">
+          <button id="clear-done" onClick={clearDone}>-</button>
+        </div>
+            : null
+        }
         <DragDropContext onDragEnd={onDragEnd2}>
           <Droppable droppableId="list">
             {provided => (
@@ -234,11 +251,21 @@ function App() {
             )}
           </Droppable>
         </DragDropContext>
+        {active?
+        <div id="buttons-right">
+          <button id="add-todo" onClick={addEmptyTodo}>+</button>
+        </div>
+            : null
+        }
       </div>
-      {active?
-      <button id="add-todo" onClick={addEmptyTodo}>+</button>
-      : null
-      }
+      {/* {active? */}
+      {/* <div id="buttons"> */}
+      {/* <button id="clear-done" onClick={clearDone}>*</button> */}
+      {/* <button id="clear-all" onClick={clearAll}>-</button> */}
+      {/* <button id="add-todo" onClick={addEmptyTodo}>+</button> */}
+      {/* </div> */}
+      {/* : null */}
+      {/* } */}
     </div>
   );
 }
