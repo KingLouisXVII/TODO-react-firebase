@@ -11,6 +11,11 @@ body {
   font-size: 2em;
 }
 
+button:focus, button:active {
+  outline: 0;
+  border: 0;
+}
+
 .App {
   font-family: 'Anton', sans-serif;
   display: grid;
@@ -28,6 +33,10 @@ body {
   text-align: center;
   background-color: beige;
   border-right: 2px solid #000;
+  h1 {
+    font-size: 8vw;
+    margin: 0;
+  }
   input {
     font-size: 0.9em;
     background-color: #000;
@@ -126,17 +135,30 @@ body {
   background-color: beige;
 }
 
+#add-list {
+  width: 70px;
+  height: 70px;
+  background-color: beige;
+  border-color: beige;
+  color: #000;
+  font-size: 2em;
+  padding: 0;
+  cursor: pointer;
+  align-self: center;
+}
+
 #add-todo {
   width: 70px;
   height: 70px;
   position: absolute;
   right: 22px;
   bottom: 22px;
-  background-color: black;
-  color: white;
-  border-radius: 100%;
+  background-color: #fff;
+  border-color: #fff;
+  color: #000;
   font-size: 2em;
   padding: 0;
+  cursor: pointer;
 }
 
 #new-todo {
@@ -147,8 +169,9 @@ body {
   font-weight: 900;
   padding: 0.3em;
   margin: 0.2em;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: #000;
+  border: 1px solid #fff;
+  color: #fff;
   box-shadow: 5px 5px;
   align-self: center;
 }

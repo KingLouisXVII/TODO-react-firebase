@@ -182,7 +182,7 @@ function App() {
                       :
                       null
                   }
-                  <button onClick={addEmptyList}>add list</button>
+                  <button id="add-list" onClick={addEmptyList}>+</button>
                 </div>
             )}
           </Droppable>
