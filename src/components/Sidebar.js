@@ -68,7 +68,7 @@ function Sidebar(props) {
             <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
               { props.lists &&
                 Object.keys(props.lists).map((list,i) =>
-                  <Draggable key={i+99} draggableId={i+99} index={i}>
+                  <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
                       <div
                         ref={provided.innerRef}

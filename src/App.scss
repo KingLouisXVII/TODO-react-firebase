@@ -34,8 +34,7 @@ button:focus, button:active  {
 }
 
 #sidebar {
-  height: 100vh;
-  overflow: scroll;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
