@@ -77,7 +77,6 @@ button:focus, button:active  {
     cursor: pointer;
     word-break: break-word;
     color: #83adb5;
-    transition: all 0.3s ease;
     &:hover, &:active {
       background-color: #243447;
       color: #c51f5d;

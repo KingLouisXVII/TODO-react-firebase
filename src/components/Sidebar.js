@@ -52,7 +52,7 @@ function Sidebar(props) {
     }
     const allLists = {...props.lists};
     const orderedLists = reorderLists(
-      Object.entries(allLists),
+      allLists,
       result.source.index,
       result.destination.index
     );
@@ -74,7 +74,7 @@ function Sidebar(props) {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                          key={i} className={list===props.active?"list active":"list"} onClick={e =>switchList(list)}>
+                           className={list===props.active?"list active":"list"} onClick={e =>switchList(list)}>
                           <div>{list}</div>
                           <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list">X</div>
                         </div>
