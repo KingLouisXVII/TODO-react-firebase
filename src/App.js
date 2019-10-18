@@ -1,29 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import { reorderLists,reorderTodos } from './utils/Reorder';
 import './App.scss';
 
-const reorderTodos = (list, startIndex, endIndex) => {
-  const result = list;
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
-
-const reorderLists = (list, startIndex, endIndex) => {
-  const result = list;
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  const reducedArray = result.reduce(function(acc, item){
-    acc[item[0]] = item[1];
-
-    return acc;
-  }, {});
-
-  return reducedArray;
-};
 
 function App() {
   const [lists, setLists] = useState({});
