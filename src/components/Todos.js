@@ -4,7 +4,7 @@ import { reorderTodos } from '../utils/Reorder';
 
 
 function Todos(props) {
-  
+
   function onChange(e) {
     props.setTodo(e.target.value);
   }
@@ -17,7 +17,7 @@ function Todos(props) {
   }
 
   function addEmptyTodo() {
-    props.setAddingTodo(true);
+    props.setAddingTodo(!props.addingTodo);
   }
 
   function addTodo() {
@@ -57,7 +57,6 @@ function Todos(props) {
     allLists[props.active].todos = newTodos;
     props.setLists(allLists);
     props.setTodo('');
-    props.setAddingTodo(false);
   }
 
   function onDragEnd(result) {
@@ -85,7 +84,7 @@ function Todos(props) {
           : null
       }
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="list">
+        <Droppable droppableId="todos">
           {provided => (
             <ul ref={provided.innerRef} {...provided.droppableProps}>
               { props.addingTodo ?
@@ -99,8 +98,7 @@ function Todos(props) {
                   id="new-todo"
                   name="todo"
                 /></div>
-                :
-                null
+                : null
               }
               { props.lists[props.active] &&
                   props.lists[props.active].todos.map((todo,i) =>
@@ -127,9 +125,12 @@ function Todos(props) {
           )}
         </Droppable>
       </DragDropContext>
-      {props.active?
+      {props.active ?
       <div id="buttons-right">
-        <button id="add-todo" onClick={addEmptyTodo}>+</button>
+        {props.addingTodo ?
+        <button id="add-todo" onClick={addEmptyTodo}>-</button>
+          : <button id="add-todo" onClick={addEmptyTodo}>+</button>
+        }
       </div>
           : null
       }

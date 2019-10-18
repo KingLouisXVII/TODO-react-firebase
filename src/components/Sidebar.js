@@ -63,7 +63,7 @@ function Sidebar(props) {
     <div id="sidebar">
       <DragDropContext onDragEnd={onDragEnd}>
         <h1>TODO!</h1>
-        <Droppable droppableId="list2">
+        <Droppable droppableId="sidebar">
           {provided => (
             <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
               { props.lists &&
@@ -92,18 +92,15 @@ function Sidebar(props) {
                   id="new-list"
                   name="list"
                 />
-                    :
-                    null
+                    : null
                 }
               </div>
           )}
         </Droppable>
       </DragDropContext>
       <div id="button-wrapper">
-        { props.addingList ?  
-        <button id="add-list" onClick={addEmptyList}>-</button>
-            :
-              <button id="add-list" onClick={addEmptyList}>+</button>
+        { props.addingList ? <button id="add-list" onClick={addEmptyList}>-</button>
+            : <button id="add-list" onClick={addEmptyList}>+</button>
         }
       </div>
     </div>

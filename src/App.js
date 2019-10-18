@@ -13,9 +13,7 @@ function App() {
 
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
-    localTodos?
-      setLists(JSON.parse(localTodos))
-      : setLists({})
+    localTodos ? setLists(JSON.parse(localTodos)) : setLists({})
   }, []);
 
   useEffect(() => {
