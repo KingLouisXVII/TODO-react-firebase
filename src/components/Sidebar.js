@@ -15,9 +15,9 @@ function Sidebar(props) {
       props.setTodo('');
     }
   }
-  
+
   function addEmptyList() {
-    props.setAddingList(true);
+    props.setAddingList(!props.addingList);
   }
 
   function addList() {
@@ -74,7 +74,7 @@ function Sidebar(props) {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                           className={list===props.active?"list active":"list"} onClick={e =>switchList(list)}>
+                          className={list===props.active?"list active":"list"} onClick={e =>switchList(list)}>
                           <div>{list}</div>
                           <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list">X</div>
                         </div>
@@ -100,7 +100,11 @@ function Sidebar(props) {
         </Droppable>
       </DragDropContext>
       <div id="button-wrapper">
-        <button id="add-list" onClick={addEmptyList}>+</button>
+        { props.addingList ?  
+        <button id="add-list" onClick={addEmptyList}>-</button>
+            :
+              <button id="add-list" onClick={addEmptyList}>+</button>
+        }
       </div>
     </div>
   );
