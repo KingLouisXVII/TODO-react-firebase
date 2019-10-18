@@ -1,4 +1,3 @@
-
 export const reorderTodos = (list, startIndex, endIndex) => {
   const result = list;
   const [removed] = result.splice(startIndex, 1);

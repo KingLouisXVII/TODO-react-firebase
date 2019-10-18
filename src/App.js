@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists,reorderTodos } from './utils/Reorder';
+import Sidebar from './components/Sidebar';
+import Todos from './components/Todos';
 import './App.scss';
 
 
@@ -107,7 +108,7 @@ function App() {
     setAddingTodo(false);
   }
 
-  function onDragEnd(result) {
+  const  onDragEnd = (result) => {
     if (!result.destination) {
       return;
     }
@@ -140,107 +141,32 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div id="sidebar">
-        <DragDropContext onDragEnd={onDragEnd}>
-          <h1>TODO!</h1>
-          <Droppable droppableId="list2">
-            {provided => (
-              <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
-                { lists &&
-                  Object.keys(lists).map((list,i) =>
-                    <Draggable key={i+99} draggableId={i+99} index={i}>
-                      {provided => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                            key={i} className={list===active?"list active":"list"} onClick={e => switchList(list)}>
-                            <div>{list}</div>
-                            <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deleteList(list) }} className="delete-list">X</div>
-                          </div>
-                      )}
-                    </Draggable>
-                  )}
-                  {provided.placeholder}
-                  { addingList ?
-                  <input
-                    autoFocus
-                    type="text"
-                    value={todo}
-                    onChange={onChange}
-                    onKeyDown={e => handleKeyDown(e)}
-                    id="new-list"
-                    name="list"
-                  />
-                      :
-                      null
-                  }
-                </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-        <div id="button-wrapper">
-          <button id="add-list" onClick={addEmptyList}>+</button>
-        </div>
-      </div>
-      <div id="todos">
-        {active?
-        <div id="buttons-left">
-          <button id="clear-done" onClick={clearDone}>-</button>
-        </div>
-            : null
-        }
-        <DragDropContext onDragEnd={onDragEnd2}>
-          <Droppable droppableId="list">
-            {provided => (
-              <ul ref={provided.innerRef} {...provided.droppableProps}>
-                { addingTodo ?
-                <div id="input-todo-wrap">
-                  <input
-                    autoFocus
-                    type="text"
-                    value={todo}
-                    onChange={onChange}
-                    onKeyDown={e => handleKeyDown(e)}
-                    id="new-todo"
-                    name="todo"
-                  /></div>
-                  :
-                  null
-                }
-                { lists[active] &&
-                    lists[active].todos.map((todo,i) =>
-                      <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
-                        {provided => (
-                          <div className="todo"
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                          >
-                            <li
-                              onClick={e=>toggleTodo(i)}
-                              className={todo.completed?'completed':''}
-                            >{todo.name}</li>
-                            <div onClick={e=>deleteTodo(i)} className="delete">X</div>
-                          </div>
-                        )
-                        }
-                      </Draggable>
-                    )
-                }
-                {provided.placeholder}
-              </ul>
-            )}
-          </Droppable>
-        </DragDropContext>
-        {active?
-        <div id="buttons-right">
-          <button id="add-todo" onClick={addEmptyTodo}>+</button>
-        </div>
-            : null
-        }
-      </div>
+    <div className="app">
+      <Sidebar
+        onDragEnd={onDragEnd}
+        switchList={switchList}
+        deleteList={deleteList}
+        addingList={addingList}
+        onChange={onChange}
+        handleKeyDown={handleKeyDown}
+        addEmptyList={addEmptyList}
+        lists={lists}
+        todo={todo}
+        active={active}
+      />
+      <Todos
+        onDragEnd2={onDragEnd2}
+        addEmptyTodo={addEmptyTodo}
+        onChange={onChange}
+        handleKeyDown={handleKeyDown}
+        clearDone={clearDone}
+        lists={lists}
+        todo={todo}
+        active={active}
+        addingTodo={addingTodo}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+      />
     </div>
   );
 }
