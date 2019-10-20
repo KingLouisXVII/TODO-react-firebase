@@ -6,13 +6,13 @@ import { reorderLists } from '../utils/Reorder';
 function Sidebar(props) {
 
   function onChange(e) {
-    props.setTodo(e.target.value);
+    props.setInput(e.target.value);
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter' && e.target.name === 'list' && props.todo.length !== 0) {
+    if (e.key === 'Enter' && e.target.name === 'list' && props.input.length !== 0) {
       addList();
-      props.setTodo('');
+      props.setInput('');
     }
   }
 
@@ -23,12 +23,12 @@ function Sidebar(props) {
   function addList() {
     const allLists = {...props.lists};
     const newList = {todos:[]};
-    if ( !( props.todo in allLists ) ) {
-      allLists[props.todo] = newList;
+    if ( !( props.input in allLists ) ) {
+      allLists[props.input] = newList;
     }
-    props.todo && props.setLists(allLists);
-    props.setActive(props.todo);
-    props.setTodo('');
+    props.input && props.setLists(allLists);
+    props.setActive(props.input);
+    props.setInput('');
     props.setAddingList(false);
   }
 
@@ -86,7 +86,7 @@ function Sidebar(props) {
                 <input
                   autoFocus
                   type="text"
-                  value={props.todo}
+                  value={props.input}
                   onChange={onChange}
                   onKeyDown={e => handleKeyDown(e)}
                   id="new-list"

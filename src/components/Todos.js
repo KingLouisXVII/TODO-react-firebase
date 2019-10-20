@@ -6,13 +6,13 @@ import { reorderTodos } from '../utils/Reorder';
 function Todos(props) {
 
   function onChange(e) {
-    props.setTodo(e.target.value);
+    props.setInput(e.target.value);
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter' && e.target.name === 'todo' && props.todo.length !== 0) {
+    if (e.key === 'Enter' && e.target.name === 'todo' && props.input.length !== 0) {
       addTodo(e);
-      props.setTodo('');
+      props.setInput('');
     }
   }
 
@@ -24,7 +24,7 @@ function Todos(props) {
     const allLists = {...props.lists};
     const todos = allLists[props.active].todos;
     const newTodo = {
-      name: props.todo,
+      name: props.input,
       completed: false
     }
     todos.unshift(newTodo);
@@ -56,7 +56,7 @@ function Todos(props) {
     const newTodos = allLists[props.active].todos.filter(removeCompleted);
     allLists[props.active].todos = newTodos;
     props.setLists(allLists);
-    props.setTodo('');
+    props.setInput('');
   }
 
   function onDragEnd(result) {
@@ -92,7 +92,7 @@ function Todos(props) {
                 <input
                   autoFocus
                   type="text"
-                  value={props.todo}
+                  value={props.input}
                   onChange={onChange}
                   onKeyDown={e =>handleKeyDown(e)}
                   id="new-todo"

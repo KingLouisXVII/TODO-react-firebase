@@ -6,7 +6,7 @@ import './App.scss';
 
 function App() {
   const [lists, setLists] = useState({});
-  const [todo, setTodo] = useState('');
+  const [input, setInput] = useState('');
   const [active, setActive] = useState('');
   const [addingTodo, setAddingTodo] = useState(false);
   const [addingList, setAddingList] = useState(false);
@@ -27,16 +27,16 @@ function App() {
         setAddingList={setAddingList}
         lists={lists}
         setLists={setLists}
-        todo={todo}
-        setTodo={setTodo}
+        input={input}
+        setInput={setInput}
         active={active}
         setActive={setActive}
       />
       <Todos
         lists={lists}
         setLists={setLists}
-        todo={todo}
-        setTodo={setTodo}
+        input={input}
+        setInput={setInput}
         active={active}
         addingTodo={addingTodo}
         setAddingTodo={setAddingTodo}
