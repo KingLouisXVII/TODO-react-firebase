@@ -1,50 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderTodos } from '../utils/Reorder';
 
 
 function Todos(props) {
+  const [addingTodo, setAddingTodo] = useState(false);
+  const { input, setInput, lists, setLists, active } = props;
 
   function onChange(e) {
     props.setInput(e.target.value);
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter' && e.target.name === 'todo' && props.input.length !== 0) {
+    if (e.key === 'Enter' && e.target.name === 'todo' && input.length !== 0) {
       addTodo(e);
-      props.setInput('');
+      setInput('');
     }
   }
 
   function addEmptyTodo() {
-    props.setAddingTodo(!props.addingTodo);
+    setAddingTodo(!addingTodo);
   }
 
   function addTodo() {
-    const allLists = {...props.lists};
-    const todos = allLists[props.active].todos;
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
     const newTodo = {
-      name: props.input,
+      name: input,
       completed: false
     }
     todos.unshift(newTodo);
-    props.setLists(allLists);
-    props.setAddingTodo(false);
+    setLists(allLists);
+    setAddingTodo(false);
   }
 
   function toggleTodo(i) {
-    const allLists = {...props.lists};
-    const todos = allLists[props.active].todos;
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
     todos[i].completed = !todos[i].completed;
     todos.sort(function(a,b){return a.completed-b.completed});
-    props.setLists(allLists);
+    setLists(allLists);
   }
 
   function deleteTodo(i) {
-    const allLists = {...props.lists};
-    const todos = allLists[props.active].todos;
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
     todos.splice(i,1);
-    props.setLists(allLists);
+    setLists(allLists);
   }
 
   function removeCompleted(todo) {
@@ -52,11 +54,11 @@ function Todos(props) {
   } 
 
   function clearDone() {
-    const allLists = {...props.lists};
-    const newTodos = allLists[props.active].todos.filter(removeCompleted);
-    allLists[props.active].todos = newTodos;
-    props.setLists(allLists);
-    props.setInput('');
+    const allLists = {...lists};
+    const newTodos = allLists[active].todos.filter(removeCompleted);
+    allLists[active].todos = newTodos;
+    setLists(allLists);
+    setInput('');
   }
 
   function onDragEnd(result) {
@@ -66,9 +68,9 @@ function Todos(props) {
     if (result.destination.index === result.source.index) {
       return;
     }
-    const allLists = {...props.lists};
+    const allLists = {...lists};
     reorderTodos(
-      allLists[props.active].todos,
+      allLists[active].todos,
       result.source.index,
       result.destination.index
     );
@@ -77,7 +79,7 @@ function Todos(props) {
 
   return (
     <div id="todos">
-      {props.active?
+      {active?
       <div id="buttons-left">
         <button id="clear-done" onClick={clearDone}>-</button>
       </div>
@@ -87,7 +89,7 @@ function Todos(props) {
         <Droppable droppableId="todos">
           {provided => (
             <ul ref={provided.innerRef} {...provided.droppableProps}>
-              { props.addingTodo ?
+              { addingTodo ?
               <div id="input-todo-wrap">
                 <input
                   autoFocus
@@ -100,8 +102,8 @@ function Todos(props) {
                 /></div>
                 : null
               }
-              { props.lists[props.active] &&
-                  props.lists[props.active].todos.map((todo,i) =>
+              {lists[active] &&
+                  lists[active].todos.map((todo,i) =>
                     <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                       {provided => (
                         <div className="todo"
@@ -125,9 +127,9 @@ function Todos(props) {
           )}
         </Droppable>
       </DragDropContext>
-      {props.active ?
+      {active ?
       <div id="buttons-right">
-        {props.addingTodo ?
+        {addingTodo ?
         <button id="add-todo" onClick={addEmptyTodo}>-</button>
           : <button id="add-todo" onClick={addEmptyTodo}>+</button>
         }

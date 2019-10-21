@@ -8,12 +8,10 @@ function App() {
   const [lists, setLists] = useState({});
   const [input, setInput] = useState('');
   const [active, setActive] = useState('');
-  const [addingTodo, setAddingTodo] = useState(false);
-  const [addingList, setAddingList] = useState(false);
 
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
-    localTodos ? setLists(JSON.parse(localTodos)) : setLists({})
+    localTodos ? setLists(JSON.parse(localTodos)) : setLists({});
   }, []);
 
   useEffect(() => {
@@ -23,8 +21,6 @@ function App() {
   return (
     <div className="app">
       <Sidebar
-        addingList={addingList}
-        setAddingList={setAddingList}
         lists={lists}
         setLists={setLists}
         input={input}
@@ -38,8 +34,6 @@ function App() {
         input={input}
         setInput={setInput}
         active={active}
-        addingTodo={addingTodo}
-        setAddingTodo={setAddingTodo}
       />
     </div>
   );

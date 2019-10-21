@@ -1,46 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists } from '../utils/Reorder';
 
 
 function Sidebar(props) {
+  const [addingList, setAddingList] = useState(false);
+  const { active, setActive, input, setInput, lists, setLists } = props;
 
   function onChange(e) {
-    props.setInput(e.target.value);
+    setInput(e.target.value);
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter' && e.target.name === 'list' && props.input.length !== 0) {
+    if (e.key === 'Enter' && e.target.name === 'list' && input.length !== 0) {
       addList();
-      props.setInput('');
+      setInput('');
     }
   }
 
   function addEmptyList() {
-    props.setAddingList(!props.addingList);
+    setAddingList(!addingList);
   }
 
   function addList() {
-    const allLists = {...props.lists};
+    const allLists = {...lists};
     const newList = {todos:[]};
-    if ( !( props.input in allLists ) ) {
-      allLists[props.input] = newList;
+    if ( !(input in allLists ) ) {
+      allLists[input] = newList;
     }
-    props.input && props.setLists(allLists);
-    props.setActive(props.input);
-    props.setInput('');
-    props.setAddingList(false);
+    input && setLists(allLists);
+    setActive(input);
+    setInput('');
+    setAddingList(false);
   }
 
 
   function deleteList(list) {
-    const allLists = {...props.lists};
+    const allLists = {...lists};
     delete allLists[list];
-    props.setLists(allLists);
+    setLists(allLists);
   }
 
   function switchList(list) {
-    props.setActive(list);
+    setActive(list);
   }
 
   function onDragEnd(result) {
@@ -50,13 +52,13 @@ function Sidebar(props) {
     if (result.destination.index === result.source.index) {
       return;
     }
-    const allLists = {...props.lists};
+    const allLists = {...lists};
     const orderedLists = reorderLists(
       allLists,
       result.source.index,
       result.destination.index
     );
-    props.setLists(orderedLists);
+    setLists(orderedLists);
   }
 
   return (
@@ -66,15 +68,15 @@ function Sidebar(props) {
         <Droppable droppableId="sidebar">
           {provided => (
             <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
-              { props.lists &&
-                Object.keys(props.lists).map((list,i) =>
+              {lists &&
+                Object.keys(lists).map((list,i) =>
                   <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                          className={list===props.active?"list active":"list"} onClick={e =>switchList(list)}>
+                          className={list===active?"list active":"list"} onClick={e =>switchList(list)}>
                           <div>{list}</div>
                           <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list">X</div>
                         </div>
@@ -82,11 +84,11 @@ function Sidebar(props) {
                   </Draggable>
                 )}
                 {provided.placeholder}
-                { props.addingList ?
+                {addingList ?
                 <input
                   autoFocus
                   type="text"
-                  value={props.input}
+                  value={input}
                   onChange={onChange}
                   onKeyDown={e => handleKeyDown(e)}
                   id="new-list"
@@ -99,7 +101,7 @@ function Sidebar(props) {
         </Droppable>
       </DragDropContext>
       <div id="button-wrapper">
-        { props.addingList ? <button id="add-list" onClick={addEmptyList}>-</button>
+        {addingList ? <button id="add-list" onClick={addEmptyList}>-</button>
             : <button id="add-list" onClick={addEmptyList}>+</button>
         }
       </div>
