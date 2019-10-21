@@ -19,6 +19,7 @@ function Sidebar(props) {
   }
 
   function addEmptyList() {
+    setInput('');
     setAddingList(!addingList);
   }
 

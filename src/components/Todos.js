@@ -19,6 +19,7 @@ function Todos(props) {
   }
 
   function addEmptyTodo() {
+    setInput('');
     setAddingTodo(!addingTodo);
   }
 
