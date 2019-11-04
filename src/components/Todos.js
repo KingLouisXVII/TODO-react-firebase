@@ -63,6 +63,15 @@ function Todos(props) {
     setInput('');
   }
 
+  function editTodo(i) {
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
+    const todo = todos[i].name;
+    todos.splice(i,1);
+    setLists(allLists);
+    setInput(todo);
+  }
+
   function onDragEnd(result) {
     if (!result.destination) {
       return;
@@ -87,7 +96,7 @@ function Todos(props) {
           autoFocus
           autoComplete="off"
           type="text"
-          placeholder="enter todo..."
+          placeholder="..."
           value={props.input}
           onChange={onChange}
           onKeyDown={e =>handleKeyDown(e)}
@@ -110,11 +119,16 @@ function Todos(props) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
+                        {!todo.completed?
+                        <div className="checkbox" onClick={e=>toggleTodo(i)}></div>
+                            :
+                        <div className="checkbox checked" onClick={e=>toggleTodo(i)}></div>
+                        }
                         <li
-                          onClick={e=>toggleTodo(i)}
+                          onDoubleClick={e=>editTodo(i)}
                           className={todo.completed?'completed':''}
                         >{todo.name}</li>
-                        <div onClick={e=>deleteTodo(i)} className="delete"><img src={deleteButton}/></div>
+                        <div onClick={e=>deleteTodo(i)} className="delete"><img alt="delete-todo" src={deleteButton}/></div>
                       </div>
                     )
                     }

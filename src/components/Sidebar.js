@@ -76,7 +76,7 @@ function Sidebar(props) {
                         {...provided.dragHandleProps}
                           className={list===active?"list active":"list"} onClick={e =>switchList(list)}>
                           <div>{list}</div>
-                          <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list"><img src={deleteButton}/></div>
+                          <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                         </div>
                     )}
                   </Draggable>
@@ -85,7 +85,7 @@ function Sidebar(props) {
                 <input
                   autoComplete="off"
                   type="text"
-                  placeholder="enter list name..."
+                  placeholder="..."
                   value={input}
                   onChange={onChange}
                   onKeyDown={e => handleKeyDown(e)}
