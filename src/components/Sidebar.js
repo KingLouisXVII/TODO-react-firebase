@@ -5,7 +5,8 @@ import { reorderLists } from '../utils/Reorder';
 
 function Sidebar(props) {
   const [addingList, setAddingList] = useState(false);
-  const { active, setActive, input, setInput, lists, setLists } = props;
+  const [input, setInput] = useState('');
+  const { active, setActive, lists, setLists } = props;
 
   function onChange(e) {
     setInput(e.target.value);
@@ -85,26 +86,22 @@ function Sidebar(props) {
                   </Draggable>
                 )}
                 {provided.placeholder}
-                {addingList ?
                 <input
                   autoFocus
+                  autoComplete="off"
                   type="text"
+                  placeholder="enter list name..."
                   value={input}
                   onChange={onChange}
                   onKeyDown={e => handleKeyDown(e)}
                   id="new-list"
                   name="list"
                 />
-                    : null
-                }
               </div>
           )}
         </Droppable>
       </DragDropContext>
       <div id="button-wrapper">
-        {addingList ? <button id="add-list" onClick={addEmptyList}>-</button>
-            : <button id="add-list" onClick={addEmptyList}>+</button>
-        }
       </div>
     </div>
   );

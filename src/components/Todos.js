@@ -80,29 +80,26 @@ function Todos(props) {
 
   return (
     <div id="todos">
-      {active?
-      <div id="buttons-left">
-        <button id="clear-done" onClick={clearDone}>-</button>
-      </div>
-          : null
-      }
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="todos">
-          {provided => (
-            <ul ref={provided.innerRef} {...provided.droppableProps}>
-              { addingTodo ?
+              {active?
               <div id="input-todo-wrap">
                 <input
                   autoFocus
+                  autoComplete="off"
                   type="text"
+                  placeholder="enter todo..."
                   value={props.input}
                   onChange={onChange}
                   onKeyDown={e =>handleKeyDown(e)}
                   id="new-todo"
                   name="todo"
-                /></div>
-                : null
+                />
+              </div>
+              : null
               }
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="todos">
+          {provided => (
+            <ul ref={provided.innerRef} {...provided.droppableProps}>
               {lists[active] &&
                   lists[active].todos.map((todo,i) =>
                     <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
@@ -128,15 +125,6 @@ function Todos(props) {
           )}
         </Droppable>
       </DragDropContext>
-      {active ?
-      <div id="buttons-right">
-        {addingTodo ?
-        <button id="add-todo" onClick={addEmptyTodo}>-</button>
-          : <button id="add-todo" onClick={addEmptyTodo}>+</button>
-        }
-      </div>
-          : null
-      }
     </div>
 
   )

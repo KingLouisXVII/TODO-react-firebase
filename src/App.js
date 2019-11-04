@@ -10,11 +10,11 @@ function App() {
   const [input, setInput] = useState('');
   const [active, setActive] = useState('');
 
-  const handlers = useSwipeable({
-    onSwipedDown: () => alert("NEXT"),
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true
-  });
+  // const handlers = useSwipeable({
+  //   onSwipedDown: () => alert("NEXT"),
+  //   preventDefaultTouchmoveEvent: true,
+  //   trackMouse: true
+  // });
 
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
@@ -26,7 +26,7 @@ function App() {
   }, [lists]);
 
   return (
-    <div className="app"  {...handlers}>
+    <div className="app">
       <Sidebar
         lists={lists}
         setLists={setLists}
