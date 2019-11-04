@@ -60,6 +60,7 @@ function Sidebar(props) {
 
   return (
     <div id="sidebar">
+      <div id="app-separator"></div>
       <DragDropContext onDragEnd={onDragEnd}>
         <h1 onClick={()=>{window.location.reload()}}>TODO!</h1>
         <Droppable droppableId="sidebar">
