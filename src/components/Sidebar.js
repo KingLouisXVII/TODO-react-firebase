@@ -4,7 +4,6 @@ import { reorderLists } from '../utils/Reorder';
 
 
 function Sidebar(props) {
-  const [addingList, setAddingList] = useState(false);
   const [input, setInput] = useState('');
   const { active, setActive, lists, setLists } = props;
 
@@ -19,10 +18,6 @@ function Sidebar(props) {
     }
   }
 
-  function addEmptyList() {
-    setInput('');
-    setAddingList(!addingList);
-  }
 
   function addList() {
     const allLists = {...lists};
@@ -33,7 +28,6 @@ function Sidebar(props) {
     input && setLists(allLists);
     setActive(input);
     setInput('');
-    setAddingList(false);
   }
 
 
@@ -66,7 +60,7 @@ function Sidebar(props) {
   return (
     <div id="sidebar">
       <DragDropContext onDragEnd={onDragEnd}>
-        <h1>TODO!</h1>
+        <h1 onClick={()=>{window.location.reload()}}>TODO!</h1>
         <Droppable droppableId="sidebar">
           {provided => (
             <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
@@ -87,7 +81,6 @@ function Sidebar(props) {
                 )}
                 {provided.placeholder}
                 <input
-                  autoFocus
                   autoComplete="off"
                   type="text"
                   placeholder="enter list name..."

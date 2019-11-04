@@ -80,45 +80,45 @@ function Todos(props) {
 
   return (
     <div id="todos">
-              {active?
-              <div id="input-todo-wrap">
-                <input
-                  autoFocus
-                  autoComplete="off"
-                  type="text"
-                  placeholder="enter todo..."
-                  value={props.input}
-                  onChange={onChange}
-                  onKeyDown={e =>handleKeyDown(e)}
-                  id="new-todo"
-                  name="todo"
-                />
-              </div>
-              : null
-              }
+      {active?
+      <div id="input-todo-wrap">
+        <input
+          autoFocus
+          autoComplete="off"
+          type="text"
+          placeholder="enter todo..."
+          value={props.input}
+          onChange={onChange}
+          onKeyDown={e =>handleKeyDown(e)}
+          id="new-todo"
+          name="todo"
+        />
+      </div>
+          : null
+      }
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="todos">
           {provided => (
             <ul ref={provided.innerRef} {...provided.droppableProps}>
               {lists[active] &&
-                  lists[active].todos.map((todo,i) =>
-                    <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
-                      {provided => (
-                        <div className="todo"
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <li
-                            onClick={e=>toggleTodo(i)}
-                            className={todo.completed?'completed':''}
-                          >{todo.name}</li>
-                          <div onClick={e=>deleteTodo(i)} className="delete">X</div>
-                        </div>
-                      )
-                      }
-                    </Draggable>
-                  )
+                lists[active].todos.map((todo,i) =>
+                  <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
+                    {provided => (
+                      <div className="todo"
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <li
+                          onClick={e=>toggleTodo(i)}
+                          className={todo.completed?'completed':''}
+                        >{todo.name}</li>
+                        <div onClick={e=>deleteTodo(i)} className="delete">X</div>
+                      </div>
+                    )
+                    }
+                  </Draggable>
+                )
               }
               {provided.placeholder}
             </ul>
