@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderTodos } from '../utils/Reorder';
+import deleteButton from '../assets/delete.svg'
 
 
 function Todos(props) {
@@ -113,7 +114,7 @@ function Todos(props) {
                           onClick={e=>toggleTodo(i)}
                           className={todo.completed?'completed':''}
                         >{todo.name}</li>
-                        <div onClick={e=>deleteTodo(i)} className="delete">X</div>
+                        <div onClick={e=>deleteTodo(i)} className="delete"><img src={deleteButton}/></div>
                       </div>
                     )
                     }

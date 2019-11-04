@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists } from '../utils/Reorder';
+import deleteButton from '../assets/delete.svg'
 
 
 function Sidebar(props) {
@@ -74,7 +75,7 @@ function Sidebar(props) {
                         {...provided.dragHandleProps}
                           className={list===active?"list active":"list"} onClick={e =>switchList(list)}>
                           <div>{list}</div>
-                          <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list">X</div>
+                          <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list"><img src={deleteButton}/></div>
                         </div>
                     )}
                   </Draggable>

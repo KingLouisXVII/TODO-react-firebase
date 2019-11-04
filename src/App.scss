@@ -92,12 +92,12 @@ button:focus, button:active  {
     word-break: break-word;
     color: #152218;
     &:hover, &:active {
-      background-color: #e1e1e1;
+      background-color: #fff4fb;
     }
   }
   .active {
     border-color: #c51f5d;
-    background-color: #fbf7f5;
+    background-color: #fff4fb;
     color: #c51f5d;
   }
 }
@@ -109,7 +109,6 @@ button:focus, button:active  {
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  margin-bottom: 0.5em;
   margin-left: 1em;
   #new-todo {
     height: auto;
@@ -168,12 +167,13 @@ button:focus, button:active  {
   opacity: 0;
   text-shadow: 5px 4px #000;
   cursor: pointer;
-  font-size: 1.5em;
+  width: 0.7em;
   color: indianred;
   align-self: center;
-  position: relative;
-  left: -40px;
   transition: all 0.2s ease;
+  position: relative;
+  top: -35px;
+  left: -35px;
   &:hover {
     opacity: 1;
   }
@@ -184,9 +184,11 @@ button:focus, button:active  {
   text-shadow: 5px 4px #000;
   cursor: pointer;
   font-size: 1.5em;
+  width: 0.7em;
   color: indianred;
   align-self: right;
   transition: all 0.2s ease;
+  position: relative;
   &:hover {
     opacity: 1;
   }
