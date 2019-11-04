@@ -5,11 +5,11 @@ import deleteButton from '../assets/delete.svg'
 
 
 function Todos(props) {
-  const [addingTodo, setAddingTodo] = useState(false);
-  const { input, setInput, lists, setLists, active } = props;
+  const [input, setInput] = useState('');
+  const { lists, setLists, active } = props;
 
   function onChange(e) {
-    props.setInput(e.target.value);
+    setInput(e.target.value);
   }
 
   function handleKeyDown(e) {
@@ -17,11 +17,6 @@ function Todos(props) {
       addTodo(e);
       setInput('');
     }
-  }
-
-  function addEmptyTodo() {
-    setInput('');
-    setAddingTodo(!addingTodo);
   }
 
   function addTodo() {
@@ -33,7 +28,6 @@ function Todos(props) {
     }
     todos.unshift(newTodo);
     setLists(allLists);
-    setAddingTodo(false);
   }
 
   function toggleTodo(i) {
@@ -97,7 +91,7 @@ function Todos(props) {
           autoComplete="off"
           type="text"
           placeholder="..."
-          value={props.input}
+          value={input}
           onChange={onChange}
           onKeyDown={e =>handleKeyDown(e)}
           id="new-todo"
@@ -122,7 +116,7 @@ function Todos(props) {
                         {!todo.completed?
                         <div className="checkbox" onClick={e=>toggleTodo(i)}></div>
                             :
-                        <div className="checkbox checked" onClick={e=>toggleTodo(i)}></div>
+                              <div className="checkbox checked" onClick={e=>toggleTodo(i)}></div>
                         }
                         <li
                           onDoubleClick={e=>editTodo(i)}
@@ -140,6 +134,7 @@ function Todos(props) {
           )}
         </Droppable>
       </DragDropContext>
+      {/* {active && lists[active].todos.length > 0 ?<h2 id="clear" onClick={clearDone}>clear done</h2>:null} */}
     </div>
 
   )

@@ -15,6 +15,9 @@ body {
   background-color: #fbf7f5;
 }
 
+h2 {
+  cursor: pointer;
+}
 #sidebar::-webkit-scrollbar, #todos::-webkit-scrollbar, #lists::-webkit-scrollbar {
   display: none;
 }
@@ -235,19 +238,19 @@ button:focus, button:active  {
 //   }
 // }
 
-#clear-done {
-  width: 70px;
-  height: 70px;
-  background-color: #fbf7f5;
-  border-color: #243447;
-  color:#c51f5d;
-  font-size: 2em;
-  padding: 0;
-  cursor: pointer;
-  &:hover, &:active {
-    text-shadow: 4px 3px #000;
-  }
-}
+// #clear {
+//   background-color: #000;
+//   color:#fff;
+//   cursor: pointer;
+//   width: 5em;
+//   text-align: center;
+//   position: relative;
+//   right: 28px;
+//   top: 120px;
+//   transform: rotate(-90deg);
+//   &:hover, &:active {
+//   }
+// }
 
 .checkbox {
   width: 20px;
