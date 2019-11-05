@@ -99,9 +99,9 @@ button:focus, button:active  {
     }
   }
   .active {
-    border-color: #c51f5d;
+    border-color: #ffbbaa;
     background-color: #fff4fb;
-    color: #c51f5d;
+    color: #ffbbaa;
   }
 }
 #input-todo-wrap {
@@ -136,6 +136,8 @@ button:focus, button:active  {
     padding: 0;
     margin: 0;
     li {
+      display: flex;
+      justify-content: space-between;
       height: auto;
       width: 60%;
       padding: 0.3em;
@@ -147,6 +149,7 @@ button:focus, button:active  {
       color: #152218;
       border: 2px solid;
       box-shadow: 5px 5px;
+      font-size: 0.7em;
       &:hover, &:active {
         box-shadow: 5px 5px #c51f5d;
       }
@@ -169,17 +172,10 @@ button:focus, button:active  {
 }
 
 #buttons {
-  position: relative;
-  right: 1em;
-  top: -0.3em;
+  align-self: baseline;
 }
 
-.priority-button {
-  cursor: pointer;
-  width: 0.8em;
-}
-
-.delete  {
+.delete, .priority-button {
   cursor: pointer;
   width: 0.8em;
   opacity: 0.2;
@@ -203,59 +199,6 @@ button:focus, button:active  {
   }
 }
 
-
-#add-list {
-  width: 70px;
-  height: 70px;
-  background-color: #fbf7f5;
-  border-color: #243447;
-  color:#c51f5d;
-  font-size: 1.5em;
-  padding: 0;
-  cursor: pointer;
-  align-self: center;
-  &:hover, &:active {
-    text-shadow: 4px 3px #000;
-  }
-}
-
-#buttons-left {
-  display: flex;
-  padding-top: 1em;
-}
-
-#buttons-right {
-  display: flex;
-  padding-top: 1em;
-}
-
-// #add-todo {
-//   background-color: #fbf7f5;
-//   border-color: #fbf7f5;
-//   color:#c51f5d;
-//   font-size: 2em;
-//   padding: 0;
-//   margin: 0;
-//   cursor: pointer;
-//   &:hover, &:active {
-//     text-shadow: 4px 3px #000;
-//   }
-// }
-
-// #clear {
-//   background-color: #000;
-//   color:#fff;
-//   cursor: pointer;
-//   width: 5em;
-//   text-align: center;
-//   position: relative;
-//   right: 28px;
-//   top: 120px;
-//   transform: rotate(-90deg);
-//   &:hover, &:active {
-//   }
-// }
-
 .checkbox {
   width: 20px;
   height: 20px;
@@ -265,8 +208,13 @@ button:focus, button:active  {
   text-align: center;
   background-color: #fff;
   box-shadow: 3px 3px #243447;
+  &:hover {
+    transition: background-color 0.5s ease;
+    background-color: #ffbbaa;
+  }
   &.checked {
-    background-color: #243447;
+    background-color: #ffbbaa;
+    opacity: 0.5;
   }
 }
 
@@ -282,7 +230,7 @@ button:focus, button:active  {
 }
 
 .priority {
-  background-color: red !important;
+  background-color: #ffbbaa !important;
 }
 // @media (max-width: 800px) {
 //   .App {

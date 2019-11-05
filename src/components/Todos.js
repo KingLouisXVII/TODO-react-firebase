@@ -125,19 +125,15 @@ function Todos(props) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        {!todo.completed?
-                        <div className="checkbox" onClick={e=>toggleTodo(i)}></div>
-                            :
-                              <div className="checkbox checked" onClick={e=>toggleTodo(i)}></div>
-                        }
+                        <div className={todo.completed?'checkbox checked':'checkbox'} onClick={e=>toggleTodo(i)}></div>
                         <li
                           onDoubleClick={e=>editTodo(i)}
                           className={todo.completed?'completed':todo.priority?'priority':''}
-                        >{todo.name}</li>
-                        <div id="buttons">
+                        >{todo.name}                        <div id="buttons">
                           <div onClick={e=>deleteTodo(i)} className="delete"><img alt="delete-todo" src={deleteButton}/></div>
                           <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
                         </div> 
+</li>
                       </div>
                     )
                     }
