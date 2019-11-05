@@ -134,7 +134,12 @@ function Todos(props) {
           )}
         </Droppable>
       </DragDropContext>
-      {/* {active && lists[active].todos.length > 0 ?<h2 id="clear" onClick={clearDone}>clear done</h2>:null} */}
+      { 
+        lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
+          <h2 id="clear" onClick={clearDone}>clear done</h2> 
+          : 
+          null
+      }
     </div>
 
   )
