@@ -94,7 +94,7 @@ body {
   font-size: 2em;
   width: 100vw;
   height: 100vh;
-  background-color: #fbf7f5;
+  background-color: #ffcc5c;
   transition: all 1s ease;
 }
 
@@ -132,7 +132,7 @@ button:focus, button:active  {
   height: 100vh;
   max-width: 1100px;
   max-height: 800px;
-  background-color: #fbf7f5;
+  background-color: #ffeead;
   color: #152218;
   border: 2px solid #243447;
   box-shadow: 5px 5px #243447;
@@ -144,18 +144,18 @@ button:focus, button:active  {
   justify-content: flex-start;
   flex-direction: column;
   text-align: center;
-  background-color: #fbf7f5;
+  background-color: #ffeead;
   border-right: 7px solid #141d26;
   h1 {
     font-size: 3em;
     margin: 0;
-    background-color: #fbf7f5;
+    background-color: #ffeead;
     border-bottom: 2px solid #141d26;
     cursor: pointer;
   }
   input {
     font-size: 0.9em;
-    background-color: #fbf7f5;
+    background-color: #ffeead;
     border-color: #152218;
     color: #152218;
     outline: none;
@@ -168,7 +168,7 @@ button:focus, button:active  {
     background-color: #141d26;
     overflow: scroll;
     #button-wrapper {
-      background-color: #fbf7f5;
+      background-color: #ffeead;
     }
   }
   .list {
@@ -176,7 +176,7 @@ button:focus, button:active  {
     justify-content: space-between;
     align-items: center;
     font-size: 0.7em;
-    background-color: #fbf7f5;
+    background-color: #ffeead;
     border-bottom: 2px solid #141d26;
     padding-left: 0.5em;
     padding-right: 0.5em;
@@ -184,13 +184,13 @@ button:focus, button:active  {
     word-break: break-word;
     color: #152218;
     &:hover, &:active {
-      background-color: #fff4fb;
+      background-color: #ffbcaa;
     }
   }
   .active {
-    border-color: #ffbbaa;
-    background-color: #fff4fb;
-    color: #ffbbaa;
+    border-color: #ff6f69;
+    background-color: #ffbcaa;
+    color: 	#ff6f69;
   }
 }
 #input-todo-wrap {
@@ -232,7 +232,6 @@ button:focus, button:active  {
       padding: 0.3em;
       margin: 0.2em;
       cursor: pointer;
-      background-color: #fbf7f5;
       align-self: center;
       word-break: break-word;
       color: #152218;
@@ -319,7 +318,7 @@ button:focus, button:active  {
 }
 
 .priority {
-  border-color: red !important;
+  border-color: #ff6f69 !important;
 }
 
 #clear:hover {
