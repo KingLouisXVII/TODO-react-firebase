@@ -134,8 +134,10 @@ function Todos(props) {
                           onDoubleClick={e=>editTodo(i)}
                           className={todo.completed?'completed':todo.priority?'priority':''}
                         >{todo.name}</li>
-                          <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
+                        <div id="buttons">
                           <div onClick={e=>deleteTodo(i)} className="delete"><img alt="delete-todo" src={deleteButton}/></div>
+                          <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
+                        </div> 
                       </div>
                     )
                     }
