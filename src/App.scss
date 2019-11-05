@@ -147,6 +147,7 @@ button:focus, button:active  {
       color: #152218;
       border: 2px solid;
       box-shadow: 5px 5px;
+      transition: all 0.5s ease;
       &:hover, &:active {
         box-shadow: 5px 5px #c51f5d;
       }
@@ -167,17 +168,9 @@ button:focus, button:active  {
   box-shadow: 3px 3px;
 }
 
-.delete {
-  opacity: 0;
-  text-shadow: 5px 4px #000;
+.delete, .priority-button {
   cursor: pointer;
   width: 0.7em;
-  color: indianred;
-  align-self: center;
-  transition: all 0.2s ease;
-  &:hover {
-    opacity: 1;
-  }
 }
 
 .delete-list{
@@ -271,6 +264,11 @@ button:focus, button:active  {
   background-color: #fff;
   border-right: 2px solid #243447;
   border-left: 2px solid #243447;
+}
+
+.priority {
+  transition: all 1s ease;
+  background-color: red !important;
 }
 // @media (max-width: 800px) {
 //   .App {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderTodos } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
+import priorityButton from '../assets/important.svg'
 
 
 function Todos(props) {
@@ -24,7 +25,8 @@ function Todos(props) {
     const todos = allLists[active].todos;
     const newTodo = {
       name: input,
-      completed: false
+      completed: false,
+      priority: false
     }
     todos.unshift(newTodo);
     setLists(allLists);
@@ -34,6 +36,7 @@ function Todos(props) {
     const allLists = {...lists};
     const todos = allLists[active].todos;
     todos[i].completed = !todos[i].completed;
+    todos[i].priority = false;
     todos.sort(function(a,b){return a.completed-b.completed});
     setLists(allLists);
   }
@@ -64,6 +67,15 @@ function Todos(props) {
     todos.splice(i,1);
     setLists(allLists);
     setInput(todo);
+  }
+
+  function prioritize(i) {
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
+    todos[i].priority = !todos[i].priority;
+    todos[i].completed = false;
+    todos.sort(function(a,b){return b.priority-a.priority});
+    setLists(allLists);
   }
 
   function onDragEnd(result) {
@@ -120,9 +132,10 @@ function Todos(props) {
                         }
                         <li
                           onDoubleClick={e=>editTodo(i)}
-                          className={todo.completed?'completed':''}
+                          className={todo.completed?'completed':todo.priority?'priority':''}
                         >{todo.name}</li>
-                        <div onClick={e=>deleteTodo(i)} className="delete"><img alt="delete-todo" src={deleteButton}/></div>
+                          <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
+                          <div onClick={e=>deleteTodo(i)} className="delete"><img alt="delete-todo" src={deleteButton}/></div>
                       </div>
                     )
                     }
