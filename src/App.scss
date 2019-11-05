@@ -1,4 +1,87 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|VT323&display=swap');
+
+.dark-mode {
+  background-color:	#0e1111;
+  transition: all 1s ease;
+  .app {
+    background-color:	#232b2b;
+    color: 	#4d5d53;
+    border: 2px solid #353839;
+    box-shadow: 5px 5px	#353839;
+  }
+  #app-separator {
+    background-color: 	#0e1111;
+    border-right: 2px solid #353839;
+    border-left: 2px solid #353839;
+  }
+
+  #sidebar {
+    background-color: #232b2b;
+    border-right: 7px solid 	#353839;
+    h1 {
+      background-color: #232b2b;
+      border-bottom: 2px solid 	#353839;
+    }
+    input {
+      background-color: #232b2b;
+      border-color: 	#353839;
+      color: 	#4d5d53;
+    }
+    #lists {
+      background-color: 	#0e1111;
+      #button-wrapper {
+        background-color: #232b2b;
+      }
+    }
+    .list {
+      background-color: #232b2b;
+      border-bottom: 2px solid 	#353839;
+      color: 	#4d5d53;
+      &:hover, &:active {
+        background-color: 	#8f9779;
+      }
+    }
+    .active {
+      border-color: 	#353839;
+      background-color: 	#8f9779;
+      color: 	#4d5d53;
+    }
+  }
+  #todos {
+    #new-todo {
+      background-color: #232b2b;
+      color: 	#4d5d53;
+      border-color: #353839;
+      box-shadow: 5px 5px #353839;
+    }
+    ul {
+      li {
+        background-color: #232b2b;
+        color: 	#4d5d53;
+        border-color: #353839;
+        box-shadow: 5px 5px #353839;
+        &:hover {
+          box-shadow: 5px 5px #0e1111;
+        }
+      }
+    }
+  }
+  .checkbox {
+    border: 3px solid #353839;
+    background-color: #232b2b;
+    box-shadow: 3px 3px 	#353839;
+    &:hover {
+      background-color: 	#8f9779;
+    }
+    &.checked {
+      background-color: 	#8f9779;
+    }
+  }
+
+}
+
+
+
 @keyframes fade {
   from {opacity:1;}
   to {opacity:0.5;}
@@ -12,6 +95,12 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #fbf7f5;
+  transition: all 1s ease;
+}
+
+#darkmode {
+  width: 1em;
+  cursor: pointer;
 }
 
 h2 {
@@ -230,7 +319,12 @@ button:focus, button:active  {
 }
 
 .priority {
-  background-color: #ffbbaa !important;
+  border-color: red !important;
+}
+
+#clear:hover {
+  transition: all 1s ease;
+  opacity: 0.7;
 }
 // @media (max-width: 800px) {
 //   .App {
@@ -246,3 +340,4 @@ button:focus, button:active  {
 //     }
 //   }
 // }
+

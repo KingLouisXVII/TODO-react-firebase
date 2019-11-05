@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
 import './App.scss';
+import { checkTheme } from './utils/darkmode.js';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
     localTodos ? setLists(JSON.parse(localTodos)) : setLists({});
+    checkTheme();
   }, []);
 
   useEffect(() => {

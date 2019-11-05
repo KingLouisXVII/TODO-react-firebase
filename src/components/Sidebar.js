@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
+import darkmode from '../assets/darkmode.svg'
+import { dark, checkTheme } from '../utils/darkmode.js'; 
 
 
 function Sidebar(props) {
@@ -97,6 +99,7 @@ function Sidebar(props) {
         </Droppable>
       </DragDropContext>
       <div id="button-wrapper">
+        <div onClick={dark}><img src={darkmode} id="darkmode" alt="darkmode-toggle" /></div>
       </div>
     </div>
   );
