@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|VT323&display=swap');
-
 @keyframes fade {
   from {opacity:1;}
   to {opacity:0.5;}
@@ -46,8 +45,8 @@ button:focus, button:active  {
   max-height: 800px;
   background-color: #fbf7f5;
   color: #152218;
-  border: 2px solid #000;
-  box-shadow: 5px 5px;
+  border: 2px solid #243447;
+  box-shadow: 5px 5px #243447;
 }
 
 #sidebar {
@@ -176,9 +175,6 @@ button:focus, button:active  {
   color: indianred;
   align-self: center;
   transition: all 0.2s ease;
-  position: relative;
-  top: -35px;
-  left: -35px;
   &:hover {
     opacity: 1;
   }
@@ -256,12 +252,13 @@ button:focus, button:active  {
   width: 20px;
   height: 20px;
   margin: 0.5em;
-  border: 3px solid;
+  border: 3px solid #243447;
   cursor: pointer;
   text-align: center;
-    background-color: #fff;
+  background-color: #fff;
+  box-shadow: 3px 3px #243447;
   &.checked {
-    background-color: #000;
+    background-color: #243447;
   }
 }
 
@@ -272,8 +269,8 @@ button:focus, button:active  {
   left: 100%;
   top: -2px;
   background-color: #fff;
-  border-right: 2px solid #000;
-  border-left: 2px solid #000;
+  border-right: 2px solid #243447;
+  border-left: 2px solid #243447;
 }
 // @media (max-width: 800px) {
 //   .App {
