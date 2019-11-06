@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
+import down from '../assets/down.svg'
 import darkmode from '../assets/darkmode.svg'
 import { dark } from '../utils/darkmode.js'; 
 
 
 function Sidebar(props) {
   const [input, setInput] = useState('');
+  const [toggle, setToggle] = useState(false);
   const [deleting, setDeleting] = useState(-1);
   const { active, setActive, lists, setLists } = props;
 
@@ -40,9 +42,13 @@ function Sidebar(props) {
   }
 
   function switchList(list) {
+    toggleLists();
     setActive(list);
   }
 
+  function toggleLists() {
+    setToggle(!toggle);
+  }
   function onDragEnd(result) {
     if (!result.destination) {
       return;
@@ -68,10 +74,11 @@ function Sidebar(props) {
         <h1 onClick={() => {setActive('')} }>TODO!</h1>
         <div id="button-wrapper">
           <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
+          <img onClick={toggleLists} src={down} id="list-toggle" alt="list-toggle" />
         </div>
         <Droppable droppableId="sidebar">
           {provided => (
-            <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
+            <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
               {lists &&
                 Object.keys(lists).map((list,i) =>
                   <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
@@ -92,20 +99,20 @@ function Sidebar(props) {
                   </Draggable>
                 )}
                 {provided.placeholder}
+                <input
+                  autoComplete="off"
+                  type="text"
+                  placeholder="..."
+                  value={input}
+                  onChange={onChange}
+                  onKeyDown={ e => handleKeyDown(e) }
+                  id="new-list"
+                  name="list"
+                />
               </div>
           )}
         </Droppable>
       </DragDropContext>
-      <input
-        autoComplete="off"
-        type="text"
-        placeholder="..."
-        value={input}
-        onChange={onChange}
-        onKeyDown={ e => handleKeyDown(e) }
-        id="new-list"
-        name="list"
-      />
     </div>
   );
 }

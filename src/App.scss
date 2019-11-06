@@ -111,7 +111,7 @@ body {
   transition: all 1s ease;
 }
 
-#darkmode {
+#darkmode, #list-toggle {
   width: 1em;
   cursor: pointer;
   &:hover {
@@ -180,7 +180,7 @@ button:focus, button:active  {
     outline: none;
     padding: 0.3em;
   }
-  #lists {
+  #lists, #no-lists {
     height: auto;
     display: flex;
     flex-direction: column;
@@ -354,18 +354,45 @@ button:focus, button:active  {
   color: red;
 }
 
-// @media (max-width: 800px) {
-//   .App {
-//     grid-template-columns: 40% 60%;
-//   }
-//   #todos ul {
-//     padding: 0;
-//     li {
-//       font-size: 0.8em;
-//     }
-//     #add-todo, #clear-done {
-//       width: 40px;
-//     }
-//   }
-// }
+
+@media (max-width: 900px) {
+  .app, .dark-mode .app{
+    grid-template-columns: 100%;
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    box-shadow: none;
+  }
+  body {
+    background-color: #ffeead;
+  }
+  .dark-mode {
+    background-color: #232b2b;
+  }
+  #sidebar, .dark-mode #sidebar {
+    border: 0;
+  }
+  #todos {
+    margin-left: 0.3;
+    min-height: 77vh;
+  }
+  #todos #new-todo {
+    width: 80%;
+  }
+  #todos ul li {
+    width: 65%;
+    font-size: 0.6em;
+  }
+  input, .dark-mode #sidebar input {
+    border-bottom: 1px solid #243447;
+  }
+  .dark-mode #sidebar #no-lists, #sidebar #no-lists {
+    display: none;
+  }
+  #button-wrapper, .dark-mode #button-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.5em;
+  }
+}
 
