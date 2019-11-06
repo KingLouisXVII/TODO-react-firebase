@@ -77,7 +77,6 @@ function Sidebar(props) {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                          key={Math.random()}
                           className={list&&list===active?"list active":"list"} 
                           onClick={e => switchList(list)}>
                           <div>{list}</div>
