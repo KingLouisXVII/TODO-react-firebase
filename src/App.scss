@@ -263,6 +263,7 @@ button:focus, button:active  {
 }
 
 #buttons {
+  display: flex;
   align-self: baseline;
 }
 
@@ -270,6 +271,7 @@ button:focus, button:active  {
   cursor: pointer;
   width: 0.8em;
   opacity: 0.2;
+  padding-left: 0.4em;
   &:hover {
     opacity: 1;
   }
