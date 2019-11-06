@@ -36,9 +36,6 @@
     }
     #lists {
       background-color: #071e17;
-      #button-wrapper {
-        background-color: #232b2b;
-      }
     }
     .list {
       background-color: #232b2b;
@@ -47,6 +44,9 @@
       &:hover, &:active {
         background-color: #25584f;
       }
+    }
+    #button-wrapper {
+      background-color: #232b2b;
     }
     .active {
       border-color: #ef3f3f;
@@ -182,9 +182,6 @@ button:focus, button:active  {
     flex-direction: column;
     background-color: #141d26;
     overflow: scroll;
-    #button-wrapper {
-      background-color: #ffeead;
-    }
   }
   .list {
     display: flex;
@@ -201,6 +198,11 @@ button:focus, button:active  {
     &:hover, &:active {
       background-color: #ffbcaa;
     }
+  }
+  #button-wrapper {
+    background-color: #ffeead;
+    position: relative;
+    bottom: -9em;
   }
   .active {
     border-color: #ff6f69;

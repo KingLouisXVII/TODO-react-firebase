@@ -12,6 +12,8 @@ function App() {
   useEffect(() => {
     const localTodos = localStorage.getItem('lists');
     localTodos ? setLists(JSON.parse(localTodos)) : setLists({});
+    const first = Object.keys(JSON.parse(localTodos))[0];
+    localTodos ? setActive(first) : setActive('');
     checkTheme();
   }, []);
 
