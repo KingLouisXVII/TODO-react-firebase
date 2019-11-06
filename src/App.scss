@@ -354,12 +354,15 @@ button:focus, button:active  {
   color: red;
 }
 
+#list-toggle {
+  display: none;
+}
 
 @media (max-width: 900px) {
   .app, .dark-mode .app{
     grid-template-columns: 100%;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     border: 0;
     box-shadow: none;
   }
@@ -393,6 +396,9 @@ button:focus, button:active  {
     display: flex;
     justify-content: space-evenly;
     padding: 0.5em;
+  }
+  .darkmode #list-toggle, #list-toggle {
+    display: block;
   }
 }
 
