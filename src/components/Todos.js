@@ -30,6 +30,7 @@ function Todos(props) {
       priority: false
     }
     todos.unshift(newTodo);
+    todos.sort(function(a,b){return b.priority-a.priority});
     setLists(allLists);
   }
 
