@@ -8,6 +8,7 @@ import { dark } from '../utils/darkmode.js';
 
 function Sidebar(props) {
   const [input, setInput] = useState('');
+  const [deleting, setDeleting] = useState(-1);
   const { active, setActive, lists, setLists } = props;
 
   function onChange(e) {
@@ -61,11 +62,13 @@ function Sidebar(props) {
   return (
     <div id="sidebar" >
       <div id="app-separator"></div>
+      <div id="app-separator2"></div>
+      <div id="app-separator3"></div>
       <DragDropContext onDragEnd={onDragEnd}>
         <h1 onClick={() => {setActive('')} }>TODO!</h1>
-      <div id="button-wrapper">
-        <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
-      </div>
+        <div id="button-wrapper">
+          <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
+        </div>
         <Droppable droppableId="sidebar">
           {provided => (
             <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
@@ -79,8 +82,11 @@ function Sidebar(props) {
                         {...provided.dragHandleProps}
                           className={list&&list===active?"list active":"list"} 
                           onClick={e => switchList(list)}>
-                          <div>{list}</div>
-                          <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
+                          {deleting === i
+                            ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) }>Yes </span><span onClick={()=> setDeleting(-1)}>No</span></div>
+                            : <div>{list}</div>
+                          }
+                          <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                         </div>
                     )}
                   </Draggable>
@@ -90,16 +96,16 @@ function Sidebar(props) {
           )}
         </Droppable>
       </DragDropContext>
-                <input
-                  autoComplete="off"
-                  type="text"
-                  placeholder="..."
-                  value={input}
-                  onChange={onChange}
-                  onKeyDown={ e => handleKeyDown(e) }
-                  id="new-list"
-                  name="list"
-                />
+      <input
+        autoComplete="off"
+        type="text"
+        placeholder="..."
+        value={input}
+        onChange={onChange}
+        onKeyDown={ e => handleKeyDown(e) }
+        id="new-list"
+        name="list"
+      />
     </div>
   );
 }
