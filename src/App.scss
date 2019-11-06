@@ -230,6 +230,7 @@ button:focus, button:active  {
     li {
       display: flex;
       justify-content: space-between;
+      background-color: #ffeead;
       height: auto;
       width: 60%;
       padding: 0.3em;
@@ -242,7 +243,7 @@ button:focus, button:active  {
       box-shadow: 5px 5px;
       font-size: 0.7em;
       &:hover, &:active {
-        box-shadow: 5px 5px #c51f5d;
+        box-shadow: 5px 5px #ffbbaa;
       }
     }
   }
@@ -267,11 +268,11 @@ button:focus, button:active  {
   align-self: baseline;
 }
 
-.delete, .priority-button {
+.delete-button, .priority-button, .edit-button {
   cursor: pointer;
   width: 0.8em;
   opacity: 0.2;
-  padding-left: 0.4em;
+  padding-left: 0.5em;
   &:hover {
     opacity: 1;
   }
@@ -323,7 +324,9 @@ button:focus, button:active  {
 }
 
 .priority {
-  border-color: #ff6f69 !important;
+  border-color: #c51f5d !important;
+  box-shadow: 5px 5px #c51f5d !important;
+
 }
 
 #clear:hover {

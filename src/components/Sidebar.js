@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import darkmode from '../assets/darkmode.svg'
-import { dark, checkTheme } from '../utils/darkmode.js'; 
+import { dark } from '../utils/darkmode.js'; 
 
 
 function Sidebar(props) {

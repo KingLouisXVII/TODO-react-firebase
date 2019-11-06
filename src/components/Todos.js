@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderTodos } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import priorityButton from '../assets/important.svg'
+import editButton from '../assets/edit.svg'
 
 
 function Todos(props) {
@@ -127,14 +128,15 @@ function Todos(props) {
                       >
                         <div className={todo.completed?'checkbox checked':'checkbox'} onClick={e=>toggleTodo(i)}></div>
                         <li
-                          onDoubleClick={e=>editTodo(i)}
                           className={todo.completed?'completed':todo.priority?'priority':''}
-                        >{todo.name}                        <div id="buttons">
+                        >{todo.name}                        
+                          <div id="buttons">
+                          <div onClick={e=>editTodo(i)} ><img className="edit-button" alt="edit-todo" src={editButton}/></div>
                           <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
-                          <div onClick={e=>deleteTodo(i)} className="delete"><img alt="delete-todo" src={deleteButton}/></div>
+                          <div onClick={e=>deleteTodo(i)} ><img className="delete-button" alt="delete-todo" src={deleteButton}/></div>
                         </div> 
-</li>
-                      </div>
+                      </li>
+                    </div>
                     )
                     }
                   </Draggable>
