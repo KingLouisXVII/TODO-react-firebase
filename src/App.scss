@@ -1,75 +1,75 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|VT323&display=swap');
 
 .dark-mode {
-  background-color:	#0e1111;
+  background-color:	#004444;
   transition: all 1s ease;
   .app {
     background-color:	#232b2b;
-    color: 	#4d5d53;
-    border: 2px solid #353839;
-    box-shadow: 5px 5px	#353839;
+    color: 	#8f9779;
+    border: 2px solid #071e17;
+    box-shadow: 5px 5px	#071e17;
   }
   #app-separator {
-    background-color: 	#0e1111;
-    border-right: 2px solid #353839;
-    border-left: 2px solid #353839;
+    background-color: #004444;
+    border-right: 2px solid #071e17;
+    border-left: 2px solid #071e17;
   }
 
   #sidebar {
     background-color: #232b2b;
-    border-right: 7px solid 	#353839;
+    border-right: 7px solid #071e17;
     h1 {
       background-color: #232b2b;
-      border-bottom: 2px solid 	#353839;
+      border-bottom: 2px solid 	#071e17;
     }
     input {
       background-color: #232b2b;
-      border-color: 	#353839;
-      color: 	#4d5d53;
+      border-color: 	#071e17;
+      color: 	#8f9779;
     }
     #lists {
-      background-color: 	#0e1111;
+      background-color: #071e17;
       #button-wrapper {
         background-color: #232b2b;
       }
     }
     .list {
       background-color: #232b2b;
-      border-bottom: 2px solid 	#353839;
-      color: 	#4d5d53;
+      border-bottom: 2px solid 	#071e17;
+      color: 	#8f9779;
       &:hover, &:active {
-        background-color: 	#8f9779;
+        background-color: #25584f;
       }
     }
     .active {
-      border-color: 	#353839;
-      background-color: 	#8f9779;
-      color: 	#4d5d53;
+      border-color: 	#071e17;
+      background-color: 	#25584f;
+      color: 	#8f9779;
     }
   }
   #todos {
     #new-todo {
-      background-color: #232b2b;
-      color: 	#4d5d53;
-      border-color: #353839;
-      box-shadow: 5px 5px #353839;
+      background-color: #8f9779;
+      color: 	#8f9779;
+      border-color: #071e17;
+      box-shadow: 5px 5px #071e17;
     }
     ul {
       li {
         background-color: #232b2b;
-        color: 	#4d5d53;
-        border-color: #353839;
-        box-shadow: 5px 5px #353839;
-        &:hover {
-          box-shadow: 5px 5px #0e1111;
+        color: 	#8f9779;
+        border-color: #071e17;
+        box-shadow: 5px 5px #071e17;
+        &:hover, &:active {
+          box-shadow: 5px 5px #25584f;
         }
       }
     }
   }
   .checkbox {
-    border: 3px solid #353839;
+    border: 3px solid #071e17;
     background-color: #232b2b;
-    box-shadow: 3px 3px 	#353839;
+    box-shadow: 3px 3px 	#071e17;
     &:hover {
       background-color: 	#8f9779;
     }
@@ -77,7 +77,11 @@
       background-color: 	#8f9779;
     }
   }
-
+  .priority {
+    border: 2px solid;
+    border-color:	#ef3f3f !important;
+    box-shadow: 5px 5px	#ef3f3f !important;
+  }
 }
 
 
@@ -271,7 +275,7 @@ button:focus, button:active  {
 .delete-button, .priority-button, .edit-button {
   cursor: pointer;
   width: 0.8em;
-  opacity: 0.2;
+  opacity: 0.6;
   padding-left: 0.5em;
   &:hover {
     opacity: 1;
