@@ -390,6 +390,10 @@ button:focus, button:active  {
   input, .dark-mode #sidebar input {
     border-bottom: 1px solid #243447;
   }
+  .dark-mode #sidebar #lists, #sidebar #lists {
+    overflow: visible;
+    z-index: 99;
+   }
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
     display: none;
   }
