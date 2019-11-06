@@ -27,7 +27,6 @@
     border-right: 7px solid #071e17;
     h1 {
       background-color: #232b2b;
-      border-bottom: 2px solid 	#071e17;
     }
     input {
       background-color: #232b2b;
@@ -47,6 +46,7 @@
     }
     #button-wrapper {
       background-color: #232b2b;
+      border-bottom: 2px solid 	#071e17;
     }
     .active {
       border-color: #ef3f3f;
@@ -165,19 +165,20 @@ button:focus, button:active  {
     font-size: 3em;
     margin: 0;
     background-color: #ffeead;
-    border-bottom: 2px solid #141d26;
     cursor: pointer;
   }
   input {
     font-size: 0.9em;
     background-color: #ffeead;
     border-color: #152218;
+    border-top: 4px solid;
     color: #152218;
     outline: none;
     padding: 0.3em;
     border: 0;
   }
   #lists {
+    height: auto;
     display: flex;
     flex-direction: column;
     background-color: #141d26;
@@ -201,8 +202,7 @@ button:focus, button:active  {
   }
   #button-wrapper {
     background-color: #ffeead;
-    position: relative;
-    bottom: -9em;
+    border-bottom: 2px solid;
   }
   .active {
     border-color: #ff6f69;

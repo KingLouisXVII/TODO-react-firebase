@@ -63,6 +63,9 @@ function Sidebar(props) {
       <div id="app-separator"></div>
       <DragDropContext onDragEnd={onDragEnd}>
         <h1 onClick={() => {setActive('')} }>TODO!</h1>
+      <div id="button-wrapper">
+        <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
+      </div>
         <Droppable droppableId="sidebar">
           {provided => (
             <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
@@ -98,9 +101,6 @@ function Sidebar(props) {
                   id="new-list"
                   name="list"
                 />
-      <div id="button-wrapper">
-        <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
-      </div>
     </div>
   );
 }
