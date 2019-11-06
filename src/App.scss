@@ -49,9 +49,9 @@
       }
     }
     .active {
-      border-color: 	#071e17;
-      background-color: 	#25584f;
-      color: 	#8f9779;
+      border-color: #ef3f3f;
+      background-color:	#25584f;
+      color: #8f9779;
     }
   }
   #todos {
@@ -154,7 +154,7 @@ button:focus, button:active  {
 }
 
 #sidebar {
-  height: 100%;
+  max-height: 800px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -338,7 +338,6 @@ button:focus, button:active  {
 .priority {
   border-color: #c51f5d !important;
   box-shadow: 5px 5px #c51f5d !important;
-
 }
 
 #clear:hover {

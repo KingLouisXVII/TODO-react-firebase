@@ -21,7 +21,6 @@ function Sidebar(props) {
     }
   }
 
-
   function addList() {
     const allLists = {...lists};
     const newList = {todos:[]};
@@ -32,7 +31,6 @@ function Sidebar(props) {
     setActive(input);
     setInput('');
   }
-
 
   function deleteList(list) {
     const allLists = {...lists};
@@ -61,10 +59,10 @@ function Sidebar(props) {
   }
 
   return (
-    <div id="sidebar">
+    <div id="sidebar" >
       <div id="app-separator"></div>
       <DragDropContext onDragEnd={onDragEnd}>
-        <h1 onClick={()=>{window.location.reload()}}>TODO!</h1>
+        <h1 onClick={() => {setActive('')} }>TODO!</h1>
         <Droppable droppableId="sidebar">
           {provided => (
             <div id="lists" ref={provided.innerRef} {...provided.droppableProps}>
@@ -76,7 +74,9 @@ function Sidebar(props) {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                          className={list===active?"list active":"list"} onClick={e =>switchList(list)}>
+                          key={Math.random()}
+                          className={list&&list===active?"list active":"list"} 
+                          onClick={e => switchList(list)}>
                           <div>{list}</div>
                           <div onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?'))deleteList(list) }} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                         </div>
@@ -84,22 +84,22 @@ function Sidebar(props) {
                   </Draggable>
                 )}
                 {provided.placeholder}
+              </div>
+          )}
+        </Droppable>
+      </DragDropContext>
                 <input
                   autoComplete="off"
                   type="text"
                   placeholder="..."
                   value={input}
                   onChange={onChange}
-                  onKeyDown={e => handleKeyDown(e)}
+                  onKeyDown={ e => handleKeyDown(e) }
                   id="new-list"
                   name="list"
                 />
-              </div>
-          )}
-        </Droppable>
-      </DragDropContext>
       <div id="button-wrapper">
-        <div onClick={dark}><img src={darkmode} id="darkmode" alt="darkmode-toggle" /></div>
+        <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
       </div>
     </div>
   );

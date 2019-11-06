@@ -19,8 +19,24 @@ function App() {
     localStorage.setItem('lists', JSON.stringify(lists));
   }, [lists]);
 
+  function handleKeyDown(e) {
+    if (e.key === 'ArrowUp') {
+      const allLists = {...lists};
+      const array = Object.keys(allLists);
+      const current = array.indexOf(active);
+      const next = array[current-1===-1?current:current-1];
+      setActive(next);
+    }
+    else if (e.key === 'ArrowDown') {
+      const allLists = {...lists};
+      const array = Object.keys(allLists);
+      const current = array.indexOf(active);
+      const next = array[current+1===array.length?current:current+1];
+      setActive(next);
+    }
+  }
   return (
-    <div className="app">
+    <div className="app" onKeyDown={e => handleKeyDown(e) }>
       <Sidebar
         lists={lists}
         setLists={setLists}
