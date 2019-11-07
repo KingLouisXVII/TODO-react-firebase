@@ -388,10 +388,11 @@ button:focus, button:active  {
     width: 65%;
     font-size: 0.6em;
   }
-  input, .dark-mode #sidebar input {
-    border-bottom: 1px solid #243447;
+  #sidebar input, .dark-mode #sidebar input {
+    border: 0;
   }
   .dark-mode #sidebar #lists, #sidebar #lists {
+    background-color: inherit;
     z-index: 99;
    }
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
