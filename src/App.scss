@@ -219,12 +219,18 @@ button:focus, button:active  {
 }
 #input-todo-wrap {
   display: flex;
+  display: flex;
+  padding-top: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 }
 #todos {
   max-width: 800px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 10% auto;
   margin-left: 1em;
+  overflow: scroll;
   #new-todo {
     height: auto;
     width: 70%;
@@ -243,10 +249,9 @@ button:focus, button:active  {
     outline: none;
   }
   ul {
-    width: 100%;
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding: 0.7em;
+    margin-top: 1em;
     li {
       display: flex;
       justify-content: space-between;
@@ -363,7 +368,7 @@ button:focus, button:active  {
 
 @media (max-width: 880px) {
   .app, .dark-mode .app{
-    grid-template-columns: 100%;
+    grid-template-rows: 30% auto;
     border: 0;
     box-shadow: none;
   }
