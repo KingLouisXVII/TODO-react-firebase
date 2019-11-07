@@ -228,6 +228,7 @@ button:focus, button:active  {
 #todos {
   max-width: 800px;
   display: grid;
+  grid-template-columns: none;
   grid-template-rows: 10% auto;
   margin-left: 1em;
   overflow: scroll;
