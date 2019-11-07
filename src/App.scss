@@ -228,7 +228,6 @@ button:focus, button:active  {
 #todos {
   max-width: 800px;
   display: grid;
-  grid-template-columns: none;
   grid-template-rows: 10% auto;
   margin-left: 1em;
   overflow: scroll;
@@ -369,6 +368,7 @@ button:focus, button:active  {
 
 @media (max-width: 880px) {
   .app, .dark-mode .app{
+    grid-template-columns: none;
     grid-template-rows: 30% auto;
     border: 0;
     box-shadow: none;
