@@ -290,7 +290,7 @@ button:focus, button:active  {
 
 .delete-button, .priority-button, .edit-button {
   cursor: pointer;
-  width: 0.8em;
+  width: 0.9em;
   opacity: 0.6;
   padding-left: 0.5em;
   &:hover {
@@ -316,7 +316,7 @@ button:focus, button:active  {
 .checkbox {
   width: 20px;
   height: 20px;
-  margin: 0.5em;
+  margin: 0.1em;
   border: 3px solid #243447;
   cursor: pointer;
   text-align: center;
@@ -378,16 +378,16 @@ button:focus, button:active  {
     top: 0;
     z-index: 99;   border: 0;
   }
-  #todos {
-    margin-left: 0.3;
+  #todos, .dark-mode #todos {
+    margin-left: 0.3em;
     min-height: 77vh;
   }
   #todos #new-todo {
-    width: 80%;
+    width: 90%;
   }
   #todos ul li {
-    width: 65%;
-    font-size: 0.6em;
+    width: 81%;
+    font-size: 0.7em;
   }
   #sidebar input, .dark-mode #sidebar input {
     border: 0;
@@ -405,7 +405,7 @@ button:focus, button:active  {
     padding: 0.5em;
     height: 2em;
   }
-  .darkmode #list-toggle, #list-toggle {
+  .dark-mode #list-toggle, #list-toggle {
     display: block;
   }
   #app-separator {
