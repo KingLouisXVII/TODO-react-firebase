@@ -374,7 +374,9 @@ button:focus, button:active  {
     background-color: #232b2b;
   }
   #sidebar, .dark-mode #sidebar {
-    border: 0;
+    position: sticky;
+    top: 0;
+    z-index: 99;   border: 0;
   }
   #todos {
     margin-left: 0.3;
@@ -393,7 +395,7 @@ button:focus, button:active  {
   .dark-mode #sidebar #lists, #sidebar #lists {
     background-color: inherit;
     z-index: 99;
-   }
+  }
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
     display: none;
   }
