@@ -39,6 +39,7 @@ function Sidebar(props) {
     const allLists = {...lists};
     delete allLists[list];
     setLists(allLists);
+    setDeleting(!deleting)
   }
 
   function switchList(list) {
