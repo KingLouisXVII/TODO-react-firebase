@@ -204,10 +204,9 @@ button:focus, button:active  {
   z-index: 99;
 }
 #todos {
-  // max-width: 800px;
   display: grid;
   grid-template-rows: 10% auto 10%;
-  margin-left: 1em;
+  padding: 1em;
   overflow: scroll;
   #new-todo {
     height: auto;
@@ -322,16 +321,16 @@ button:focus, button:active  {
 }
 
 #delete-dialog {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
   #yes {
     color: green;
     cursor: pointer;
-    padding-left: 3em;
-    padding-right: 3em;
   }
   #no {
     color: red;
     cursor: pointer;
-    padding-right: 3em;
   }
 }
 
