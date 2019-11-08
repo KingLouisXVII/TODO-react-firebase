@@ -81,17 +81,18 @@ function Sidebar(props) {
                 Object.keys(lists).map((list,i) =>
                   <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                          className={list&&list===active?"list active":"list"} 
-                          onClick={e => switchList(list)}>
-                          {deleting === i
-                            ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) } id="yes">Yes </span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
-                            : <div>{list}</div>
-                          }
-                          <div onClick={()=>setDeleting(deleting>=0?-1:i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
+                      <div className={list&&list===active?"list active":"list"}>
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                            onClick={e => switchList(list)}>
+                            {deleting === i
+                              ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
+                              : <div>{list}</div>
+                            }
+                          </div>
+                          <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                         </div>
                     )}
                   </Draggable>
