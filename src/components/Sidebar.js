@@ -86,11 +86,10 @@ function Sidebar(props) {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        onClick={e => switchList(list)}
                       >
                           {deleting === i
                             ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
-                            : <div>{list}</div>
+                              : <div className="list-name-wrapper" onClick={e => switchList(list)}><div>{list}</div></div>
                           }
                         <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                       </div>
