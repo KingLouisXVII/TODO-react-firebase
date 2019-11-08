@@ -126,7 +126,7 @@ h2 {
   cursor: pointer;
 }
 
-body::-webkit-scrollbar, #sidebar::-webkit-scrollbar, #todos::-webkit-scrollbar {
+body::-webkit-scrollbar, #sidebar::-webkit-scrollbar, #todos::-webkit-scrollbar, #lists::-webkit-scrollbar {
   display: none;
 }
 
@@ -378,8 +378,6 @@ button:focus, button:active  {
     background-color: #232b2b;
   }
   #sidebar, .dark-mode #sidebar {
-    position: sticky;
-    top: 0;
     z-index: 999;   
     border: 0;
     overflow: visible;
@@ -400,6 +398,7 @@ button:focus, button:active  {
   .dark-mode #sidebar #lists, #sidebar #lists {
     background-color: inherit;
     z-index: 99;
+    overflow: scroll;
   }
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
     display: none;
