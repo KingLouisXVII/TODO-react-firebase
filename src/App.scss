@@ -309,7 +309,7 @@ button:focus, button:active  {
   transition: all 0.2s ease;
   position: relative;
   &:hover {
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
@@ -402,6 +402,9 @@ button:focus, button:active  {
     background-color: inherit;
     z-index: 99;
     overflow: scroll;
+    .delete-list {
+      opacity: 0.6;
+    }
   }
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
     display: none;
