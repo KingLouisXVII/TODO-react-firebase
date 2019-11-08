@@ -145,6 +145,7 @@ button:focus, button:active  {
   border-right: 7px solid #071e17;
   text-align: center;
   background-color: #ffeead;
+  height: 100vh;
   overflow: scroll;
   h1 {
     font-size: 2em;
@@ -206,7 +207,8 @@ button:focus, button:active  {
 #todos {
   display: grid;
   grid-template-rows: 10% auto 10%;
-  padding: 1em;
+  height: 100vh;
+  overflow: scroll;
   #new-todo {
     height: auto;
     width: 70%;
