@@ -369,8 +369,8 @@ button:focus, button:active  {
 
 @media (max-width: 880px) {
   .app, .dark-mode .app{
-    grid-template-columns: none;
-    grid-template-rows: 24% auto;
+    display: flex;
+    flex-direction: column;
     border: 0;
     box-shadow: none;
   }
