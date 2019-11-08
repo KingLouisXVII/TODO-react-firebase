@@ -361,6 +361,7 @@ button:focus, button:active  {
     overflow: visible;
   }
   #todos, .dark-mode #todos {
+    height: 100%;
     margin-left: 0.3em;
   }
   #todos #new-todo {
