@@ -163,7 +163,7 @@ button:focus, button:active  {
   border-right: 7px solid #243447;
   overflow: scroll;
   h1 {
-    font-size: 3em;
+    font-size: 2em;
     margin: 0;
     background-color: #ffeead;
     cursor: pointer;
@@ -367,7 +367,7 @@ button:focus, button:active  {
   display: none;
 }
 
-@media (max-width: 880px) {
+@media (max-width: 700px) {
   .app, .dark-mode .app{
     display: flex;
     flex-direction: column;
