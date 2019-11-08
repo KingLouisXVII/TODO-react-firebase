@@ -27,9 +27,6 @@
       border-bottom: 0;
       color: 	#8f9779;
     }
-    #lists {
-      background-color: #071e17;
-    }
     .list {
       background-color: #232b2b;
       border-bottom: 2px solid 	#071e17;
@@ -145,6 +142,7 @@ button:focus, button:active  {
 }
 
 #sidebar {
+  border-right: 7px solid #071e17;
   text-align: center;
   background-color: #ffeead;
   overflow: scroll;
@@ -157,7 +155,7 @@ button:focus, button:active  {
   input {
     font-size: 0.9em;
     background-color: #ffeead;
-    border-top: 1px solid #243447;
+    border-top: 0;
     border-left: 0;
     border-right: 0;
     border-bottom: 0;
@@ -169,7 +167,6 @@ button:focus, button:active  {
     height: auto;
     display: flex;
     flex-direction: column;
-    background-color: #141d26;
   }
   .list {
     display: flex;
@@ -374,7 +371,6 @@ button:focus, button:active  {
     border-bottom: 2px solid #152218;
   }
   .dark-mode #sidebar #lists, #sidebar #lists {
-    background-color: inherit;
     z-index: 99;
     overflow: scroll;
     .delete-list {
