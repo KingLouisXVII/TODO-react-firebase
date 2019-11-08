@@ -80,9 +80,6 @@
     border: 3px solid #071e17;
     background-color: #232b2b;
     box-shadow: 3px 3px 	#071e17;
-    &:hover {
-      background-color: 	#8f9779;
-    }
     &.checked {
       background-color: 	#8f9779;
     }
@@ -325,10 +322,6 @@ button:focus, button:active  {
   text-align: center;
   background-color: #fff;
   box-shadow: 3px 3px #243447;
-  &:hover {
-    transition: background-color 0.5s ease;
-    background-color: #ffbbaa;
-  }
   &.checked {
     background-color: #ffbbaa;
     opacity: 0.5;
