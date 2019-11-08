@@ -39,7 +39,7 @@ function Sidebar(props) {
     const allLists = {...lists};
     delete allLists[list];
     setLists(allLists);
-    setDeleting(!deleting)
+    setDeleting(-1)
   }
 
   function switchList(list) {
@@ -88,10 +88,10 @@ function Sidebar(props) {
                           className={list&&list===active?"list active":"list"} 
                           onClick={e => switchList(list)}>
                           {deleting === i
-                            ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) }>Yes </span><span onClick={()=> setDeleting(-1)}>No</span></div>
+                            ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) } id="yes">Yes </span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
                             : <div>{list}</div>
                           }
-                          <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
+                          <div onClick={()=>setDeleting(deleting>=0?-1:i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                         </div>
                     )}
                   </Draggable>

@@ -350,7 +350,17 @@ button:focus, button:active  {
 }
 
 #delete-dialog {
-  color: red;
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  #yes {
+    color: green;
+    cursor: pointer;
+  }
+  #no {
+    color: red;
+    cursor: pointer;
+  }
 }
 
 #list-toggle {
