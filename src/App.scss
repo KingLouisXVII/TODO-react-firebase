@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|VT323&display=swap');
 
 .dark-mode {
-  background-color:	#004444;
+  background-color:	#232b2b;
   transition: all 1s ease;
   #sidebar input::placeholder {
     color: #8f9779;
@@ -105,9 +105,9 @@ html, body {
 body {
   display: flex;
   justify-content: center;
+  background-color: #ffeead;
   align-items: center;
   font-size: 2em;
-  background-color: #ffcc5c;
   transition: all 1s ease;
 }
 
