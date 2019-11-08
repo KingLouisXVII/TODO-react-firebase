@@ -68,9 +68,6 @@ function Sidebar(props) {
 
   return (
     <div id="sidebar" >
-      <div id="app-separator"></div>
-      <div id="app-separator2"></div>
-      <div id="app-separator3"></div>
       <DragDropContext onDragEnd={onDragEnd}>
         <h1 onClick={() => {setActive('')} }>TODO!</h1>
         <div id="button-wrapper">
