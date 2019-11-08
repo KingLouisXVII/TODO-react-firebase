@@ -370,7 +370,7 @@ button:focus, button:active  {
 @media (max-width: 880px) {
   .app, .dark-mode .app{
     grid-template-columns: none;
-    grid-template-rows: 30% auto;
+    grid-template-rows: 24% auto;
     border: 0;
     box-shadow: none;
   }
@@ -396,7 +396,7 @@ button:focus, button:active  {
     font-size: 0.7em;
   }
   #sidebar input, .dark-mode #sidebar input {
-    border: 0;
+    border-bottom: 2px solid #152218;
   }
   .dark-mode #sidebar #lists, #sidebar #lists {
     background-color: inherit;
@@ -406,11 +406,12 @@ button:focus, button:active  {
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
     display: none;
   }
-  #button-wrapper, .dark-mode #button-wrapper {
+  #sidebar #button-wrapper, .dark-mode #sidebar #button-wrapper {
     display: flex;
     justify-content: space-evenly;
     padding: 0.5em;
     height: 2em;
+    border: 0;
   }
   .dark-mode #list-toggle, #list-toggle {
     display: block;
