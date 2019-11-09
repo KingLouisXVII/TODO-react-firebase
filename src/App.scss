@@ -344,6 +344,15 @@ button:focus, button:active  {
   text-align: left;
 }
 
+@media (max-width: 900px) {
+  #input-todo-wrap {
+    width: 90%;
+  }
+  #todos ul {
+    width: 77%;
+  }  
+}
+
 @media (max-width: 700px) {
   .app, .dark-mode .app{
     display: flex;
@@ -361,7 +370,7 @@ button:focus, button:active  {
     z-index: 999;   
     border: 0;
     overflow: visible;
-    height: 25%;
+    height: 19%;
   }
   #todos, .dark-mode #todos {
     height: 75%;
