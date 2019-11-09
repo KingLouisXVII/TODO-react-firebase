@@ -199,7 +199,7 @@ button:focus, button:active  {
   }
 }
 #input-todo-wrap {
-  width: 66%;
+  width: 80%;
   display: flex;
   position: sticky;
   top: 0;
@@ -225,10 +225,11 @@ button:focus, button:active  {
     outline: none;
   }
   ul {
-    width: 60%;
+    width: 70%;
     list-style-type: none;
     margin: 0;
     overflow: scroll;
+    flex: 2;
     li {
       display: flex;
       justify-content: space-between;
