@@ -199,25 +199,21 @@ button:focus, button:active  {
   }
 }
 #input-todo-wrap {
+  width: 66%;
   display: flex;
-  display: flex;
-  padding: 1.5em;
   position: sticky;
   top: 0;
   z-index: 99;
 }
 #todos {
-  display: grid;
-  grid-template-rows: 10% auto 10%;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-  overflow: scroll;
   #new-todo {
     height: auto;
-    width: 70%;
+    width: 100%;
     padding: 0.3em;
-    margin: 0.2em;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 1em;
     background-color: #fbf7f5;
     align-self: center;
     word-break: break-word;
@@ -229,15 +225,16 @@ button:focus, button:active  {
     outline: none;
   }
   ul {
+    width: 60%;
     list-style-type: none;
-    padding: 0.7em;
-    margin-top: 1em;
+    margin: 0;
+    overflow: scroll;
     li {
       display: flex;
       justify-content: space-between;
       background-color: #ffeead;
       height: auto;
-      width: 60%;
+      width: 100%;
       padding: 0.3em;
       margin: 0.2em;
       cursor: pointer;
@@ -284,7 +281,7 @@ button:focus, button:active  {
 }
 
 .delete-list{
-    opacity: 0.5;
+  opacity: 0.5;
   text-shadow: 5px 4px #000;
   cursor: pointer;
   font-size: 1.5em;
@@ -366,12 +363,17 @@ button:focus, button:active  {
   #todos, .dark-mode #todos {
     height: 75%;
     margin-left: 0.3em;
+    #input-todo-wrap {
+      width: 100%;
+    }
+    ul {
+      width: 80%;
+    }
   }
   #todos #new-todo {
     width: 90%;
   }
   #todos ul li {
-    width: 81%;
     font-size: 0.7em;
   }
   #sidebar input, .dark-mode #sidebar input {
@@ -382,6 +384,7 @@ button:focus, button:active  {
     overflow: scroll;
     .delete-list {
       opacity: 0.6;
+      padding-right: 0.5em;
     }
   }
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
