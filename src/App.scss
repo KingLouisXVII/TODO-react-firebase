@@ -373,8 +373,17 @@ button:focus, button:active  {
   #todos #new-todo {
     width: 90%;
   }
+  .dark-mode #todos ul li {
+    font-size: 0.7em;
+    &:hover {
+      box-shadow: 5px 5px #071e17;
+    }
+  }
   #todos ul li {
     font-size: 0.7em;
+    &:hover {
+      box-shadow: 5px 5px #071e17;
+    }
   }
   #sidebar input, .dark-mode #sidebar input {
     border-bottom: 2px solid #152218;
@@ -402,6 +411,20 @@ button:focus, button:active  {
   }
   #app-separator {
     display: none;
+  }
+  .dark-mode #sidebar {
+    .list {
+      &:hover, &:active, &.active {
+        background-color: #232b2b;
+      }
+    }
+  }
+  #sidebar {
+    .list {
+      &:hover, &:active, &.active {
+        background-color: #ffeead;
+      }
+    }
   }
 }
 
