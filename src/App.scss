@@ -213,7 +213,9 @@ button:focus, button:active  {
     height: auto;
     width: 100%;
     padding: 0.3em;
-    margin: 1em;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
     background-color: #fbf7f5;
     align-self: center;
     word-break: break-word;
@@ -236,8 +238,8 @@ button:focus, button:active  {
       background-color: #ffeead;
       height: auto;
       width: 100%;
-      padding: 0.3em;
-      margin: 0.2em;
+      padding: 0.2em;
+      margin: 0.5em;
       cursor: pointer;
       align-self: center;
       word-break: break-word;
