@@ -12,7 +12,7 @@ function Sidebar(props) {
   const [input, setInput] = useState('');
   const [toggle, setToggle] = useState(false);
   const [deleting, setDeleting] = useState(-1);
-  const { active, setActive, lists, setLists, user } = props;
+  const { active, setActive, lists, setLists, user, login, logout } = props;
 
   function onChange(e) {
     setInput(e.target.value);
@@ -81,6 +81,12 @@ function Sidebar(props) {
         <div id="button-wrapper">
           <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
           <img onClick={toggleLists} src={down} id="list-toggle" alt="list-toggle" />
+        </div>
+        <div id="login-buttons">
+          {user
+              ? <button onClick={logout}>logout</button>
+              : <button onClick={login}>login</button>
+          }
         </div>
         <Droppable droppableId="sidebar">
           {provided => (

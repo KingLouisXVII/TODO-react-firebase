@@ -43,12 +43,12 @@ function App() {
       auth.signOut()
         .then(() => {
           setUser(false);
+          setLists({});
         });
     }
 
     return (
       <div className="app">
-        {user ?
         <>
           <Sidebar
             lists={lists}
@@ -56,6 +56,8 @@ function App() {
             active={active}
             setActive={setActive}
             user={user}
+            login={login}
+            logout={logout}
           />
           <Todos
             lists={lists}
@@ -64,12 +66,7 @@ function App() {
             user={user}
           />
         </>
-            :
-              <>
-                <button onClick={login}>login</button>
-              </>
         }
-        <button onClick={logout}>logout</button>
       </div>
     );
   }
