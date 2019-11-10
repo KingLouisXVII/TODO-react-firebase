@@ -19,56 +19,53 @@ function App() {
       let items = snapshot.val();
       console.log(items);
       meow(items);
-      });
-    }, [user]);
+    });
+  }, [user]);
 
-    function meow(items) {
-      items !== null ?
-        setLists(items)
-        :
-        setLists({})
-    }
-
-    function login() {
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          const user = result.user;
-          setUser(
-            user
-          );
-        });
-    }
-
-    function logout() {
-      auth.signOut()
-        .then(() => {
-          setUser(false);
-          setLists({});
-        });
-    }
-
-    return (
-      <div className="app">
-        <>
-          <Sidebar
-            lists={lists}
-            setLists={setLists}
-            active={active}
-            setActive={setActive}
-            user={user}
-            login={login}
-            logout={logout}
-          />
-          <Todos
-            lists={lists}
-            setLists={setLists}
-            active={active}
-            user={user}
-          />
-        </>
-        }
-      </div>
-    );
+  function meow(items) {
+    items !== null ?
+      setLists(items)
+      :
+      setLists({})
   }
 
-    export default App;
+  function login() {
+    auth.signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        setUser(
+          user
+        );
+      });
+  }
+
+  function logout() {
+    auth.signOut()
+      .then(() => {
+        setUser(false);
+        setLists({});
+      });
+  }
+
+  return (
+    <div className="app">
+        <Sidebar
+          lists={lists}
+          setLists={setLists}
+          active={active}
+          setActive={setActive}
+          user={user}
+          login={login}
+          logout={logout}
+        />
+        <Todos
+          lists={lists}
+          setLists={setLists}
+          active={active}
+          user={user}
+        />
+      </div>
+  );
+}
+
+export default App;
