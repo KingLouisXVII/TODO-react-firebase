@@ -344,6 +344,16 @@ button:focus, button:active  {
   text-align: left;
 }
 
+#login-buttons {
+  button {
+    font-weight: 900;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    outline: 0;
+  }
+}
+
 @media (max-width: 900px) {
   #input-todo-wrap {
     width: 90%;

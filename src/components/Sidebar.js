@@ -6,12 +6,13 @@ import down from '../assets/down.svg'
 import darkmode from '../assets/darkmode.svg'
 import { dark } from '../utils/darkmode.js'; 
 
+import firebase from '../utils/Firebase.js';
 
 function Sidebar(props) {
   const [input, setInput] = useState('');
   const [toggle, setToggle] = useState(false);
   const [deleting, setDeleting] = useState(-1);
-  const { active, setActive, lists, setLists } = props;
+  const { active, setActive, lists, setLists, user, login, logout } = props;
 
   function onChange(e) {
     setInput(e.target.value);
@@ -26,13 +27,14 @@ function Sidebar(props) {
 
   function addList() {
     const allLists = {...lists};
-    const newList = {todos:[]};
+    const newList = {todos:[{exist:true}]};
     if ( !(input in allLists ) ) {
       allLists[input] = newList;
     }
     input && setLists(allLists);
     setActive(input);
     setInput('');
+    set(allLists);
   }
 
   function deleteList(list) {
@@ -40,6 +42,12 @@ function Sidebar(props) {
     delete allLists[list];
     setLists(allLists);
     setDeleting(-1)
+    set(allLists);
+  }
+
+  function set(lists) {
+    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
+    itemsRef.set(lists);
   }
 
   function switchList(list) {
@@ -74,6 +82,12 @@ function Sidebar(props) {
           <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
           <img onClick={toggleLists} src={down} id="list-toggle" alt="list-toggle" />
         </div>
+        <div id="login-buttons">
+          {user
+              ? <button onClick={logout}>logout</button>
+              : <button onClick={login}>login</button>
+          }
+        </div>
         <Droppable droppableId="sidebar">
           {provided => (
             <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
@@ -87,10 +101,10 @@ function Sidebar(props) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                          {deleting === i
+                        {deleting === i
                             ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
-                              : <div className="list-name-wrapper" onClick={e => switchList(list)}><div>{list}</div></div>
-                          }
+                            : <div className="list-name-wrapper" onClick={e => switchList(list)}><div>{list}</div></div>
+                        }
                         <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                       </div>
                     )}
