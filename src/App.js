@@ -3,55 +3,74 @@ import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
 import './App.scss';
 import { checkTheme } from './utils/darkmode.js';
+import firebase, { auth, provider } from './utils/Firebase.js';
 
 
 function App() {
   const [lists, setLists] = useState({});
   const [active, setActive] = useState('');
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
-    const localTodos = localStorage.getItem('lists');
-    localTodos ? setLists(JSON.parse(localTodos)) : setLists({});
-    const first = localTodos ? Object.keys(JSON.parse(localTodos))[0] : '';
-    setActive(first);
     checkTheme();
-  }, []);
+    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
+    itemsRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      console.log(items);
+      meow(items);
+      });
+    }, [user]);
 
-  useEffect(() => {
-    localStorage.setItem('lists', JSON.stringify(lists));
-  }, [lists]);
+    function meow(items) {
+      items !== null ?
+        setLists(items)
+        :
+        setLists({})
+    }
 
-  // function handleKeyDown(e) {
-  //   if (e.key === 'ArrowUp') {
-  //     const allLists = {...lists};
-  //     const array = Object.keys(allLists);
-  //     const current = array.indexOf(active);
-  //     const next = array[current-1===-1?current:current-1];
-  //     setActive(next);
-  //   }
-  //   else if (e.key === 'ArrowDown') {
-  //     const allLists = {...lists};
-  //     const array = Object.keys(allLists);
-  //     const current = array.indexOf(active);
-  //     const next = array[current+1===array.length?current:current+1];
-  //     setActive(next);
-  //   }
-  // }
-  return (
-    <div className="app">
-      <Sidebar
-        lists={lists}
-        setLists={setLists}
-        active={active}
-        setActive={setActive}
-      />
-      <Todos
-        lists={lists}
-        setLists={setLists}
-        active={active}
-      />
-    </div>
-  );
-}
+    function login() {
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+          setUser(
+            user
+          );
+        });
+    }
 
-export default App;
+    function logout() {
+      auth.signOut()
+        .then(() => {
+          setUser(false);
+        });
+    }
+
+    return (
+      <div className="app">
+        {user ?
+        <>
+          <Sidebar
+            lists={lists}
+            setLists={setLists}
+            active={active}
+            setActive={setActive}
+            user={user}
+          />
+          <Todos
+            lists={lists}
+            setLists={setLists}
+            active={active}
+            user={user}
+          />
+        </>
+            :
+              <>
+                <button onClick={login}>login</button>
+              </>
+        }
+        <button onClick={logout}>logout</button>
+      </div>
+    );
+  }
+
+    export default App;

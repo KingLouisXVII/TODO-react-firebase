@@ -6,9 +6,10 @@ import priorityButton from '../assets/important.svg'
 import editButton from '../assets/edit.svg'
 
 
+import firebase, { auth, provider } from '../utils/Firebase.js';
 function Todos(props) {
   const [input, setInput] = useState('');
-  const { lists, setLists, active } = props;
+  const { lists, setLists, active, user } = props;
 
   function onChange(e) {
     setInput(e.target.value);
@@ -32,6 +33,8 @@ function Todos(props) {
     todos.unshift(newTodo);
     todos.sort(function(a,b){return b.priority-a.priority});
     setLists(allLists);
+    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
+    itemsRef.set(allLists);
   }
 
   function toggleTodo(i) {
@@ -48,6 +51,8 @@ function Todos(props) {
     const todos = allLists[active].todos;
     todos.splice(i,1);
     setLists(allLists);
+    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
+    itemsRef.set(allLists);
   }
 
   function removeCompleted(todo) {
@@ -118,7 +123,7 @@ function Todos(props) {
         <Droppable droppableId="todos">
           {provided => (
             <ul ref={provided.innerRef} {...provided.droppableProps}>
-              {lists[active] &&
+              {lists[active] ?
                 lists[active].todos.map((todo,i) =>
                   <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
@@ -142,6 +147,8 @@ function Todos(props) {
                     }
                   </Draggable>
                 )
+                :
+                null
               }
               {provided.placeholder}
             </ul>
