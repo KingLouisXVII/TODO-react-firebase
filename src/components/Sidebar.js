@@ -27,15 +27,14 @@ function Sidebar(props) {
 
   function addList() {
     const allLists = {...lists};
-    const newList = {todos:[]};
+    const newList = {todos:[{exist:true}]};
     if ( !(input in allLists ) ) {
       allLists[input] = newList;
     }
     input && setLists(allLists);
     setActive(input);
     setInput('');
-    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
-    itemsRef.set(allLists);
+    set(allLists);
   }
 
   function deleteList(list) {
@@ -43,8 +42,12 @@ function Sidebar(props) {
     delete allLists[list];
     setLists(allLists);
     setDeleting(-1)
+    set(allLists);
+  }
+
+  function set(lists) {
     const itemsRef = firebase.database().ref(`/users/${user.uid}`);
-    itemsRef.set(allLists);
+    itemsRef.set(lists);
   }
 
   function switchList(list) {

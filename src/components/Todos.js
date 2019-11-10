@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React, { useState } from 'react';import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderTodos } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import priorityButton from '../assets/important.svg'
@@ -33,8 +32,7 @@ function Todos(props) {
     todos.unshift(newTodo);
     todos.sort(function(a,b){return b.priority-a.priority});
     setLists(allLists);
-    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
-    itemsRef.set(allLists);
+    set(allLists);
   }
 
   function toggleTodo(i) {
@@ -44,15 +42,23 @@ function Todos(props) {
     todos[i].priority = false;
     todos.sort(function(a,b){return a.completed-b.completed});
     setLists(allLists);
+    set(allLists);
   }
 
   function deleteTodo(i) {
     const allLists = {...lists};
     const todos = allLists[active].todos;
+    todos.length<=1&&todos.push({exist:true});
     todos.splice(i,1);
+    console.log(todos);
+    console.log(allLists);
     setLists(allLists);
+    set(allLists);
+  }
+
+  function set(lists) {
     const itemsRef = firebase.database().ref(`/users/${user.uid}`);
-    itemsRef.set(allLists);
+    itemsRef.set(lists);
   }
 
   function removeCompleted(todo) {
@@ -65,6 +71,7 @@ function Todos(props) {
     allLists[active].todos = newTodos;
     setLists(allLists);
     setInput('');
+    set(allLists);
   }
 
   function editTodo(i) {
@@ -74,6 +81,7 @@ function Todos(props) {
     todos.splice(i,1);
     setLists(allLists);
     setInput(todo);
+    set(allLists);
   }
 
   function prioritize(i) {
@@ -83,6 +91,7 @@ function Todos(props) {
     todos[i].completed = false;
     todos.sort(function(a,b){return b.priority-a.priority});
     setLists(allLists);
+    set(allLists);
   }
 
   function onDragEnd(result) {
@@ -124,7 +133,12 @@ function Todos(props) {
           {provided => (
             <ul ref={provided.innerRef} {...provided.droppableProps}>
               {lists[active] ?
-                lists[active].todos.map((todo,i) =>
+                lists[active].todos.reduce((todos, todo) => {
+                  if (!todo.exist) {
+                    todos.push(todo);
+                  }
+                  return todos;
+                }, []).map((todo,i) =>
                   <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
                       <div className="todo"

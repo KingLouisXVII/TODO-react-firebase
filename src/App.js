@@ -11,6 +11,7 @@ function App() {
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
 
+
   useEffect(() => {
     checkTheme();
     const itemsRef = firebase.database().ref(`/users/${user.uid}`);
