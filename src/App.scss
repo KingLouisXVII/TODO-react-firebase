@@ -114,7 +114,7 @@ h2 {
   text-align: center;
 }
 
-body::-webkit-scrollbar, #sidebar::-webkit-scrollbar, #todos::-webkit-scrollbar, #lists::-webkit-scrollbar {
+body::-webkit-scrollbar, #sidebar::-webkit-scrollbar, #todos ul::-webkit-scrollbar, #lists::-webkit-scrollbar {
   display: none;
 }
 
