@@ -89,6 +89,16 @@ function Sidebar(props) {
           }
         </div>
         </div>
+                <input
+                  autoComplete="off"
+                  type="text"
+                  placeholder="..."
+                  value={input}
+                  onChange={onChange}
+                  onKeyDown={ e => handleKeyDown(e) }
+                  id="new-list"
+                  name="list"
+                />
         <Droppable droppableId="sidebar">
           {provided => (
             <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
@@ -114,16 +124,6 @@ function Sidebar(props) {
                   </Draggable>
                 )}
                 {provided.placeholder}
-                <input
-                  autoComplete="off"
-                  type="text"
-                  placeholder="..."
-                  value={input}
-                  onChange={onChange}
-                  onKeyDown={ e => handleKeyDown(e) }
-                  id="new-list"
-                  name="list"
-                />
               </div>
           )}
         </Droppable>
