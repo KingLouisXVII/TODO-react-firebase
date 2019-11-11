@@ -27,7 +27,8 @@ function Sidebar(props) {
 
   function addList() {
     const allLists = {...lists};
-    const newList = {todos:[{exist:true}]};
+    const position = Object.keys(allLists).length;
+    const newList = {todos:[{exist:true}],position:position};
     if ( !(input in allLists ) ) {
       allLists[input] = newList;
     }
@@ -92,18 +93,20 @@ function Sidebar(props) {
           {provided => (
             <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
               {lists &&
-                Object.keys(lists).map((list,i) =>
+                Object.entries(lists)
+                .sort((a, b) => a[1].position - b[1].position)
+                .map((list,i) =>
                   <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
                       <div 
-                        className={list&&list===active?"list active":"list"}
+                        className={list[0]&&list[0]===active?"list active":"list"}
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
                         {deleting === i
-                            ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
-                            : <div className="list-name-wrapper" onClick={e => switchList(list)}><div>{list}</div></div>
+                            ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
+                            : <div className="list-name-wrapper" onClick={e => switchList(list[0])}><div>{list[0]}</div></div>
                         }
                         <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
                       </div>
