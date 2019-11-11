@@ -390,6 +390,7 @@ button:focus, button:active  {
     }
     ul {
       width: 80%;
+      margin-top: 2em;
     }
   }
   #todos #new-todo {
@@ -447,6 +448,9 @@ button:focus, button:active  {
         background-color: #ffeead;
       }
     }
+  }
+  #input-todo-wrap {
+    top: 5em;
   }
 }
 
