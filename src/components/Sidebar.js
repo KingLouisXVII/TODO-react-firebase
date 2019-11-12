@@ -113,9 +113,9 @@ function Sidebar(props) {
   }
 
   return (
-    <div id="sidebar" {...handlers}>
+    <div id="sidebar">
       <DragDropContext onDragEnd={onDragEnd}>
-        <h1 onClick={() => {setActive('')} }>TODO!</h1>
+        <h1 onClick={() => {setActive('')} } {...handlers}>TODO!</h1>
         <div id="button-wrapper">
           <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
           <img onClick={toggleLists} src={down} id="list-toggle" alt="list-toggle" />
