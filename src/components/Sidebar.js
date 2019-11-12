@@ -85,49 +85,50 @@ function Sidebar(props) {
         <div id="button-wrapper">
           <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
           <img onClick={toggleLists} src={down} id="list-toggle" alt="list-toggle" />
-        <div id="login-buttons">
-          {user
-              ? <button onClick={logout}>logout</button>
-              : <button onClick={login}>login</button>
-          }
+          <div id="login-buttons">
+            {user
+                ? <button onClick={logout}>logout</button>
+                : <button onClick={login}>login</button>
+            }
+          </div>
         </div>
-        </div>
-                <input
-                  autoComplete="off"
-                  type="text"
-                  placeholder="..."
-                  value={input}
-                  onChange={onChange}
-                  onKeyDown={ e => handleKeyDown(e) }
-                  id="new-list"
-                  name="list"
-                />
         <Droppable droppableId="sidebar">
           {provided => (
             <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
+              <input
+                autoComplete="off"
+                type="text"
+                placeholder="..."
+                value={input}
+                onChange={onChange}
+                onKeyDown={ e => handleKeyDown(e) }
+                id="new-list"
+                name="list"
+              />
+
               {lists &&
-                Object.entries(lists)
-                .sort((a, b) => a[1].position - b[1].position)
-                .map((list,i) =>
-                  <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
-                    {provided => (
-                      <div 
-                        className={list[0]&&list[0]===active?"list active":"list"}
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        {deleting === i
-                            ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
-                            : <div className="list-name-wrapper" onClick={e => switchList(list[0])}><div>{list[0]}</div></div>
-                        }
-                        <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
-                      </div>
-                    )}
-                  </Draggable>
-                )}
-                {provided.placeholder}
-              </div>
+                  Object.entries(lists)
+                  .sort((a, b) => a[1].position - b[1].position)
+                  .map((list,i) =>
+                    <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
+                      {provided => (
+                        <div 
+                          className={list[0]&&list[0]===active?"list active":"list"}
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          {deleting === i
+                              ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
+                              : <div className="list-name-wrapper" onClick={e => switchList(list[0])}><div>{list[0]}</div></div>
+                          }
+                          <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
+                        </div>
+                      )}
+                    </Draggable>
+                  )}
+                  {provided.placeholder}
+                </div>
           )}
         </Droppable>
       </DragDropContext>
