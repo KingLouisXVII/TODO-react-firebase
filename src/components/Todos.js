@@ -3,9 +3,8 @@ import { reorderTodos } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import priorityButton from '../assets/important.svg'
 import editButton from '../assets/edit.svg'
+import firebase from '../utils/Firebase.js';
 
-
-import firebase, { auth, provider } from '../utils/Firebase.js';
 function Todos(props) {
   const [input, setInput] = useState('');
   const { lists, setLists, active, user } = props;
@@ -112,6 +111,7 @@ function Todos(props) {
 
   return (
     <div id="todos">
+      <h6 id="active-list-name">{active}</h6>
       {active?
       <div id="input-todo-wrap">
         <input

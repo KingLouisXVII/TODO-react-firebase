@@ -356,6 +356,12 @@ button:focus, button:active  {
   }
 }
 
+#active-list-name {
+  display: none;
+  margin: 0;
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   #input-todo-wrap {
     width: 90%;
@@ -456,6 +462,9 @@ button:focus, button:active  {
   }
   #input-todo-wrap {
     top: 5em;
+  }
+  #active-list-name {
+    display: block;
   }
 }
 
