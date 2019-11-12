@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSwipeable } from 'react-swipeable'
 import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
 import './App.scss';
@@ -11,30 +12,39 @@ function App() {
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => active && swipeLeft(),
+    onSwipedRight: () => active && swipeRight(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
+  function swipeLeft() {
+    const allLists = {...lists};
+    const array = Object.entries(allLists);
+    const position = allLists[active].position;
+    const next = array.filter(list => list[1].position === position + 1).reduce((acc,item)=>{return item[0]},'');
+    setActive(next);
+  }
+
+  function swipeRight() {
+    const allLists = {...lists};
+    const array = Object.entries(allLists);
+    const position = allLists[active].position;
+    const prev = array.filter(list => list[1].position === position - 1).reduce((acc,item)=>{return item[0]},'');
+    setActive(prev);
+  }
 
   useEffect(() => {
     checkTheme();
     const itemsRef = firebase.database().ref(`/users/${user.uid}`);
     itemsRef.on('value', (snapshot) => {
       let items = snapshot.val();
-      // console.log('items:', items);
-      // const array =  items && Object.entries(items);
-      // console.log('array:', array)
-      // const sortedArray = array && array.sort((a, b) => a[1].position - b[1].position);
-      // console.log('sortedArray:', sortedArray)
-      // const sortedObject =   sortedArray && sortedArray 
-      //   .reduce(function(acc, item) {
-      //     acc[item[0]] = item[1];
-
-      //     return acc;
-      //   }, {});
-      // console.log('sortedObject:', sortedObject)
-
-      meow(items);
+      set(items);
     });
   }, [user]);
 
-  function meow(items) {
+  function set(items) {
     items !== null ?
       setLists(items)
       :
@@ -60,7 +70,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app" {...handlers}>
       <Sidebar
         lists={lists}
         setLists={setLists}
