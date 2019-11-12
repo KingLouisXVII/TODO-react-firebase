@@ -24,7 +24,12 @@ function App() {
     const array = Object.entries(allLists);
     const position = allLists[active].position;
     const next = array.filter(list => list[1].position === position + 1).reduce((acc,item)=>{return item[0]},'');
-    setActive(next);
+    const first = array.filter(list => list[1].position === 0).reduce((acc,item)=>{return item[0]},'');
+    if(position === array.length-1) {
+      setActive(first);
+    }else{
+      setActive(next);
+    }
   }
 
   function swipeRight() {
@@ -32,7 +37,12 @@ function App() {
     const array = Object.entries(allLists);
     const position = allLists[active].position;
     const prev = array.filter(list => list[1].position === position - 1).reduce((acc,item)=>{return item[0]},'');
-    setActive(prev);
+    const last = array.filter(list => list[1].position === array.length - 1).reduce((acc,item)=>{return item[0]},'');
+    if(position === 0) {
+      setActive(last);
+    }else{
+      setActive(prev);
+    }
   }
 
   useEffect(() => {
