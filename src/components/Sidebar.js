@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { reorderLists } from '../utils/Reorder';
+import { reorderLists, reposition } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import down from '../assets/down.svg'
 import darkmode from '../assets/darkmode.svg'
@@ -40,10 +40,11 @@ function Sidebar(props) {
 
   function deleteList(list) {
     const allLists = {...lists};
+    reposition(allLists, list);
     delete allLists[list];
     setLists(allLists);
-    setDeleting(-1)
     set(allLists);
+    setDeleting(-1)
   }
 
   function set(lists) {
@@ -59,6 +60,7 @@ function Sidebar(props) {
   function toggleLists() {
     setToggle(!toggle);
   }
+
   function onDragEnd(result) {
     if (!result.destination) {
       return;
@@ -73,6 +75,7 @@ function Sidebar(props) {
       result.destination.index
     );
     setLists(orderedLists);
+    set(orderedLists);
   }
 
   return (
