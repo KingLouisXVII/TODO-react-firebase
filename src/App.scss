@@ -76,6 +76,9 @@
     border-color:	#ef3f3f !important;
     box-shadow: 5px 5px	#ef3f3f !important;
   }
+  #login-buttons {
+    background-color: #232b2b;
+  }
 }
 
 
@@ -344,7 +347,7 @@ button:focus, button:active  {
 }
 
 #login-buttons {
-  background-color: #232b2b;
+  background-color: #ffeead;
   border-bottom: 2px solid #071e17;
   button {
     font-size: 0.5em;
