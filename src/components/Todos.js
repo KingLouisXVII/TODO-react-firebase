@@ -115,7 +115,6 @@ function Todos(props) {
       {active?
       <div id="input-todo-wrap">
         <input
-          autoFocus
           autoComplete="off"
           type="text"
           placeholder="..."
