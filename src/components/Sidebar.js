@@ -85,16 +85,16 @@ function Sidebar(props) {
         <div id="button-wrapper">
           <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
           <img onClick={toggleLists} src={down} id="list-toggle" alt="list-toggle" />
-          <div id="login-buttons">
-            {user
-                ? <button onClick={logout}>logout</button>
-                : <button onClick={login}>login</button>
-            }
-          </div>
         </div>
         <Droppable droppableId="sidebar">
           {provided => (
             <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
+              <div id="login-buttons">
+                {user
+                    ? <button onClick={logout}>logout</button>
+                    : <button onClick={login}>login</button>
+                }
+              </div>
               <input
                 autoComplete="off"
                 type="text"
