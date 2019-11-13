@@ -365,6 +365,9 @@ button:focus, button:active  {
   text-align: center;
 }
 
+#swipe-area {
+  display: none;
+}
 @media (max-width: 900px) {
   #input-todo-wrap {
     width: 90%;
@@ -469,5 +472,15 @@ button:focus, button:active  {
   #active-list-name {
     display: block;
   }
+  #swipe-area {
+    display: block;
+    height: 1em;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
 }
 

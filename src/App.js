@@ -70,6 +70,7 @@ function App() {
         lists={lists}
         setLists={setLists}
         active={active}
+        setActive={setActive}
         user={user}
       />
     </div>
