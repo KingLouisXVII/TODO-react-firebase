@@ -139,7 +139,6 @@ function Sidebar(props) {
                 id="new-list"
                 name="list"
               />
-
               {lists &&
                   Object.entries(lists)
                   .sort((a, b) => a[1].position - b[1].position)
