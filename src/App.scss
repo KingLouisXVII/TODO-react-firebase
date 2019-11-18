@@ -30,7 +30,7 @@
       background-color: #232b2b;
       border-bottom: 2px solid 	#071e17;
       color: 	#8f9779;
-      &:hover, &:active {
+      &:active {
         background-color: #25584f;
       }
     }
@@ -189,7 +189,7 @@ button:focus, button:active  {
     cursor: pointer;
     word-break: break-word;
     color: #152218;
-    &:hover, &:active {
+    &:active {
       background-color: #ffbcaa;
     }
   }
@@ -480,20 +480,6 @@ button:focus, button:active  {
   }
   #app-separator {
     display: none;
-  }
-  .dark-mode #sidebar {
-    .list {
-      &:hover, &:active, &.active {
-        background-color: #232b2b;
-      }
-    }
-  }
-  #sidebar {
-    .list {
-      &:hover, &:active, &.active {
-        background-color: #ffeead;
-      }
-    }
   }
   #input-todo-wrap {
     top: 5em;
