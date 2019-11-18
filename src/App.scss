@@ -24,7 +24,6 @@
       background-color: #232b2b;
       border-left: 0;
       border-right: 0;
-      border-bottom: 2px solid #071e17;
       color: 	#8f9779;
     }
     .list {
@@ -42,6 +41,9 @@
       border-color: #ef3f3f;
       background-color:	#25584f;
       color: #8f9779;
+    }
+    #input-edit-wrapper, #edit-toggle {
+      border-color:	#071e17;
     }
   }
   #todos {
@@ -99,6 +101,12 @@ body {
   align-items: center;
   font-size: 2em;
   transition: all 1s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #darkmode, #list-toggle {
@@ -159,10 +167,7 @@ button:focus, button:active  {
   input {
     font-size: 0.9em;
     background-color: #ffeead;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 2px solid #071e17;
+    border: 0;
     color: #152218;
     outline: none;
     padding: 0.3em;
@@ -373,12 +378,12 @@ button:focus, button:active  {
   display: grid;
   grid-template-columns: 80% 20%;
   height: 2em;
+  border-bottom: 2px solid;
 }
 
 #edit-toggle {
   display: flex;
   justify-content: center;
-  border-bottom: 2px solid;
   border-left: 2px solid;
   img {
     width: 1em;
