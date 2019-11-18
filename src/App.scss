@@ -30,9 +30,6 @@
       background-color: #232b2b;
       border-bottom: 2px solid 	#071e17;
       color: 	#8f9779;
-      &:active {
-        background-color: #25584f;
-      }
     }
     #button-wrapper {
       background-color: #232b2b;
@@ -43,6 +40,7 @@
       color: #8f9779;
     }
     #input-edit-wrapper, #edit-toggle {
+      background-color: #232b2b;
       border-color:	#071e17;
     }
   }
@@ -189,9 +187,6 @@ button:focus, button:active  {
     cursor: pointer;
     word-break: break-word;
     color: #152218;
-    &:active {
-      background-color: #ffbcaa;
-    }
   }
   #button-wrapper {
     background-color: #ffeead;
@@ -379,6 +374,7 @@ button:focus, button:active  {
   grid-template-columns: 80% 20%;
   height: 2em;
   border-bottom: 2px solid;
+  background-color: #ffeead;
 }
 
 #edit-toggle {
