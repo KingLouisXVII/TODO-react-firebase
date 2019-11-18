@@ -4,6 +4,7 @@ import { reorderTodos } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import priorityButton from '../assets/important.svg'
 import editButton from '../assets/edit.svg'
+import updownButton from '../assets/updown.svg'
 import firebase from '../utils/Firebase.js';
 
 function Todos(props) {
@@ -144,7 +145,7 @@ function Todos(props) {
   }
 
   return (
-    <div id="todos">
+    <div id="todos" {...handlers}>
       <h6 id="active-list-name">{active}</h6>
       {active?
       <div id="input-todo-wrap">
@@ -177,13 +178,13 @@ function Todos(props) {
                       <div className="todo"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
-                        {...provided.dragHandleProps}
                       >
                         <div className={todo.completed?'checkbox checked':'checkbox'} onClick={e=>toggleTodo(i)}></div>
                         <li
                           className={todo.completed?'completed':todo.priority?'priority':''}
                         >{todo.name}                        
                           <div id="buttons">
+                            <div {...provided.dragHandleProps}><img className="edit-button" alt="reposition-todo" src={updownButton}/></div>
                             <div onClick={e=>editTodo(i)} ><img className="edit-button" alt="edit-todo" src={editButton}/></div>
                             <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
                             <div onClick={e=>deleteTodo(i)} ><img className="delete-button" alt="delete-todo" src={deleteButton}/></div>
@@ -202,7 +203,6 @@ function Todos(props) {
           )}
         </Droppable>
       </DragDropContext>
-      <div id="swipe-area" {...handlers}></div>
       { 
         lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
           <h2 id="clear" onClick={clearDone}>clear done</h2> 
