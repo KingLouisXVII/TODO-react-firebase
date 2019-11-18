@@ -385,6 +385,7 @@ button:focus, button:active  {
   display: flex;
   justify-content: center;
   border-left: 2px solid;
+  cursor: pointer;
   img {
     width: 1em;
   }
