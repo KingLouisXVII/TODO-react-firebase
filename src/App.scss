@@ -368,6 +368,27 @@ button:focus, button:active  {
 #swipe-area {
   display: none;
 }
+
+#input-edit-wrapper {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  height: 2em;
+}
+
+#edit-toggle {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  img {
+    width: 1em;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 @media (max-width: 900px) {
   #input-todo-wrap {
     width: 90%;
