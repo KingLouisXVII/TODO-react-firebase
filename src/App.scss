@@ -384,10 +384,12 @@ button:focus, button:active  {
 #edit-toggle {
   display: flex;
   justify-content: center;
+  align-items: center;
   border-left: 2px solid;
   cursor: pointer;
   img {
     width: 1em;
+    height: 2em;
   }
 }
 
