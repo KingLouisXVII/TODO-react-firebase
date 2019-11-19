@@ -181,6 +181,7 @@ button:focus, button:active  {
     margin: 0;
     background-color: #ffeead;
     cursor: pointer;
+    opacity: 0.8;
   }
   input {
     font-size: 0.9em;
@@ -380,6 +381,7 @@ button:focus, button:active  {
   justify-content: space-evenly;
   padding: 1em;
   height: 1em;
+  opacity: 0.6;
   button {
     font-size: 0.5em;
     font-weight: 900;
@@ -415,6 +417,7 @@ button:focus, button:active  {
   align-items: center;
   border-left: 2px solid;
   cursor: pointer;
+  opacity: 0.6;
   img {
     width: 1em;
     height: 2em;
