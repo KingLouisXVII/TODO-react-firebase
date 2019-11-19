@@ -499,11 +499,25 @@ button:focus, button:active  {
   }
   .dark-mode #sidebar #slideIn {
     animation: slideMe .3s ease-in forwards;
+    height: 100vh;
+    background-color: #232b2b;
+  }
+  #sidebar #slideIn {
+    animation: slideMe .3s ease-in forwards;
+    height: 100vh;
+    background-color: #ffeead;
   }
   .dark-mode #sidebar #slideOut {
     animation: slideMe2 .3s ease-in forwards;
+    height: 100vh;
+    background-color: #232b2b;
   }
-  .dark-mode #sidebar #hidden {
+  #sidebar #slideOut {
+    animation: slideMe2 .3s ease-in forwards;
+    height: 100vh;
+    background-color: #ffeead;
+  }
+  #sidebar #hidden {
     display: none;
   }
   #sidebar #button-wrapper, .dark-mode #sidebar #button-wrapper {
