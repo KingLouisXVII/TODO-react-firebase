@@ -194,13 +194,11 @@ button:focus, button:active  {
     height: auto;
     display: flex;
     flex-direction: column;
-    animation: slideMe .3s ease-in;
   }
   #no-lists {
     height: auto;
     display: flex;
     flex-direction: column;
-    animation: slideMe2 .3s ease-in forwards;
   }
   .list {
     display: flex;
@@ -494,14 +492,17 @@ button:focus, button:active  {
   .dark-mode #sidebar #lists, #sidebar #lists {
     z-index: 99;
     overflow: scroll;
+        animation: slideMe .3s ease-in;
+
     .delete-list {
       opacity: 0.6;
       padding-right: 0.5em;
     }
   }
-  // .dark-mode #sidebar #no-lists, #sidebar #no-lists {
-    //   display: none;
-  // }
+  .dark-mode #sidebar #no-lists, #sidebar #no-lists {
+      display: none;
+        animation: slideMe2 .3s ease-in forwards;
+  }
   #sidebar #button-wrapper, .dark-mode #sidebar #button-wrapper {
     display: flex;
     justify-content: space-between;
