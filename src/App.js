@@ -61,7 +61,7 @@ function App() {
     onSwipedRight: () => active && swipeRight(),
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
-    delta: 200
+    delta: 100
   });
 
   function swipeLeft() {
