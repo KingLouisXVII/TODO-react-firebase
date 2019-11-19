@@ -145,13 +145,13 @@ function Todos(props) {
                       <div className="todo"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
+                        {...provided.dragHandleProps}
                       >
                         <div className={todo.completed?'checkbox checked':'checkbox'} onClick={e=>toggleTodo(i)}></div>
                         <li
                           className={todo.completed?'completed':todo.priority?'priority':''}
                         >{todo.name}                        
                           <div id="buttons">
-                            <div {...provided.dragHandleProps}><img className="edit-button" alt="reposition-todo" src={updownButton}/></div>
                             <div onClick={e=>editTodo(i)} ><img className="edit-button" alt="edit-todo" src={editButton}/></div>
                             <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
                             <div onClick={e=>deleteTodo(i)} ><img className="delete-button" alt="delete-todo" src={deleteButton}/></div>
