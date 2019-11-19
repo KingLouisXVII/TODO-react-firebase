@@ -492,7 +492,7 @@ button:focus, button:active  {
   .dark-mode #sidebar #lists, #sidebar #lists {
     z-index: 99;
     overflow: scroll;
-        animation: slideMe .3s ease-in;
+    animation: slideMe .3s ease-in;
 
     .delete-list {
       opacity: 0.6;
@@ -500,8 +500,7 @@ button:focus, button:active  {
     }
   }
   .dark-mode #sidebar #no-lists, #sidebar #no-lists {
-      display: none;
-        animation: slideMe2 .3s ease-in forwards;
+    animation: slideMe2 .3s ease-in forwards;
   }
   #sidebar #button-wrapper, .dark-mode #sidebar #button-wrapper {
     display: flex;
