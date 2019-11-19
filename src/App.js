@@ -27,6 +27,8 @@ function App() {
     itemsRef.on('value', (snapshot) => {
       let items = snapshot.val();
       set(items);
+      const active = Object.keys(items).length > 0 ? Object.entries(items).filter(item => item[1].position === 0).reduce((acc, item) => { return acc = item[0]},'') : '';
+      setActive(active);
     });
   }, [user]);
 
