@@ -489,18 +489,22 @@ button:focus, button:active  {
   #sidebar input, .dark-mode #sidebar input {
     width: 100%;
   }
-  .dark-mode #sidebar #lists, #sidebar #lists {
+  .dark-mode #sidebar .lists, #sidebar .lists {
     z-index: 99;
     overflow: scroll;
-    animation: slideMe .3s ease-in;
-
     .delete-list {
       opacity: 0.6;
       padding-right: 0.5em;
     }
   }
-  .dark-mode #sidebar #no-lists, #sidebar #no-lists {
+  .dark-mode #sidebar #slideIn {
+    animation: slideMe .3s ease-in forwards;
+  }
+  .dark-mode #sidebar #slideOut {
     animation: slideMe2 .3s ease-in forwards;
+  }
+  .dark-mode #sidebar #hidden {
+    display: none;
   }
   #sidebar #button-wrapper, .dark-mode #sidebar #button-wrapper {
     display: flex;

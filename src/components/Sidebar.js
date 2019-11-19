@@ -12,6 +12,7 @@ import firebase from '../utils/Firebase.js';
 function Sidebar(props) {
   const [input, setInput] = useState('');
   const [toggle, setToggle] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [deleting, setDeleting] = useState(-1);
   const [editToggle, setEditToggle] = useState(false);
   const { active, setActive, lists, setLists, user, login, logout } = props;
@@ -61,6 +62,7 @@ function Sidebar(props) {
   }
 
   function toggleLists() {
+    setLoaded(true);
     setToggle(!toggle);
   }
 
@@ -90,7 +92,7 @@ function Sidebar(props) {
         </div>
         <Droppable droppableId="sidebar">
           {provided => (
-            <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
+            <div id={loaded ?  toggle?'slideIn':'slideOut' : 'hidden'} ref={provided.innerRef} {...provided.droppableProps}>
               <div id="login-buttons">
               <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
                 {user
