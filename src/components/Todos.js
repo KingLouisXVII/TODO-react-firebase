@@ -146,9 +146,9 @@ function Todos(props) {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                       >
+                        <div className={todo.completed?'checkbox checked':'checkbox'} onClick={e=>toggleTodo(i)}></div>
                         <li
                           className={todo.completed?'completed':todo.priority?'priority':''}
-                          onClick={() => toggleTodo(i)}
                         >{todo.name}                        
                           <div id="buttons">
                             <div {...provided.dragHandleProps}><img className="edit-button" alt="reposition-todo" src={updownButton}/></div>
