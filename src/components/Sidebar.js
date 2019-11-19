@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists, reposition } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import editButton from '../assets/edit.svg'
-import down from '../assets/down.svg'
+import lines from '../assets/lines.svg'
 import darkmode from '../assets/darkmode.svg'
 import { dark } from '../utils/darkmode.js'; 
 
@@ -86,13 +86,13 @@ function Sidebar(props) {
       <DragDropContext onDragEnd={onDragEnd}>
         <h1 onClick={() => {setActive('')} } >TODO!</h1>
         <div id="button-wrapper">
-          <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
-          <img onClick={toggleLists} src={down} id="list-toggle" alt="list-toggle" />
+          <img onClick={toggleLists} src={lines} id="list-toggle" alt="list-toggle" />
         </div>
         <Droppable droppableId="sidebar">
           {provided => (
             <div id={!toggle?'no-lists':'lists'} ref={provided.innerRef} {...provided.droppableProps}>
               <div id="login-buttons">
+              <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
                 {user
                     ? <button onClick={logout}>logout</button>
                     : <button onClick={login}>login</button>
@@ -128,8 +128,8 @@ function Sidebar(props) {
                               : <div className="list-name-wrapper" onClick={e => switchList(list[0])}><div>{list[0]}</div></div>
                           }
                           {editToggle 
-                            ? <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
-                            : <div onClick={()=>setDeleting(i)} className="delete-list hidden"><img alt="delete-list" src={deleteButton}/></div>
+                              ? <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
+                              : <div onClick={()=>setDeleting(i)} className="delete-list hidden"><img alt="delete-list" src={deleteButton}/></div>
                           }
                         </div>
                       )}

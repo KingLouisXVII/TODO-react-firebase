@@ -88,6 +88,25 @@
   to {opacity:0.5;}
 }
 
+@keyframes slideMe{
+  0%{
+    transform: translateX(+500px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideMe2{
+  0%{
+    transform: translateX(0px);
+  }
+  100%{
+    transform: translateX(+900px);
+    display: none;
+  }
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -170,10 +189,17 @@ button:focus, button:active  {
     outline: none;
     padding: 0.3em;
   }
-  #lists, #no-lists {
+  #lists {
     height: auto;
     display: flex;
     flex-direction: column;
+    animation: slideMe .3s ease-in;
+  }
+  #no-lists {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    animation: slideMe2 .3s ease-in forwards;
   }
   .list {
     display: flex;
@@ -351,6 +377,9 @@ button:focus, button:active  {
 #login-buttons {
   background-color: #ffeead;
   border-bottom: 2px solid #071e17;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em;
   button {
     font-size: 0.5em;
     font-weight: 900;
@@ -365,6 +394,7 @@ button:focus, button:active  {
   display: none;
   margin: 0;
   text-align: center;
+  margin-top: 1.2em;
 }
 
 #swipe-area {
@@ -467,14 +497,15 @@ button:focus, button:active  {
       padding-right: 0.5em;
     }
   }
-  .dark-mode #sidebar #no-lists, #sidebar #no-lists {
-    display: none;
-  }
+  // .dark-mode #sidebar #no-lists, #sidebar #no-lists {
+    //   display: none;
+  // }
   #sidebar #button-wrapper, .dark-mode #sidebar #button-wrapper {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     height: 1.5em;
     border: 0;
+    padding: 0.5em;
   }
   .dark-mode #list-toggle, #list-toggle {
     display: block;
