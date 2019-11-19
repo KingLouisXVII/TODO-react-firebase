@@ -498,12 +498,12 @@ button:focus, button:active  {
     }
   }
   .dark-mode #sidebar #slideIn {
-    animation: slideMe .3s ease-in forwards;
+    animation: slideMe .3s ease-in;
     height: 100vh;
     background-color: #232b2b;
   }
   #sidebar #slideIn {
-    animation: slideMe .3s ease-in forwards;
+    animation: slideMe .3s ease-in;
     height: 100vh;
     background-color: #ffeead;
   }

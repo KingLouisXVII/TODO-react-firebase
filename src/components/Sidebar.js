@@ -92,7 +92,7 @@ function Sidebar(props) {
         </div>
         <Droppable droppableId="sidebar">
           {provided => (
-            <div id={loaded ?  toggle?'slideIn':'slideOut' : 'hidden'} ref={provided.innerRef} {...provided.droppableProps}>
+            <div id={loaded ?  toggle?'slideIn':'slideOut' : 'hidden'} className="lists" ref={provided.innerRef} {...provided.droppableProps}>
               <div id="login-buttons">
               <img onClick={dark} src={darkmode} id="darkmode" alt="darkmode-toggle" />
                 {user
