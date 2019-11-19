@@ -60,7 +60,8 @@ function App() {
     onSwipedLeft: () => active && swipeLeft(),
     onSwipedRight: () => active && swipeRight(),
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true
+    trackMouse: true,
+    delta: 200
   });
 
   function swipeLeft() {
