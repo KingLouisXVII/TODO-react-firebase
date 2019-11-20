@@ -3,7 +3,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderLists, reposition } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import editButton from '../assets/edit.svg'
-import lines from '../assets/lines.svg'
 import darkmode from '../assets/darkmode.svg'
 import { dark } from '../utils/darkmode.js'; 
 import '../assets/hamburgers/hamburgers.scss';
@@ -137,10 +136,11 @@ function Sidebar(props) {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
+                                onClick={e => switchList(list[0])}
                               >
                                 {deleting === i
                                     ? <div id="delete-dialog">Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></div>
-                                    : <div className="list-name-wrapper" onClick={e => switchList(list[0])}><div>{list[0]}</div></div>
+                                    : <div className="list-name-wrapper" ><div>{list[0]}</div></div>
                                 }
                                 {editToggle 
                                     ? <div onClick={()=>setDeleting(i)} className="delete-list"><img alt="delete-list" src={deleteButton}/></div>
