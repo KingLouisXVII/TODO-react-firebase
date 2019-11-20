@@ -174,7 +174,8 @@ button:focus, button:active  {
   text-align: center;
   background-color: #ffeead;
   height: 100vh;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   h1 {
     font-size: 2em;
     margin: 0;
