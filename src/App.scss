@@ -493,7 +493,8 @@ button:focus, button:active  {
   }
   .dark-mode #sidebar .lists, #sidebar .lists {
     z-index: 99;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     .delete-list {
       opacity: 0.6;
       padding-right: 0.5em;
