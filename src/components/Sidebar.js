@@ -114,8 +114,8 @@ function Sidebar(props) {
                           ? <button onClick={logout}>logout</button>
                           : <button onClick={login}>login</button>
                       }
+                      <div onClick={() => setEditToggle(!editToggle)} id="edit-toggle"><img alt="edit-toggle" src={editButton}/></div>
                     </div>
-                    <div id="input-edit-wrapper">
                       <input
                         autoComplete="off"
                         type="text"
@@ -126,8 +126,6 @@ function Sidebar(props) {
                         id="new-list"
                         name="list"
                       />
-                      <div onClick={() => setEditToggle(!editToggle)} id="edit-toggle"><img alt="edit-toggle" src={editButton}/></div>
-                    </div>
                     {lists &&
                         Object.entries(lists)
                         .sort((a, b) => a[1].position - b[1].position)
