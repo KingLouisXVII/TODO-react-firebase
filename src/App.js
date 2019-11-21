@@ -1,15 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
 import './App.scss';
 import { checkTheme } from './utils/darkmode.js';
 import firebase, { auth, provider } from './utils/Firebase.js';
 
+const AppContainer = styled.div`
+  font-family: 'Anton', sans-serif;
+  display: grid;
+  grid-template-columns: 25% auto;
+  width: 100vw;
+  height: 100vh;
+  background-color:	#232b2b;
+  color: 	#8f9779;
+  overflow: hidden;
+  @media (max-width: 700px) {
+      display: grid;
+      grid-template-columns: 100%;
+      border: 0;
+      box-shadow: none;
+      grid-template-rows: 6% 90% auto;
+  }
+`;
 
 function App() {
   const [lists, setLists] = useState({});
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
+
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -56,7 +75,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <AppContainer>
       <Sidebar
         lists={lists}
         setLists={setLists}
@@ -73,7 +92,7 @@ function App() {
         setActive={setActive}
         user={user}
       />
-    </div>
+    </AppContainer  >
   );
 }
 

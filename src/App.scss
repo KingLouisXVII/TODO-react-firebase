@@ -1,90 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|VT323&display=swap');
-
-
-.dark-mode {
-  background-color:	#232b2b;
-  transition: all 1s ease;
-  #sidebar input::placeholder {
-    color: #8f9779;
-    font-weight: bold;
-  }
-  #sidebar input:focus::placeholder {
-    color: transparent;
-  }
-  .app {
-    background-color:	#232b2b;
-    color: 	#8f9779;
-  }
-  #sidebar {
-    background-color: #232b2b;
-    border-right: 7px solid #071e17;
-    h1 {
-      background-color: #232b2b;
-    }
-    input {
-      background-color: #232b2b;
-      border-color: #071e17;
-      border-left: 0;
-      border-right: 0;
-      color: 	#8f9779;
-    }
-    .list {
-      background-color: #232b2b;
-      border-bottom: 2px solid 	#071e17;
-      color: 	#8f9779;
-    }
-    #button-wrapper {
-      background-color: #232b2b;
-    }
-    .active {
-      border-color: #ef3f3f;
-      background-color:	#25584f;
-      color: #8f9779;
-    }
-    #input-edit-wrapper, #edit-toggle {
-      background-color: #232b2b;
-      border-color:	#071e17;
-    }
-  }
-  #todos {
-    #new-todo {
-      background-color: #8f9779;
-      color: 	#071e17;
-      border-color: #071e17;
-      box-shadow: 5px 5px #071e17;
-    }
-    ul {
-      li {
-        background-color: #232b2b;
-        color: 	#8f9779;
-        border-color: #071e17;
-        box-shadow: 5px 5px #071e17;
-        &:hover, &:active {
-          box-shadow: 5px 5px #25584f;
-        }
-      }
-    }
-  }
-  .checkbox {
-    border: 3px solid #071e17;
-    background-color: #232b2b;
-    box-shadow: 3px 3px 	#071e17;
-    &.checked {
-      background-color: 	#8f9779;
-    }
-  }
-  .priority {
-    border: 2px solid;
-    border-color:	#ef3f3f !important;
-    box-shadow: 5px 5px	#ef3f3f !important;
-  }
-  #login-buttons {
-    background-color: #232b2b;
-  }
-}
-
-
-
 @keyframes fade {
   from {opacity:1;}
   to {opacity:0.5;}
@@ -128,11 +42,6 @@ body {
   user-select: none;
 }
 
-#darkmode, #list-toggle {
-  width: 0.8em;
-  cursor: pointer;
-}
-
 h2 {
   cursor: pointer;
   margin: 0;
@@ -158,135 +67,10 @@ button:focus, button:active  {
   border: 0;
 }
 
-.app {
-  font-family: 'Anton', sans-serif;
-  display: grid;
-  grid-template-columns: 25% auto;
-  width: 100vw;
-  height: 100vh;
-  background-color: #ffeead;
-  color: #152218;
-  overflow: hidden;
-}
-
-#sidebar {
-  border-right: 7px solid #071e17;
-  text-align: center;
-  background-color: #ffeead;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  h1 {
-    font-size: 2em;
-    margin: 0;
-    background-color: #ffeead;
-    cursor: pointer;
-    opacity: 0.8;
-  }
-  input {
-    font-size: 0.9em;
-    background-color: #ffeead;
-    border: 0;
-    color: #152218;
-    outline: none;
-    padding: 0.3em;
-    border-bottom: 2px solid;
-  }
-  #lists {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  #no-lists {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  .list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.7em;
-    background-color: #ffeead;
-    border-bottom: 2px solid #141d26;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    cursor: pointer;
-    word-break: break-word;
-    color: #152218;
-  }
-  #button-wrapper {
-    background-color: #ffeead;
-  }
-  .active {
-    border-color: #ff6f69;
-    background-color: #ffbcaa;
-    color: 	#ff6f69;
-  }
-}
-#input-todo-wrap {
-  width: 80%;
-  display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 99;
-}
-#todos {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  #new-todo {
-    height: auto;
-    width: 100%;
-    padding: 0.3em;
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
-    background-color: #fbf7f5;
-    align-self: center;
-    word-break: break-word;
-    color: #152218;
-    border: 2px solid;
-    box-shadow: 5px 5px;
-    font-size: 1em;
-    align-self: center;
-    outline: none;
-  }
-  ul {
-    width: 70%;
-    list-style-type: none;
-    margin: 0;
-    overflow: scroll;
-    flex: 2;
-    li {
-      display: flex;
-      justify-content: space-between;
-      background-color: #ffeead;
-      height: auto;
-      width: 100%;
-      padding: 0.2em;
-      margin: 0.5em;
-      cursor: pointer;
-      align-self: center;
-      word-break: break-word;
-      color: #152218;
-      border: 2px solid;
-      box-shadow: 5px 5px;
-      font-size: 0.7em;
-      &:hover, &:active {
-        box-shadow: 5px 5px #ffbbaa;
-      }
-    }
-  }
-}
-
-.todo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: default !important;
-  width: 92%;
-  margin-left: 0.7em;
+.active {
+      border-color: #ef3f3f;
+      background-color:	#25584f;
+      color: #8f9779;
 }
 
 .completed {
@@ -294,21 +78,6 @@ button:focus, button:active  {
   opacity: 0.5;
   animation: fade 1s forwards;
   box-shadow: 3px 3px;
-}
-
-#buttons {
-  display: flex;
-  align-self: baseline;
-}
-
-.delete-button, .priority-button, .edit-button {
-  cursor: pointer;
-  width: 0.9em;
-  opacity: 0.3;
-  padding-left: 0.5em;
-  &:hover {
-    opacity: 1;
-  }
 }
 
 .delete-list{
@@ -330,20 +99,20 @@ button:focus, button:active  {
   width: 20px;
   height: 20px;
   margin: 0.1em;
-  border: 3px solid #243447;
   cursor: pointer;
   text-align: center;
-  background-color: #fff;
-  box-shadow: 3px 3px #243447;
-  &.checked {
-    background-color: #ffbbaa;
-    opacity: 0.5;
-  }
+    border: 3px solid #071e17;
+    background-color: #232b2b;
+    box-shadow: 3px 3px 	#071e17;
+    &.checked {
+      background-color: 	#8f9779;
+    }
 }
 
 .priority {
-  border-color: #c51f5d !important;
-  box-shadow: 5px 5px #c51f5d !important;
+    border: 2px solid;
+    border-color:	#ef3f3f !important;
+    box-shadow: 5px 5px	#ef3f3f !important;
 }
 
 #clear:hover {
@@ -376,13 +145,12 @@ button:focus, button:active  {
 }
 
 #login-buttons {
-  background-color: #ffeead;
+    background-color: #232b2b;
   border-bottom: 2px solid #071e17;
   display: flex;
   justify-content: space-evenly;
   padding: 1em;
   height: 1em;
-  opacity: 0.6;
   button {
     font-size: 0.5em;
     font-weight: 900;
@@ -398,10 +166,6 @@ button:focus, button:active  {
   margin: 0;
   text-align: center;
   margin-top: 1.2em;
-}
-
-#swipe-area {
-  display: none;
 }
 
 #input-edit-wrapper {
@@ -437,19 +201,6 @@ button:focus, button:active  {
 }
 
 @media (max-width: 700px) {
-  .app, .dark-mode .app{
-    display: grid;
-    grid-template-columns: 100%;
-    border: 0;
-    box-shadow: none;
-    grid-template-rows: 6% 90% auto;
-  }
-  body {
-    background-color: #ffeead;
-  }
-  .dark-mode {
-    background-color: #232b2b;
-  }
   #sidebar, .dark-mode #sidebar {
     z-index: 999;   
     border: 0;
@@ -508,7 +259,6 @@ button:focus, button:active  {
   #sidebar #slideIn {
     animation: slideMe .3s ease-in;
     height: 100vh;
-    background-color: #ffeead;
   }
   .dark-mode #sidebar #slideOut {
     animation: slideMe2 .3s ease-in forwards;
@@ -518,7 +268,6 @@ button:focus, button:active  {
   #sidebar #slideOut {
     animation: slideMe2 .3s ease-in forwards;
     height: 100vh;
-    background-color: #ffeead;
   }
   #sidebar #hidden {
     display: none;

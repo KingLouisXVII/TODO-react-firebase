@@ -1,10 +1,96 @@
 import React, { useState } from 'react';import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
 import { reorderTodos } from '../utils/Reorder';
 import deleteButton from '../assets/delete.svg'
 import priorityButton from '../assets/important.svg'
 import editButton from '../assets/edit.svg'
-import updownButton from '../assets/updown.svg'
 import firebase from '../utils/Firebase.js';
+
+const StyledTodos = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
+const InputWrapper = styled.div`
+  width: 80%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+`;
+
+const TodosInput = styled.input`
+    height: auto;
+    width: 100%;
+    padding: 0.3em;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    align-self: center;
+    word-break: break-word;
+    border: 2px solid;
+    font-size: 1em;
+    align-self: center;
+    outline: none;
+    background-color: #8f9779;
+    color: 	#071e17;
+    border-color: #071e17;
+    box-shadow: 5px 5px #071e17;
+`;
+
+const TodosList = styled.ul`
+    width: 70%;
+    list-style-type: none;
+    margin: 0;
+    overflow: scroll;
+    flex: 2;
+`;
+
+const TodoItemWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: default !important;
+  width: 92%;
+  margin-left: 0.7em;
+`;
+
+const TodosItem = styled.li`
+      display: flex;
+      justify-content: space-between;
+      height: auto;
+      width: 100%;
+      padding: 0.2em;
+      margin: 0.5em;
+      cursor: pointer;
+      align-self: center;
+      word-break: break-word;
+      border: 2px solid;
+      font-size: 0.7em;
+        background-color: #232b2b;
+        color: 	#8f9779;
+        border-color: #071e17;
+        box-shadow: 5px 5px #071e17;
+        &:hover, &:active {
+          box-shadow: 5px 5px #25584f;
+        }
+`;
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  align-self: baseline;
+`;
+
+const ImageButton = styled.img`
+  cursor: pointer;
+  width: 0.9em;
+  opacity: 0.3;
+  padding-left: 0.5em;
+  &:hover {
+    opacity: 1;
+  }
+`;
 
 function Todos(props) {
   const [input, setInput] = useState('');
@@ -112,27 +198,26 @@ function Todos(props) {
   }
 
   return (
-    <div id="todos">
+    <StyledTodos id="todos">
       <h6 id="active-list-name">{active}</h6>
       {active?
-      <div id="input-todo-wrap">
-        <input
+      <InputWrapper>
+        <TodosInput
           autoComplete="off"
           type="text"
           placeholder="..."
           value={input}
           onChange={onChange}
           onKeyDown={e =>handleKeyDown(e)}
-          id="new-todo"
           name="todo"
         />
-      </div>
+      </InputWrapper>
           : null
       }
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="todos">
           {provided => (
-            <ul ref={provided.innerRef} {...provided.droppableProps}>
+            <TodosList ref={provided.innerRef} {...provided.droppableProps}>
               {lists[active] ?
                 lists[active].todos.reduce((todos, todo) => {
                   if (!todo.exist) {
@@ -142,22 +227,22 @@ function Todos(props) {
                 }, []).map((todo,i) =>
                   <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
-                      <div className="todo"
+                      <TodoItemWrapper
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
                         <div className={todo.completed?'checkbox checked':'checkbox'} onClick={e=>toggleTodo(i)}></div>
-                        <li
+                        <TodosItem
                           className={todo.completed?'completed':todo.priority?'priority':''}
                         >{todo.name}                        
-                          <div id="buttons">
-                            <div onClick={e=>editTodo(i)} ><img className="edit-button" alt="edit-todo" src={editButton}/></div>
-                            <div onClick={e=>prioritize(i)}><img className="priority-button" alt="prioritize-todo" src={priorityButton}/></div>
-                            <div onClick={e=>deleteTodo(i)} ><img className="delete-button" alt="delete-todo" src={deleteButton}/></div>
-                          </div> 
-                        </li>
-                      </div>
+                          <ButtonsWrapper>
+                            <div onClick={e=>editTodo(i)} ><ImageButton alt="edit-todo" src={editButton}/></div>
+                            <div onClick={e=>prioritize(i)}><ImageButton alt="prioritize-todo" src={priorityButton}/></div>
+                            <div onClick={e=>deleteTodo(i)} ><ImageButton alt="delete-todo" src={deleteButton}/></div>
+                          </ButtonsWrapper> 
+                        </TodosItem>
+                      </TodoItemWrapper>
                     )
                     }
                   </Draggable>
@@ -166,7 +251,7 @@ function Todos(props) {
                 null
               }
               {provided.placeholder}
-            </ul>
+            </TodosList>
           )}
         </Droppable>
       </DragDropContext>
@@ -176,8 +261,7 @@ function Todos(props) {
           : 
           null
       }
-    </div>
-
+    </StyledTodos>
   )
 }
 
