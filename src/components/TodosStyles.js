@@ -118,6 +118,7 @@ export const Checkbox = styled.div`
 export const ButtonsWrapper = styled.div`
   display: flex;
   align-self: baseline;
+height: 1em;
 `;
 
 export const ImageButton = styled.img`
