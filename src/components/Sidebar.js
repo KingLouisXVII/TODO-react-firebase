@@ -23,14 +23,14 @@ const StyledSidebar = styled.div`
 `;
 
 const MobileHamburger = styled.div`
-@media (max-width: 700px) {
-  display: flex;
-  justify-content: space-between;
-  height: 1.5em;
-  border: 0;
-  padding: 0.5em;
-  align-items: center;
-}
+  @media (max-width: 700px) {
+    display: flex;
+    justify-content: space-between;
+    height: 1.5em;
+    border: 0;
+    padding: 0.5em;
+    align-items: center;
+  }
 `;
 
 const Hamburger = styled.button`
@@ -49,7 +49,7 @@ const Logo = styled.h1`
   cursor: pointer;
   opacity: 0.8;
   @media (max-width: 700px) {
-   font-size: 1.3em; 
+    font-size: 1.3em; 
   }
 `;
 
@@ -63,7 +63,7 @@ const LoginButtons = styled.div`
 `;
 
 const LoginOutButton = styled.button`
-font-size: 0.5em;
+  font-size: 0.5em;
   font-weight: 900;
   cursor: pointer;
   border: 0;
@@ -97,12 +97,13 @@ const SidebarInput = styled.input `
 ;`
 
 const Lists = styled.div`
+  display: flex;
   height: auto;
-  display: ${props => props.display};
   flex-direction: column;
   background-color: #232b2b;
   @media (max-width: 700px) {
     height: 100vh;
+    display: ${props => props.display};
     animation: ${props => props.animation};
     z-index: 99;
     overflow-y: scroll;
@@ -130,6 +131,7 @@ const List = styled.div`
 `;
 
 const DeleteList = styled.div`
+  visibility: ${props => props.visibility};
   opacity: 0.3;
   text-shadow: 5px 4px #000;
   cursor: pointer;
@@ -166,7 +168,6 @@ const DeleteDialog = styled.div`
 function Sidebar(props) {
   const [input, setInput] = useState('');
   const [toggle, setToggle] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [deleting, setDeleting] = useState(-1);
   const [editToggle, setEditToggle] = useState(false);
   const { active, setActive, lists, setLists, user, login, logout } = props;
@@ -215,7 +216,6 @@ function Sidebar(props) {
   }
 
   function toggleLists() {
-    setLoaded(true);
     setToggle(!toggle);
   }
 
@@ -258,8 +258,7 @@ function Sidebar(props) {
               <Droppable droppableId="sidebar">
                 {provided => (
                   <Lists 
-                    animation={loaded?toggle?'slideIn .3s ease-in':'slideOut .3s ease-in forwards':null}
-                    display={loaded?toggle?'flex':'flex':'none'}
+                    animation={toggle?'slideIn .3s ease-in':'slideOut .3s ease-in forwards'}
                     ref={provided.innerRef} 
                     {...provided.droppableProps}
                   >
@@ -297,10 +296,7 @@ function Sidebar(props) {
                                       ? <DeleteDialog>Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></DeleteDialog >
                                       : <div className="list-name-wrapper" ><div>{list[0]}</div></div>
                                   }
-                                  {editToggle 
-                                      ? <DeleteList onClick={()=>setDeleting(i)}><img alt="delete-list" src={deleteButton}/></DeleteList>
-                                      : <DeleteList onClick={()=>setDeleting(i)} className="hidden"><img alt="delete-list" src={deleteButton}/></DeleteList>
-                                  }
+                                  <DeleteList onClick={()=>setDeleting(i)} visibility={editToggle?'visible':'hidden'}><img alt="delete-list" src={deleteButton}/></DeleteList>
                                 </List>
                             )}
                           </Draggable>
