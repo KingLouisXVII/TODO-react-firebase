@@ -259,6 +259,7 @@ function Sidebar(props) {
                 {provided => (
                   <Lists 
                     animation={loaded?toggle?'slideIn .3s ease-in':'slideOut .3s ease-in forwards':null}
+                    display={loaded?toggle?'flex':'flex':'none'}
                     ref={provided.innerRef} 
                     {...provided.droppableProps}
                   >
