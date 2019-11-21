@@ -80,8 +80,8 @@ const TodoItemWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   cursor: default !important;
-  width: 92%;
-  margin-left: 0.7em;
+  width: 90%;
+  margin-left: 0.8em;
 `;
 
 const TodosItem = styled.li`
