@@ -33,6 +33,15 @@ const MobileHamburger = styled.div`
 }
 `;
 
+const Hamburger = styled.button`
+  display: none;
+  @media (max-width: 700px) {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  } 
+`;
+
 const Logo = styled.h1`
   font-size: 2em;
   margin: 0;
@@ -89,9 +98,12 @@ const SidebarInput = styled.input `
 
 const Lists = styled.div`
   height: auto;
-  display: flex;
+  display: ${props => props.display};
   flex-direction: column;
+  background-color: #232b2b;
   @media (max-width: 700px) {
+    height: 100vh;
+    animation: ${props => props.animation};
     z-index: 99;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -135,6 +147,7 @@ const DeleteList = styled.div`
     padding-right: 0.5em;
   }
 `;
+
 const DeleteDialog = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -228,7 +241,7 @@ function Sidebar(props) {
       <DragDropContext onDragEnd={onDragEnd}>
         <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>
-          <button
+          <Hamburger
             className={
               toggle ?
                 'hamburger  hamburger--collapse is-active'
@@ -236,16 +249,19 @@ function Sidebar(props) {
                 'hamburger  hamburger--collapse'}
                   onClick={toggleLists}
                   type="button"
-                  id="mobile-only"
                 >
                   <span className="hamburger-box">
                     <span className="hamburger-inner"></span>
                   </span>
-                </button>
+                </Hamburger>
               </MobileHamburger>
               <Droppable droppableId="sidebar">
                 {provided => (
-                  <Lists id={loaded ?  toggle?'slideIn':'slideOut' : 'hidden'} ref={provided.innerRef} {...provided.droppableProps}>
+                  <Lists 
+                    animation={loaded?toggle?'slideIn .3s ease-in':'slideOut .3s ease-in forwards':null}
+                    ref={provided.innerRef} 
+                    {...provided.droppableProps}
+                  >
                     <LoginButtons>
                       {user
                           ? <LoginOutButton onClick={logout}>logout</LoginOutButton>

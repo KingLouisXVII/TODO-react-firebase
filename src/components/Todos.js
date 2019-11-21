@@ -64,7 +64,7 @@ const TodosInput = styled.input`
 `;
 
 const TodosList = styled.ul`
-  width: 70%;
+  width: 75%;
   list-style-type: none;
   margin: 0;
   overflow: scroll;
@@ -98,11 +98,11 @@ const TodosItem = styled.li`
   font-size: 0.7em;
   background-color: #232b2b;
   color: 	#8f9779;
-  border-color: #071e17;
-  box-shadow: 5px 5px #071e17;
-  &:hover, &:active {
-    box-shadow: 5px 5px #25584f;
-  }
+  border-color: ${props => props.color}; 
+  box-shadow: 5px 5px ${props => props.color};
+  text-decoration: ${props => props.textDecoration};
+  opacity: ${props => props.opacity};
+  animation: ${props => props.animation};
   @media (max-width: 700px) {
         font-size: 0.7em;
   }
@@ -131,12 +131,12 @@ const ImageButton = styled.img`
   width: 0.9em;
   opacity: 0.3;
   padding-left: 0.5em;
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 const ClearDone = styled.h2`
+  cursor: pointer;
+  margin: 0;
+  text-align: center;
  &:hover {
   transition: all 0.5s ease;
   opacity: 0.7;
@@ -285,7 +285,11 @@ function Todos(props) {
                       >
                         <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
                         <TodosItem
-                          className={todo.completed?'completed':todo.priority?'priority':''}
+                          className={todo.completed?'completed':null}
+                          color={todo.priority?'#ef3f3f':'#071e17'}
+                          textDecoration={todo.completed?'line-through':null}
+                          opacity={todo.completed?'0.5':null}
+                          animation={todo.completed?'fade 1s forwards':null}
                         >{todo.name}                        
                           <ButtonsWrapper>
                             <div onClick={e=>editTodo(i)} ><ImageButton alt="edit-todo" src={editButton}/></div>
