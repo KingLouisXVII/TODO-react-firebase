@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|VT323&display=swap');
+
 @keyframes fade {
   from {opacity:1;}
   to {opacity:0.5;}
@@ -52,7 +53,6 @@ body::-webkit-scrollbar, #sidebar::-webkit-scrollbar, #todos ul::-webkit-scrollb
   display: none;
 }
 
-
 input::placeholder {
   color: #152218;
   font-weight: bold;
@@ -68,9 +68,9 @@ button:focus, button:active  {
 }
 
 .active {
-      border-color: #ef3f3f;
-      background-color:	#25584f;
-      color: #8f9779;
+  border-color: #ef3f3f;
+  background-color:	#25584f;
+  color: #8f9779;
 }
 
 .completed {
@@ -80,226 +80,45 @@ button:focus, button:active  {
   box-shadow: 3px 3px;
 }
 
-.delete-list{
-  opacity: 0.3;
-  text-shadow: 5px 4px #000;
-  cursor: pointer;
-  font-size: 1.5em;
-  width: 0.7em;
-  color: indianred;
-  align-self: right;
-  transition: all 0.2s ease;
-  position: relative;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.checkbox {
-  width: 20px;
-  height: 20px;
-  margin: 0.1em;
-  cursor: pointer;
-  text-align: center;
-    border: 3px solid #071e17;
-    background-color: #232b2b;
-    box-shadow: 3px 3px 	#071e17;
-    &.checked {
-      background-color: 	#8f9779;
-    }
-}
-
 .priority {
-    border: 2px solid;
-    border-color:	#ef3f3f !important;
-    box-shadow: 5px 5px	#ef3f3f !important;
+  border: 2px solid;
+  border-color:	#ef3f3f !important;
+  box-shadow: 5px 5px	#ef3f3f !important;
 }
 
-#clear:hover {
-  transition: all 1s ease;
-  opacity: 0.7;
-}
-
-#delete-dialog {
-  display: flex;
-  justify-content: space-evenly;
-  width: 90%;
-  opacity: 0.5;
-  #yes {
-    color: green;
-    cursor: pointer;
-  }
-  #no {
-    color: red;
-    cursor: pointer;
-  }
-}
-
-#list-toggle {
+#mobile-only {
   display: none;
-}
-
-.list-name-wrapper {
-  width: 80%;
-  text-align: left;
-}
-
-#login-buttons {
-    background-color: #232b2b;
-  border-bottom: 2px solid #071e17;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 1em;
-  height: 1em;
-  button {
-    font-size: 0.5em;
-    font-weight: 900;
-    cursor: pointer;
-    border: 0;
-    background-color: transparent;
-    outline: 0;
-  }
-}
-
-#active-list-name {
-  display: none;
-  margin: 0;
-  text-align: center;
-  margin-top: 1.2em;
-}
-
-#input-edit-wrapper {
-  display: grid;
-  grid-template-columns: 80% 20%;
-  height: 2em;
-  border-bottom: 2px solid;
-  background-color: #ffeead;
-}
-
-#edit-toggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  img {
-    width: 0.7em;
-    height: 1em;
-  }
 }
 
 .hidden {
   visibility: hidden;
 }
 
-@media (max-width: 900px) {
-  #input-todo-wrap {
-    width: 90%;
-  }
-  #todos ul {
-    width: 77%;
-  }  
-}
-
 @media (max-width: 700px) {
-  #sidebar, .dark-mode #sidebar {
-    z-index: 999;   
-    border: 0;
-    overflow: visible;
-    height: 5%;
-    h1 {
-      font-size: 1.5em;
-    }
+  #slideIn {
+    animation: slideMe .3s ease-in;
+    height: 100vh;
+    background-color: #232b2b;
   }
-  #todos, .dark-mode #todos {
-    height: 100%;
-    #input-todo-wrap {
-      width: 100%;
-      margin: 0;
-      height: 2em;
-      justify-content: center;
-    }
-    ul {
-      width: 100%;
-      padding: 0;
-    }
+  #slideIn {
+    animation: slideMe .3s ease-in;
+    height: 100vh;
   }
-  #todos #new-todo {
-    width: 85%;
+  #slideOut {
+    animation: slideMe2 .3s ease-in forwards;
+    height: 100vh;
+    background-color: #232b2b;
+  }
+  #slideOut {
+    animation: slideMe2 .3s ease-in forwards;
+    height: 100vh;
+  }
+  #hidden {
+    display: none;
+  }
+  #mobile-only {
+    display: flex;
+    padding: 0;
     margin: 0;
   }
-  .dark-mode #todos ul li {
-    font-size: 0.7em;
-    &:hover {
-      box-shadow: 5px 5px #071e17;
-    }
-  }
-  #todos ul li {
-    font-size: 0.6em;
-    &:hover {
-      box-shadow: 5px 5px #071e17;
-    }
-  }
-  #sidebar input, .dark-mode #sidebar input {
-    width: 100%;
-  }
-  .dark-mode #sidebar .lists, #sidebar .lists {
-    z-index: 99;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    .delete-list {
-      opacity: 0.6;
-      padding-right: 0.5em;
-    }
-  }
-  .dark-mode #sidebar #slideIn {
-    animation: slideMe .3s ease-in;
-    height: 100vh;
-    background-color: #232b2b;
-  }
-  #sidebar #slideIn {
-    animation: slideMe .3s ease-in;
-    height: 100vh;
-  }
-  .dark-mode #sidebar #slideOut {
-    animation: slideMe2 .3s ease-in forwards;
-    height: 100vh;
-    background-color: #232b2b;
-  }
-  #sidebar #slideOut {
-    animation: slideMe2 .3s ease-in forwards;
-    height: 100vh;
-  }
-  #sidebar #hidden {
-    display: none;
-  }
-  #sidebar #button-wrapper, .dark-mode #sidebar #button-wrapper {
-    display: flex;
-    justify-content: space-between;
-    height: 1.5em;
-    border: 0;
-    padding: 0.3em;
-  }
-  .dark-mode #list-toggle, #list-toggle {
-    display: block;
-  }
-  #app-separator {
-    display: none;
-  }
-  #input-todo-wrap {
-    top: 2em;
-  }
-  #active-list-name {
-    display: block;
-  }
-  #swipe-area {
-    display: block;
-    height: 2em;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
 }
-

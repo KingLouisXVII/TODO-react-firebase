@@ -10,6 +10,19 @@ const StyledTodos = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  @media (max-width: 700px) {
+    height: 100%;
+  }
+`;
+
+const ListHeadline = styled.h6`
+  display: none;
+  margin: 0;
+  text-align: center;
+  margin-top: 1.5em;
+  @media (max-width: 700px) {
+   display: block; 
+  }
 `;
 
 const InputWrapper = styled.div`
@@ -18,33 +31,48 @@ const InputWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 99;
+  @media (max-width: 700px) {
+    width: 100%;
+    margin: 0;
+    height: 2em;
+    justify-content: center;
+    top: 2em;
+  }
 `;
 
 const TodosInput = styled.input`
-    height: auto;
-    width: 100%;
-    padding: 0.3em;
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
-    align-self: center;
-    word-break: break-word;
-    border: 2px solid;
-    font-size: 1em;
-    align-self: center;
-    outline: none;
-    background-color: #8f9779;
-    color: 	#071e17;
-    border-color: #071e17;
-    box-shadow: 5px 5px #071e17;
+  height: auto;
+  width: 100%;
+  padding: 0.3em;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  align-self: center;
+  word-break: break-word;
+  border: 2px solid;
+  font-size: 1em;
+  align-self: center;
+  outline: none;
+  background-color: #8f9779;
+  color: 	#071e17;
+  border-color: #071e17;
+  box-shadow: 5px 5px #071e17;
+  @media (max-width: 700px) {
+    width: 85%;
+    margin: 0;
+  }
 `;
 
 const TodosList = styled.ul`
-    width: 70%;
-    list-style-type: none;
-    margin: 0;
-    overflow: scroll;
-    flex: 2;
+  width: 70%;
+  list-style-type: none;
+  margin: 0;
+  overflow: scroll;
+  flex: 2;
+  @media (max-width: 700px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 const TodoItemWrapper = styled.div`
@@ -57,26 +85,42 @@ const TodoItemWrapper = styled.div`
 `;
 
 const TodosItem = styled.li`
-      display: flex;
-      justify-content: space-between;
-      height: auto;
-      width: 100%;
-      padding: 0.2em;
-      margin: 0.5em;
-      cursor: pointer;
-      align-self: center;
-      word-break: break-word;
-      border: 2px solid;
-      font-size: 0.7em;
-        background-color: #232b2b;
-        color: 	#8f9779;
-        border-color: #071e17;
-        box-shadow: 5px 5px #071e17;
-        &:hover, &:active {
-          box-shadow: 5px 5px #25584f;
-        }
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  width: 100%;
+  padding: 0.2em;
+  margin: 0.5em;
+  cursor: pointer;
+  align-self: center;
+  word-break: break-word;
+  border: 2px solid;
+  font-size: 0.7em;
+  background-color: #232b2b;
+  color: 	#8f9779;
+  border-color: #071e17;
+  box-shadow: 5px 5px #071e17;
+  &:hover, &:active {
+    box-shadow: 5px 5px #25584f;
+  }
+  @media (max-width: 700px) {
+        font-size: 0.7em;
+  }
 `;
 
+const Checkbox = styled.div`
+  width: 20px;
+  height: 20px;
+  margin: 0.1em;
+  cursor: pointer;
+  text-align: center;
+  border: 3px solid #071e17;
+  background-color: #232b2b;
+  box-shadow: 3px 3px 	#071e17;
+  &.checked {
+    background-color: 	#8f9779;
+  }
+`;
 const ButtonsWrapper = styled.div`
   display: flex;
   align-self: baseline;
@@ -90,6 +134,13 @@ const ImageButton = styled.img`
   &:hover {
     opacity: 1;
   }
+`;
+
+const ClearDone = styled.h2`
+ &:hover {
+  transition: all 0.5s ease;
+  opacity: 0.7;
+ }  
 `;
 
 function Todos(props) {
@@ -199,7 +250,7 @@ function Todos(props) {
 
   return (
     <StyledTodos id="todos">
-      <h6 id="active-list-name">{active}</h6>
+      <ListHeadline>{active}</ListHeadline>
       {active?
       <InputWrapper>
         <TodosInput
@@ -232,7 +283,7 @@ function Todos(props) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <div className={todo.completed?'checkbox checked':'checkbox'} onClick={e=>toggleTodo(i)}></div>
+                        <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
                         <TodosItem
                           className={todo.completed?'completed':todo.priority?'priority':''}
                         >{todo.name}                        
@@ -257,7 +308,7 @@ function Todos(props) {
       </DragDropContext>
       { 
         lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
-          <h2 id="clear" onClick={clearDone}>clear done</h2> 
+          <ClearDone onClick={clearDone}>clear done</ClearDone> 
           : 
           null
       }

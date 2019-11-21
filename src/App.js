@@ -16,11 +16,11 @@ const AppContainer = styled.div`
   color: 	#8f9779;
   overflow: hidden;
   @media (max-width: 700px) {
-      display: grid;
-      grid-template-columns: 100%;
-      border: 0;
-      box-shadow: none;
-      grid-template-rows: 6% 90% auto;
+  display: grid;
+    grid-template-columns: 100%;
+    border: 0;
+    box-shadow: none;
+    grid-template-rows: 6% 90% auto;
   }
 `;
 
