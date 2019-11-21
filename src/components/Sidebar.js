@@ -110,6 +110,11 @@ const List = styled.div`
   background-color: #232b2b;
   border-bottom: 2px solid 	#071e17;
   color: 	#8f9779;
+  &.active {
+    border-color: #ef3f3f;
+    background-color:	#25584f;
+    color: #8f9779;
+  }
 `;
 
 const DeleteList = styled.div`
