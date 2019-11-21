@@ -12,7 +12,6 @@ function App() {
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
 
-
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {

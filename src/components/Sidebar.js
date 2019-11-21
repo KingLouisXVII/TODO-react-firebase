@@ -17,7 +17,9 @@ import {
   Lists, 
   List, 
   DeleteList, 
-  DeleteDialog } from './SidebarStyles.js'
+  DeleteDialog 
+} from './SidebarStyles.js'
+
 
 function Sidebar(props) {
   const [input, setInput] = useState('');

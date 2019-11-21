@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const StyledSidebar = styled.div`
   background-color: #232b2b;
   border-right: 7px solid #071e17;
