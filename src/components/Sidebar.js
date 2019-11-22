@@ -121,7 +121,7 @@ function Sidebar(props) {
                     <LoginButtons>
                       {user
                           ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
-                          : <LoginOutButton Click={login}>login</LoginOutButton>
+                          : <LoginOutButton onClick={login}>login</LoginOutButton>
                       }
                       <EditToggle onClick={() => setEditToggle(!editToggle)}><img alt="edit-toggle" src={editButton}/></EditToggle >
                     </LoginButtons>
