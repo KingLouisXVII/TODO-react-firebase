@@ -35,11 +35,11 @@ export const InputWrapper = styled.div`
 
 export const TodosInput = styled.input`
   height: auto;
-  width: 100%;
+  width: 85%;
   padding: 0.3em;
   margin-top: 1em;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   align-self: center;
   word-break: break-word;
   border: 2px solid;
@@ -50,10 +50,10 @@ export const TodosInput = styled.input`
   color: 	#071e17;
   border-color: #071e17;
   box-shadow: 5px 5px #071e17;
-@media (max-width: 700px) {
-  width: 85%;
-  margin: 0;
-}
+  @media (max-width: 700px) {
+    width: 85%;
+    margin: 0;
+  }
 `;
 
 export const TodosList = styled.ul`
@@ -64,10 +64,11 @@ flex: 2;
 padding: 0;
 display: flex;
 flex-direction: column;
-align-items: center;
+align-items: baseline;
 @media (max-width: 700px) {
   width: 100%;
   padding: 0;
+  align-items: center;
 }
 `;
 
@@ -76,8 +77,12 @@ display: flex;
 flex-direction: row;
 align-items: center;
 cursor: default !important;
-width: 90%;
+width: 85%;
 margin-left: 0.8em;
+@media (max-width: 700px) {
+width: 90%;
+margin-left: 0;
+}
 `;
 
 export const TodosItem = styled.li`
