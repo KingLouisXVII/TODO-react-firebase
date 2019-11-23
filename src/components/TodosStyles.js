@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  @media (max-width: 700px) {
+    overflow:initial;
+  }
 `;
 
 export const ListHeadline = styled.h6`
@@ -16,13 +22,13 @@ export const ListHeadline = styled.h6`
 export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+    position: sticky;
+    top: 1em;
   @media (max-width: 700px) {
     width: 100%;
     margin: 0;
     height: 2em;
     justify-content: center;
-    position: sticky;
-    top: 1em;
   }
 `;
 
@@ -49,15 +55,13 @@ export const TodosInput = styled.input`
 `;
 
 export const TodosList = styled.ul`
-  height: 100vh;
   list-style-type: none;
-  overflow: scroll;
   flex: 2;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: baseline;
-margin: 0;
+  margin: 0;
   @media (max-width: 700px) {
     margin-top: 1em;
     width: 100%;

@@ -12,6 +12,7 @@ export const StyledSidebar = styled.div`
     z-index: 99;   
     border: 0;
     width: 100vw;
+    overflow-y: hidden;
   }
 `;
 
