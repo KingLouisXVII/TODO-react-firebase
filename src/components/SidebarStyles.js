@@ -97,8 +97,6 @@ export const Lists = styled.div`
     height: 100vh;
     display: ${props => props.display};
     animation: ${props => props.animation};
-    overflow-y: scroll;
-    overflow-x: hidden;
   }
 `;
 
