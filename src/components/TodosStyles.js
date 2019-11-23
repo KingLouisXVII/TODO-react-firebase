@@ -61,7 +61,7 @@ export const TodosList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  margin: 0;
+  margin-top: 1em;
   @media (max-width: 700px) {
     margin-top: 1em;
     width: 100%;
