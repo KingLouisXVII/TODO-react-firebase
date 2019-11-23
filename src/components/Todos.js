@@ -82,6 +82,7 @@ function Todos(props) {
   function clearDone() {
     const allLists = {...lists};
     const newTodos = allLists[active].todos.filter(removeCompleted);
+    newTodos.length<=1&&newTodos.push({exist:true});
     allLists[active].todos = newTodos;
     setLists(allLists);
     setInput('');
