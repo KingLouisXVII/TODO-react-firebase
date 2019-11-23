@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  @media (max-width: 700px) {
-    height: 100%;
-  }
 `;
 
 export const ListHeadline = styled.h6`
@@ -21,25 +15,23 @@ export const ListHeadline = styled.h6`
 
 export const InputWrapper = styled.div`
   display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 99;
+  flex-direction: column;
   @media (max-width: 700px) {
     width: 100%;
     margin: 0;
     height: 2em;
     justify-content: center;
-    top: 2em;
+    position: sticky;
+    top: 1em;
   }
 `;
 
 export const TodosInput = styled.input`
   height: auto;
-  width: 85%;
+  width: 95%;
   padding: 0.3em;
   margin-top: 1em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin-left: 0.4em;
   align-self: center;
   word-break: break-word;
   border: 2px solid;
@@ -57,91 +49,94 @@ export const TodosInput = styled.input`
 `;
 
 export const TodosList = styled.ul`
-list-style-type: none;
-margin: 0;
-overflow: scroll;
-flex: 2;
-padding: 0;
-display: flex;
-flex-direction: column;
-align-items: baseline;
-@media (max-width: 700px) {
-  width: 100%;
+  height: 100vh;
+  list-style-type: none;
+  overflow: scroll;
+  flex: 2;
   padding: 0;
-  align-items: center;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+margin: 0;
+  @media (max-width: 700px) {
+    margin-top: 1em;
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    overflow: scroll;
+    height: 80vh;
+  }
 `;
 
 export const TodoItemWrapper = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-cursor: default !important;
-width: 85%;
-margin-left: 0.8em;
-@media (max-width: 700px) {
-width: 90%;
-margin-left: 0;
-}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: default !important;
+  width: 92%;
+  margin-left: 0.8em;
+  @media (max-width: 700px) {
+    width: 90%;
+    margin-left: 0;
+  }
 `;
 
 export const TodosItem = styled.li`
-display: flex;
-justify-content: space-between;
-height: auto;
-width: 100%;
-padding: 0.2em;
-margin: 0.5em;
-cursor: pointer;
-align-self: center;
-word-break: break-word;
-border: 2px solid;
-font-size: 0.7em;
-background-color: #232b2b;
-color: 	#8f9779;
-border-color: ${props => props.color};
-box-shadow: 5px 5px ${props => props.color};
-text-decoration: ${props => props.textDecoration};
-opacity: ${props => props.opacity};
-animation: ${props => props.animation};
-@media (max-width: 700px) {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  width: 100%;
+  padding: 0.2em;
+  margin: 0.5em;
+  cursor: pointer;
+  align-self: center;
+  word-break: break-word;
+  border: 2px solid;
   font-size: 0.7em;
-}
+  background-color: #232b2b;
+  color: 	#8f9779;
+  border-color: ${props => props.color};
+  box-shadow: 5px 5px ${props => props.color};
+  text-decoration: ${props => props.textDecoration};
+  opacity: ${props => props.opacity};
+  animation: ${props => props.animation};
+  @media (max-width: 700px) {
+    font-size: 0.7em;
+  }
 `;
 
 export const Checkbox = styled.div`
-width: 20px;
-height: 20px;
-margin: 0.1em;
-cursor: pointer;
-text-align: center;
-border: 3px solid #071e17;
-background-color: #232b2b;
-box-shadow: 3px 3px 	#071e17;
-&.checked {
-  background-color: 	#8f9779;
-}
+  width: 20px;
+  height: 20px;
+  margin: 0.1em;
+  cursor: pointer;
+  text-align: center;
+  border: 3px solid #071e17;
+  background-color: #232b2b;
+  box-shadow: 3px 3px 	#071e17;
+  &.checked {
+    background-color: 	#8f9779;
+  }
 `;
 export const ButtonsWrapper = styled.div`
-display: flex;
-align-self: baseline;
-height: 1em;
+  display: flex;
+  align-self: baseline;
+  height: 1em;
 `;
 
 export const ImageButton = styled.img`
-cursor: pointer;
-width: 0.9em;
-opacity: 0.3;
-padding-left: 0.5em;
+  cursor: pointer;
+  width: 0.9em;
+  padding-left: 0.5em;
 `;
 
 export const ClearDone = styled.h2`
-cursor: pointer;
-margin: 0;
-text-align: center;
-&:hover {
-  transition: all 0.5s ease;
-  opacity: 0.7;
-}
+  cursor: pointer;
+  margin: 0;
+  text-align: center;
+  &:hover {
+    transition: all 0.5s ease;
+    opacity: 0.7;
+  }
 `;
 

@@ -126,9 +126,9 @@ function Todos(props) {
 
   return (
     <StyledTodos id="todos">
-      <ListHeadline>{active}</ListHeadline>
       {active?
       <InputWrapper>
+      <ListHeadline>{active}</ListHeadline>
         <TodosInput
           autoComplete="off"
           type="text"

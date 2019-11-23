@@ -5,8 +5,19 @@
   to {opacity:0.5;}
 }
 
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes fadeOut {
+  from {opacity:1;}
+  to {opacity:0;}
+}
+
 @keyframes slideIn {
   0%{
+    display: none;
     transform: translateX(+500px);
   }
   100%{

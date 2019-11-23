@@ -8,10 +8,10 @@ export const StyledSidebar = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
   @media (max-width: 700px) {
-    z-index: 999;   
+    height: ${props => props.height};
+    z-index: 99;   
     border: 0;
-    overflow: visible;
-    height: 5%;
+    width: 100vw;
   }
 `;
 
@@ -38,7 +38,6 @@ export const Hamburger = styled.button`
 export const Logo = styled.h1`
   font-size: 2em;
   margin: 0;
-  background-color: #232b2b;
   cursor: pointer;
   opacity: 0.8;
   @media (max-width: 700px) {
@@ -98,7 +97,6 @@ export const Lists = styled.div`
     height: 100vh;
     display: ${props => props.display};
     animation: ${props => props.animation};
-    z-index: 99;
     overflow-y: scroll;
     overflow-x: hidden;
   }
