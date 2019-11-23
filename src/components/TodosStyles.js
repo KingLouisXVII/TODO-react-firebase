@@ -64,7 +64,7 @@ margin: 0;
     padding: 0;
     align-items: center;
     overflow: scroll;
-    height: 80vh;
+    height: initial;
   }
 `;
 
