@@ -12,16 +12,19 @@ export const StyledSidebar = styled.div`
     z-index: 99;   
     border: 0;
     width: 100vw;
+    overflow: hidden;
   }
 `;
 
 export const MobileHamburger = styled.div`
   @media (max-width: 700px) {
+    position: fixed;
+    top: 0.3em;
+    right: 0.3em;
     display: flex;
     justify-content: space-between;
     height: 1.5em;
     border: 0;
-    padding: 0.5em;
     align-items: center;
   }
 `;
@@ -51,6 +54,9 @@ export const ListHeadline = styled.h3`
   background-color: #232b2b;
   margin: 0;
   @media (max-width: 700px) {
+    position: fixed;
+    top: 0;
+    left: 0.3em;
     display: block;
   }
 `;
@@ -62,6 +68,7 @@ export const LoginButtons = styled.div`
   justify-content: space-evenly;
   padding: 1em;
   height: 1em;
+  margin-top: 1em;
 `;
 
 export const LoginOutButton = styled.button`
@@ -85,17 +92,17 @@ export const EditToggle = styled.div`
 `;
 
 export const SidebarInput = styled.input `
-  background-color: #232b2b;
-  color: 	#8f9779;
-  font-size: 0.9em;
-  border: 0;
-  outline: none;
-  padding: 0.3em;
-  border-bottom: 2px solid;
-  border-color: #071e17;
-  @media (max-width: 700px) {
-    width: 100%;
-  }
+background-color: #232b2b;
+color: 	#8f9779;
+font-size: 0.9em;
+border: 0;
+outline: none;
+padding: 0.3em;
+border-bottom: 2px solid;
+border-color: #071e17;
+@media (max-width: 700px) {
+  width: 100%;
+}
 ;`
 
 export const Lists = styled.div`
@@ -103,10 +110,11 @@ export const Lists = styled.div`
   height: auto;
   flex-direction: column;
   background-color: #232b2b;
-    overflow: ${props => props.overflow}
+  overflow: ${props => props.overflow}
   @media (max-width: 700px) {
     height: 100vh;
     animation: ${props => props.animation};
+    display: ${props => props.display}
   }
 `;
 

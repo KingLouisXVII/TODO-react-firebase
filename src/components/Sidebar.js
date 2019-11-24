@@ -118,6 +118,7 @@ function Sidebar(props) {
                   <div style={{'overflow':'hidden'}}>
                   <Lists 
                     animation={toggle?'fadeIn .3s ease-in':'fadeOut .3s ease-in forwards'}
+                    display={toggle?'flex':'none'}
                     ref={provided.innerRef} 
                     {...provided.droppableProps}
                   >
