@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
-  height: 100vh;
+  height: 95vh;
+  margin-top: 1em;
   overflow-x: hidden;
   overflow-y: scroll;
   @media (max-width: 700px) {
@@ -23,7 +24,7 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
     position: sticky;
-    top: 1em;
+    top: 0;
   @media (max-width: 700px) {
     width: 100%;
     margin: 0;
@@ -33,10 +34,9 @@ export const InputWrapper = styled.div`
 `;
 
 export const TodosInput = styled.input`
-  height: auto;
+  height: 1.4em;
   width: 95%;
   padding: 0.3em;
-  margin-top: 1em;
   margin-left: 0.4em;
   align-self: center;
   word-break: break-word;
@@ -61,9 +61,8 @@ export const TodosList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  margin-top: 1em;
+  margin: 0;
   @media (max-width: 700px) {
-    margin-top: 1em;
     width: 100%;
     padding: 0;
     align-items: center;
@@ -135,8 +134,12 @@ export const ImageButton = styled.img`
 `;
 
 export const ClearDone = styled.h2`
+position: fixed;
+bottom: 0;
+right: 0;
   cursor: pointer;
   margin: 0;
+font-size: 1em;
   text-align: center;
   &:hover {
     transition: all 0.5s ease;
