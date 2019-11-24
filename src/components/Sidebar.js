@@ -7,6 +7,7 @@ import deleteButton from '../assets/delete.svg'
 import '../assets/hamburgers/hamburgers.scss';
 import {
   StyledSidebar,
+  ListHeadline,
   MobileHamburger, 
   Hamburger, 
   Logo, 
@@ -97,6 +98,7 @@ function Sidebar(props) {
       <DragDropContext onDragEnd={onDragEnd}>
         <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>
+      <ListHeadline>{active}</ListHeadline>
           <Hamburger
             className={
               toggle ?

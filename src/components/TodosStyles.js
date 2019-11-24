@@ -6,17 +6,21 @@ export const StyledTodos = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
   @media (max-width: 700px) {
-    overflow:initial;
+    height: 90vh;
+    overflow:scroll;
+  margin-top: 0.3em;
   }
 `;
 
 export const ListHeadline = styled.h6`
   display: none;
+  background-color: #232b2b;
   margin: 0;
   text-align: center;
   margin-top: 1.5em;
   @media (max-width: 700px) {
     display: block;
+  margin-top: 1em;
   }
 `;
 

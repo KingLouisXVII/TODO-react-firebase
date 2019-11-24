@@ -12,7 +12,6 @@ export const StyledSidebar = styled.div`
     z-index: 99;   
     border: 0;
     width: 100vw;
-    overflow-y: hidden;
   }
 `;
 
@@ -43,6 +42,16 @@ export const Logo = styled.h1`
   opacity: 0.8;
   @media (max-width: 700px) {
     font-size: 1.3em; 
+    display: none;
+  }
+`;
+
+export const ListHeadline = styled.h3`
+  display: none;
+  background-color: #232b2b;
+  margin: 0;
+  @media (max-width: 700px) {
+    display: block;
   }
 `;
 
@@ -94,9 +103,9 @@ export const Lists = styled.div`
   height: auto;
   flex-direction: column;
   background-color: #232b2b;
+    overflow: ${props => props.overflow}
   @media (max-width: 700px) {
     height: 100vh;
-    display: ${props => props.display};
     animation: ${props => props.animation};
   }
 `;

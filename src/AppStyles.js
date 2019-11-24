@@ -13,10 +13,10 @@ const AppContainer = styled.div`
   @media (max-width: 700px) {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 7% 90%;
     border: 0;
     box-shadow: none;
-    overflow: scroll;
+    overflow: hidden;
   }
 `;
 

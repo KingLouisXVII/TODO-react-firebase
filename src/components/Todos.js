@@ -6,7 +6,6 @@ import editButton from '../assets/edit.svg'
 import firebase from '../utils/Firebase.js';
 import {
   StyledTodos,
-  ListHeadline,
   InputWrapper,
   TodosInput,
   TodosList,
@@ -129,7 +128,6 @@ function Todos(props) {
     <StyledTodos id="todos">
       {active?
       <InputWrapper>
-      <ListHeadline>{active}</ListHeadline>
         <TodosInput
           autoComplete="off"
           type="text"
