@@ -69,6 +69,7 @@ export const LoginButtons = styled.div`
   padding: 1em;
   height: 1em;
   margin-top: 1em;
+  opacity: 0.5;
 `;
 
 export const LoginOutButton = styled.button`
