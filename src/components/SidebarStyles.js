@@ -25,7 +25,7 @@ export const MobileHamburger = styled.div`
     justify-content: space-between;
     height: 1.5em;
     border: 0;
-    align-items: center;
+    align-items: baseline;
   }
 `;
 
@@ -58,6 +58,8 @@ export const ListHeadline = styled.h3`
     top: 0;
     left: 0.3em;
     display: block;
+    width: 70%;
+    text-align: left;
   }
 `;
 
@@ -68,8 +70,10 @@ export const LoginButtons = styled.div`
   justify-content: space-evenly;
   padding: 1em;
   height: 1em;
-  margin-top: 1em;
   opacity: 0.5;
+  @media (max-width: 700px) {
+    margin-top: 2em;
+  }
 `;
 
 export const LoginOutButton = styled.button`
