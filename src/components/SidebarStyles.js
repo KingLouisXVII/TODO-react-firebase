@@ -72,7 +72,10 @@ export const LoginButtons = styled.div`
   height: 1em;
   opacity: 0.5;
   @media (max-width: 700px) {
-    margin-top: 2em;
+    background-color: transparent;
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 2em;
   }
 `;
 
@@ -111,68 +114,73 @@ border-color: #071e17;
 ;`
 
 export const Lists = styled.div`
-  display: flex;
-  height: auto;
-  flex-direction: column;
-  background-color: #232b2b;
-  overflow: ${props => props.overflow}
-  @media (max-width: 700px) {
-    height: 100vh;
-    animation: ${props => props.animation};
-    display: ${props => props.display}
-  }
+display: flex;
+height: auto;
+flex-direction: column;
+background-color: #232b2b;
+overflow: ${props => props.overflow}
+@media (max-width: 700px) {
+  height: 100vh;
+  animation: ${props => props.animation};
+  display: ${props => props.display}
+}
 `;
 
 export const List = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.7em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  cursor: pointer;
-  word-break: break-word;
-  background-color: #232b2b;
-  border-bottom: 2px solid 	#071e17;
-  color: 	#8f9779;
-  &.active {
-    border-color: #ef3f3f;
-    background-color:	#25584f;
-    color: #8f9779;
-  }
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.7em;
+padding-left: 0.5em;
+padding-right: 0.5em;
+cursor: pointer;
+word-break: break-word;
+background-color: #232b2b;
+border-bottom: 2px solid 	#071e17;
+color: 	#8f9779;
+&.active {
+  border-color: #ef3f3f;
+  background-color:	#25584f;
+  color: #8f9779;
+}
+`;
+
+export const ListNameWrapper = styled.div`
+width: 90%;
+text-align: left;
 `;
 
 export const DeleteList = styled.div`
-  visibility: ${props => props.visibility};
-  opacity: 0.3;
-  text-shadow: 5px 4px #000;
-  cursor: pointer;
-  font-size: 1.5em;
-  width: 0.7em;
-  color: indianred;
-  align-self: right;
-  transition: all 0.2s ease;
-  position: relative;
-  &:hover {
-    opacity: 1;
-  }
-  @media (max-width: 700px) {
-    opacity: 0.6;
-    padding-right: 0.5em;
-  }
+visibility: ${props => props.visibility};
+opacity: 0.3;
+text-shadow: 5px 4px #000;
+cursor: pointer;
+font-size: 1.5em;
+width: 0.7em;
+color: indianred;
+align-self: right;
+transition: all 0.2s ease;
+position: relative;
+&:hover {
+  opacity: 1;
+}
+@media (max-width: 700px) {
+  opacity: 0.6;
+  padding-right: 0.5em;
+}
 `;
 
 export const DeleteDialog = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 90%;
-  opacity: 0.5;
-  #yes {
-    color: green;
-    cursor: pointer;
-  }
-  #no {
-    color: red;
-    cursor: pointer;
-  }
+display: flex;
+justify-content: space-evenly;
+width: 90%;
+opacity: 0.5;
+#yes {
+  color: green;
+  cursor: pointer;
+}
+#no {
+  color: red;
+  cursor: pointer;
+}
 `;

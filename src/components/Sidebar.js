@@ -17,6 +17,7 @@ import {
   SidebarInput, 
   Lists, 
   List, 
+  ListNameWrapper,
   DeleteList, 
   DeleteDialog 
 } from './SidebarStyles.js'
@@ -98,7 +99,7 @@ function Sidebar(props) {
       <DragDropContext onDragEnd={onDragEnd}>
         <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>
-      <ListHeadline>{active}</ListHeadline>
+          <ListHeadline>{active}</ListHeadline>
           <Hamburger
             className={
               toggle ?
@@ -116,58 +117,57 @@ function Sidebar(props) {
               <Droppable droppableId="sidebar">
                 {provided => (
                   <div style={{'overflow':'hidden'}}>
-                  <Lists 
-                    animation={toggle?'fadeIn .3s ease-in':'fadeOut .3s ease-in forwards'}
-                    display={toggle?'flex':'none'}
-                    ref={provided.innerRef} 
-                    {...provided.droppableProps}
-                  >
-                    <LoginButtons>
-                      {user
-                          ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
-                          : <LoginOutButton onClick={login}>login</LoginOutButton>
-                      }
-                      <EditToggle onClick={() => setEditToggle(!editToggle)}><img alt="edit-toggle" src={editButton}/></EditToggle >
-                    </LoginButtons>
-                    <SidebarInput
-                      autoComplete="off"
-                      type="text"
-                      placeholder="..."
-                      value={input}
-                      onChange={onChange}
-                      onKeyDown={ e => handleKeyDown(e) }
-                      id="new-list"
-                      name="list"
-                    />
-                    {lists &&
-                        Object.entries(lists)
-                        .sort((a, b) => a[1].position - b[1].position)
-                        .map((list,i) =>
-                          <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
-                            {provided => (
-                              <List 
-                                className={list[0]&&list[0]===active?"active":""}
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                  onClick={e => switchList(list[0])}
+                    <Lists 
+                      animation={toggle?'fadeIn .3s ease-in':'fadeOut .3s ease-in forwards'}
+                      display={toggle?'flex':'none'}
+                      ref={provided.innerRef} 
+                      {...provided.droppableProps}
+                    >
+                      <LoginButtons>
+                        {user
+                            ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
+                            : <LoginOutButton onClick={login}>login</LoginOutButton>
+                        }
+                        <EditToggle onClick={() => setEditToggle(!editToggle)}><img alt="edit-toggle" src={editButton}/></EditToggle >
+                      </LoginButtons>
+                      <SidebarInput
+                        autoComplete="off"
+                        type="text"
+                        placeholder="..."
+                        value={input}
+                        onChange={onChange}
+                        onKeyDown={ e => handleKeyDown(e) }
+                        id="new-list"
+                        name="list"
+                      />
+                      {lists &&
+                          Object.entries(lists)
+                          .sort((a, b) => a[1].position - b[1].position)
+                          .map((list,i) =>
+                            <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
+                              {provided => (
+                                <List 
+                                  className={list[0]&&list[0]===active?"active":""}
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
                                 >
                                   {deleting === i
                                       ? <DeleteDialog>Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></DeleteDialog >
-                                      : <div className="list-name-wrapper" ><div>{list[0]}</div></div>
+                                      : <ListNameWrapper onClick={e => switchList(list[0])}>{list[0]}</ListNameWrapper>
                                   }
                                   <DeleteList onClick={()=>setDeleting(i)} visibility={editToggle?'visible':'hidden'}><img alt="delete-list" src={deleteButton}/></DeleteList>
                                 </List>
-                            )}
-                          </Draggable>
-                        )}
-                        {provided.placeholder}
-                      </Lists>
+                              )}
+                            </Draggable>
+                          )}
+                          {provided.placeholder}
+                        </Lists>
                       </div>
                 )}
               </Droppable>
-            </DragDropContext>
-          </StyledSidebar>
+    </DragDropContext>
+    </StyledSidebar>
   );
 }
 
