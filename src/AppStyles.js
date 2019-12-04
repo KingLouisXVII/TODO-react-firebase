@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const AppContainer = styled.div`
   font-family: 'Anton', sans-serif;
   display: grid;
-  grid-template-columns: 25% 60% auto;
+  grid-template-columns: 25% 70% auto;
   width: 100vw;
   height: 100vh;
   background-color:	#232b2b;
