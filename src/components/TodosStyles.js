@@ -29,7 +29,7 @@ export const InputWrapper = styled.div`
 
 export const TodosInput = styled.input`
   height: 1.4em;
-  width: 95%;
+  width: 93%;
   padding: 0.3em;
   margin-left: 0.4em;
   align-self: center;
@@ -53,6 +53,7 @@ export const TodosList = styled.ul`
   list-style-type: none;
   flex: 2;
   padding: 0;
+  padding-left: 0.8em;
   display: flex;
   flex-direction: column;
   align-items: baseline;
