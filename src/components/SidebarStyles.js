@@ -5,8 +5,8 @@ export const StyledSidebar = styled.div`
   border-right: 7px solid #071e17;
   text-align: center;
   height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: 100%;
   @media (max-width: 700px) {
     height: ${props => props.height};
     z-index: 99;   
@@ -64,7 +64,6 @@ export const ListHeadline = styled.h3`
 `;
 
 export const LoginButtons = styled.div`
-  background-color: #232b2b;
   border-bottom: 2px solid #071e17;
   display: flex;
   justify-content: space-evenly;
@@ -85,18 +84,18 @@ export const LoginOutButton = styled.button`
   cursor: pointer;
   border: 0;
   background-color: transparent;
-  outline: 0;
+outline: 0;
 `;
 
 export const EditToggle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  img {
-    width: 0.7em;
-    height: 1em;
-  }
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+img {
+  width: 0.7em;
+  height: 1em;
+}
 `;
 
 export const SidebarInput = styled.input `
@@ -112,6 +111,11 @@ border-color: #071e17;
   width: 100%;
 }
 ;`
+
+export const ListsWrapper = styled.div`
+overflow: scroll;
+height: 70vh;
+`;
 
 export const Lists = styled.div`
 display: flex;

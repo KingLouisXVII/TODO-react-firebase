@@ -15,6 +15,7 @@ import {
   LoginOutButton, 
   EditToggle, 
   SidebarInput, 
+  ListsWrapper,
   Lists, 
   List, 
   ListNameWrapper,
@@ -114,15 +115,6 @@ function Sidebar(props) {
                   </span>
                 </Hamburger>
               </MobileHamburger>
-              <Droppable droppableId="sidebar">
-                {provided => (
-                  <div style={{'overflow':'hidden'}}>
-                    <Lists 
-                      animation={toggle?'fadeIn .3s ease-in':'fadeOut .3s ease-in forwards'}
-                      display={toggle?'flex':'none'}
-                      ref={provided.innerRef} 
-                      {...provided.droppableProps}
-                    >
                       <LoginButtons>
                         {user
                             ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
@@ -140,6 +132,15 @@ function Sidebar(props) {
                         id="new-list"
                         name="list"
                       />
+              <Droppable droppableId="sidebar">
+                {provided => (
+                  <ListsWrapper>
+                    <Lists 
+                      animation={toggle?'fadeIn .3s ease-in':'fadeOut .3s ease-in forwards'}
+                      display={toggle?'flex':'none'}
+                      ref={provided.innerRef} 
+                      {...provided.droppableProps}
+                    >
                       {lists &&
                           Object.entries(lists)
                           .sort((a, b) => a[1].position - b[1].position)
@@ -163,7 +164,7 @@ function Sidebar(props) {
                           )}
                           {provided.placeholder}
                         </Lists>
-                      </div>
+                        </ListsWrapper>
                 )}
               </Droppable>
     </DragDropContext>
