@@ -5,9 +5,6 @@ export const StyledTodos = styled.div`
   margin-top: 1em;
   overflow-x: hidden;
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   @media (max-width: 700px) {
     height: 90vh;
     overflow:scroll;
@@ -52,7 +49,7 @@ export const TodosInput = styled.input`
 `;
 
 export const TodosList = styled.ul`
-  width: 84%;
+  width: 90%;
   list-style-type: none;
   flex: 2;
   padding: 0;
