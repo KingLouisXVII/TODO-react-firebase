@@ -135,6 +135,7 @@ export const ClearDone = styled.h2`
   right: 0;
   cursor: pointer;
   margin: 0;
+  padding: 0.5em;
   font-size: 1em;
   text-align: center;
   &:hover {
