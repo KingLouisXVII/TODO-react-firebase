@@ -136,7 +136,7 @@ function Sidebar(props) {
                 {provided => (
                   <ListsWrapper>
                     <Lists 
-                      animation={toggle?'fadeIn .3s ease-in':'fadeOut .3s ease-in forwards'}
+                      animation={toggle?'fadeIn .4s ease-in':null}
                       display={toggle?'flex':'none'}
                       ref={provided.innerRef} 
                       {...provided.droppableProps}

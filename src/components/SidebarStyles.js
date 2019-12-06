@@ -123,6 +123,16 @@ height: auto;
 flex-direction: column;
 background-color: #232b2b;
 overflow: ${props => props.overflow}
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes fadeOut {
+  from {opacity:1;}
+  to {opacity:0;}
+}
+
 @media (max-width: 700px) {
   height: 100vh;
   animation: ${props => props.animation};
