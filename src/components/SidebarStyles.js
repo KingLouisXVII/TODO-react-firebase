@@ -64,7 +64,6 @@ export const ListHeadline = styled.h3`
 `;
 
 export const LoginButtons = styled.div`
-  border-bottom: 2px solid #071e17;
   display: flex;
   justify-content: space-evenly;
   padding: 1em;
@@ -106,6 +105,7 @@ border: 0;
 outline: none;
 padding: 0.3em;
 border-bottom: 2px solid;
+border-top: 2px solid;
 border-color: #071e17;
 @media (max-width: 700px) {
   width: 100%;
