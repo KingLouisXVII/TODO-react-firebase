@@ -96,7 +96,8 @@ function Sidebar(props) {
   }
 
   return (
-    <>
+    <StyledSidebar  height={toggle}>
+      <DragDropContext onDragEnd={onDragEnd}>
         <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>
           <ListHeadline>{active}</ListHeadline>
@@ -114,8 +115,6 @@ function Sidebar(props) {
                   </span>
                 </Hamburger>
               </MobileHamburger>
-    <StyledSidebar opacity={toggle}>
-      <DragDropContext onDragEnd={onDragEnd}>
                       <LoginButtons>
                         {user
                             ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
@@ -138,6 +137,7 @@ function Sidebar(props) {
                   <ListsWrapper>
                     <Lists 
                       opacity={toggle}
+                      animation={toggle}
                       ref={provided.innerRef} 
                       {...provided.droppableProps}
                     >
@@ -169,7 +169,6 @@ function Sidebar(props) {
               </Droppable>
     </DragDropContext>
     </StyledSidebar>
-    </>
   );
 }
 
