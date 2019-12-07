@@ -114,7 +114,7 @@ border-color: #071e17;
 
 export const ListsWrapper = styled.div`
 overflow: scroll;
-height: 70vh;
+height: 100%;
 `;
 
 export const Lists = styled.div`
@@ -127,12 +127,6 @@ overflow: ${props => props.overflow}
   from {opacity:0;}
   to {opacity:1;}
 }
-
-@keyframes fadeOut {
-  from {opacity:1;}
-  to {opacity:0;}
-}
-
 @media (max-width: 700px) {
   height: 100vh;
   animation: ${props => props.animation};
