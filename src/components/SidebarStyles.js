@@ -8,11 +8,12 @@ export const StyledSidebar = styled.div`
   display: grid;
   grid-template-columns: 100%;
   @media (max-width: 700px) {
-    height: ${props => props.height};
     z-index: 99;   
     border: 0;
     width: 100vw;
     overflow: hidden;
+  opacity: ${props => props.opacity ? '1' : '0'};
+  transition: opacity .5s ease;
   }
 `;
 
@@ -26,6 +27,7 @@ export const MobileHamburger = styled.div`
     height: 1.5em;
     border: 0;
     align-items: baseline;
+    z-index: 999;
   }
 `;
 
@@ -122,15 +124,8 @@ display: flex;
 height: auto;
 flex-direction: column;
 background-color: #232b2b;
-overflow: ${props => props.overflow}
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
-}
 @media (max-width: 700px) {
   height: 100vh;
-  animation: ${props => props.animation};
-  display: ${props => props.display}
 }
 `;
 
