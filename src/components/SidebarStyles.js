@@ -114,7 +114,7 @@ border-color: #071e17;
 
 export const ListsWrapper = styled.div`
 overflow: scroll;
-height: 100%;
+height: auto;
 `;
 
 export const Lists = styled.div`
