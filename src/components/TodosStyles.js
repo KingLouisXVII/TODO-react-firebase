@@ -74,9 +74,11 @@ export const TodoItemWrapper = styled.div`
   cursor: default !important;
   width: 92%;
   margin-left: 0.8em;
+  @media (max-width: 1200px) {
+    margin-left: 0.2em;
+  }
   @media (max-width: 700px) {
     width: 90%;
-    margin-left: 0;
   }
 `;
 
