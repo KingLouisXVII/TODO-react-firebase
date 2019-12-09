@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
-  font-family: 'Anton', sans-serif;
+  font-family: 'Staatliches', sans-serif;
   display: grid;
   grid-template-columns: 25% 75%;
   width: 100vw;

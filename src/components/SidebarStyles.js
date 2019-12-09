@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledSidebar = styled.div`
+  font-family: 'Anton', sans-serif;
   height: 100vh;
   background-color: #232b2b;
   border-right: 7px solid #071e17;
@@ -123,15 +124,15 @@ export const Lists = styled.div`
   height: auto;
   flex-direction: column;
   background-color: #232b2b;
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
-}
+  @keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+  }
 
-@keyframes fadeOut {
-  from {opacity:1;}
-  to {opacity:0;}
-}
+  @keyframes fadeOut {
+    from {opacity:1;}
+    to {opacity:0;}
+  }
   @media (max-width: 700px) {
     height: 100vh;
     animation: ${props => props.animation ? 'fadeIn .4s ease-in' : 'fadeOut .4s forwards'}
