@@ -40,6 +40,7 @@ export const Hamburger = styled.button`
 `;
 
 export const Logo = styled.h1`
+  font-family: 'Anton', sans-serif;
   font-size: 2em;
   margin: 0;
   cursor: pointer;
