@@ -135,6 +135,7 @@ export const ImageButton = styled.img`
   cursor: pointer;
   width: 0.9em;
   padding-left: 0.5em;
+opacity: 0.5;
 `;
 
 export const ClearDone = styled.h2`
