@@ -13,6 +13,7 @@ import {
   TodosItem,
   Checkbox,
   ButtonsWrapper,
+  ToggleButtons,
   ImageButton,
   ClearDone
 } from './TodosStyles.js'
@@ -20,6 +21,7 @@ import {
 
 function Todos(props) {
   const [input, setInput] = useState('');
+  const [toggleButtons, setToggleButtons] = useState(-1);
   const { lists, setLists, active, user } = props;
 
 
@@ -138,53 +140,59 @@ function Todos(props) {
           name="todo"
         />
       </InputWrapper>
-        : null
+          : null
       }
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="todos">
-            {provided => (
-              <TodosList ref={provided.innerRef} {...provided.droppableProps}>
-                {lists[active] ?
-                  lists[active].todos.reduce((todos, todo) => {
-                    if (!todo.exist) {
-                      todos.push(todo);
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="todos">
+          {provided => (
+            <TodosList ref={provided.innerRef} {...provided.droppableProps}>
+              {lists[active] ?
+                lists[active].todos.reduce((todos, todo) => {
+                  if (!todo.exist) {
+                    todos.push(todo);
+                  }
+                  return todos;
+                }, []).map((todo,i) =>
+                  <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
+                    {provided => (
+                      <TodoItemWrapper
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
+                        <TodosItem
+                          className={todo.completed?'completed':null}
+                          color={todo.priority?'#ef3f3f':'#071e17'}
+                          textDecoration={todo.completed?'line-through':null}
+                          opacity={todo.completed?'0.5':null}
+                          animation={todo.completed?'fade 1s forwards':null}
+                        >{todo.name}                        
+                          <ButtonsWrapper >
+                            {toggleButtons === i ?
+                            <>
+                            <ImageButton onClick={e=>editTodo(i)} alt="edit-todo" src={editButton}/>
+                            <ImageButton onClick={e=>prioritize(i)} alt="prioritize-todo" src={priorityButton}/>
+                            <ImageButton onClick={e=>setToggleButtons(-1)} alt="delete-todo" src={deleteButton}/>
+                          </>
+                                :
+                            <ToggleButtons onClick={e=>setToggleButtons(i)} alt="toggle-buttons">...</ToggleButtons>
+                            }
+                          </ButtonsWrapper> 
+                        </TodosItem>
+                      </TodoItemWrapper>
+                    )
                     }
-                    return todos;
-                  }, []).map((todo,i) =>
-                    <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
-                      {provided => (
-                        <TodoItemWrapper
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
-                          <TodosItem
-                            className={todo.completed?'completed':null}
-                            color={todo.priority?'#ef3f3f':'#071e17'}
-                            textDecoration={todo.completed?'line-through':null}
-                            opacity={todo.completed?'0.5':null}
-                            animation={todo.completed?'fade 1s forwards':null}
-                          >{todo.name}                        
-                            <ButtonsWrapper>
-                              <ImageButton onClick={e=>editTodo(i)} alt="edit-todo" src={editButton}/>
-                              <ImageButton onClick={e=>prioritize(i)} alt="prioritize-todo" src={priorityButton}/>
-                              <ImageButton onClick={e=>deleteTodo(i)} alt="delete-todo" src={deleteButton}/>
-                            </ButtonsWrapper> 
-                          </TodosItem>
-                        </TodoItemWrapper>
-                      )
-                      }
-                    </Draggable>
-                  )
-                  :
-                  null
-                }
-                {provided.placeholder}
-              </TodosList>
-            )}
-          </Droppable>
-        </DragDropContext>
+                  </Draggable>
+                )
+                :
+                null
+              }
+              {provided.placeholder}
+            </TodosList>
+          )}
+        </Droppable>
+      </DragDropContext>
   { 
     lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
       <ClearDone onClick={clearDone}>clear done</ClearDone> 

@@ -125,6 +125,12 @@ export const ButtonsWrapper = styled.div`
   height: 1em;
 `;
 
+export const ToggleButtons = styled.div`
+  cursor: pointer;
+  width: 0.9em;
+  padding-left: 0.5em;
+`;
+
 export const ImageButton = styled.img`
   cursor: pointer;
   width: 0.9em;
