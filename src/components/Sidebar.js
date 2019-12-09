@@ -96,7 +96,7 @@ function Sidebar(props) {
   }
 
   return (
-    <StyledSidebar  height={toggle}>
+    <StyledSidebar height={toggle.toString()}>
       <DragDropContext onDragEnd={onDragEnd}>
         <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>
@@ -136,7 +136,6 @@ function Sidebar(props) {
                 {provided => (
                   <ListsWrapper>
                     <Lists 
-                      opacity={toggle}
                       animation={toggle}
                       ref={provided.innerRef} 
                       {...provided.droppableProps}

@@ -39,7 +39,7 @@ export const TodosInput = styled.input`
   align-self: center;
   outline: none;
   background-color: #8f9779;
-  color: 	#071e17;
+  color: #071e17;
   border-color: #071e17;
   box-shadow: 5px 5px #071e17;
   @media (max-width: 700px) {
@@ -68,88 +68,88 @@ export const TodosList = styled.ul`
 `;
 
 export const TodoItemWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: default !important;
-  width: 92%;
-  margin-left: 0.8em;
-  @media (max-width: 1200px) {
-    margin-left: 0.2em;
-  }
-  @media (max-width: 700px) {
-    width: 90%;
-  }
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: default !important;
+width: 92%;
+margin-left: 0.8em;
+@media (max-width: 1200px) {
+  margin-left: 0.2em;
+}
+@media (max-width: 700px) {
+  width: 90%;
+}
 `;
 
 export const TodosItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  height: auto;
-  width: 100%;
-  padding: 0.2em;
-  margin: 0.5em;
-  cursor: pointer;
-  align-self: center;
-  word-break: break-word;
-  border: 2px solid;
+display: flex;
+justify-content: space-between;
+height: auto;
+width: 100%;
+padding: 0.2em;
+margin: 0.5em;
+cursor: pointer;
+align-self: center;
+word-break: break-word;
+border: 2px solid;
+font-size: 0.7em;
+background-color: #232b2b;
+color: 	#8f9779;
+border-color: ${props => props.color};
+box-shadow: 5px 5px #071e17;
+text-decoration: ${props => props.textDecoration};
+opacity: ${props => props.opacity === true ? '0.5' : '1'};
+animation: ${props => props.animation};
+@media (max-width: 700px) {
   font-size: 0.7em;
-  background-color: #232b2b;
-  color: 	#8f9779;
-  border-color: ${props => props.color};
-  box-shadow: 5px 5px ${props => props.color};
-  text-decoration: ${props => props.textDecoration};
-  opacity: ${props => props.opacity};
-  animation: ${props => props.animation};
-  @media (max-width: 700px) {
-    font-size: 0.7em;
-  }
+}
 `;
 
 export const Checkbox = styled.div`
-  width: 20px;
-  height: 20px;
-  margin: 0.1em;
-  cursor: pointer;
-  text-align: center;
-  border: 3px solid #071e17;
-  background-color: #232b2b;
-  box-shadow: 3px 3px 	#071e17;
-  &.checked {
-    background-color: 	#8f9779;
-  }
+width: 20px;
+height: 20px;
+margin: 0.1em;
+cursor: pointer;
+text-align: center;
+border: 3px solid #071e17;
+background-color: #232b2b;
+box-shadow: 3px 3px #071e17;
+&.checked {
+  background-color: 	#8f9779;
+}
 `;
 export const ButtonsWrapper = styled.div`
-  display: flex;
-  align-self: baseline;
-  height: 1em;
+display: flex;
+align-self: baseline;
+height: 1em;
 `;
 
 export const ToggleButtons = styled.div`
-  cursor: pointer;
-  width: 0.9em;
-  padding-left: 0.5em;
+cursor: pointer;
+width: 0.9em;
+padding-left: 0.5em;
 `;
 
 export const ImageButton = styled.img`
-  cursor: pointer;
-  width: 0.9em;
-  padding-left: 0.5em;
+cursor: pointer;
+width: 0.9em;
+padding-left: 0.5em;
 opacity: 0.5;
 `;
 
 export const ClearDone = styled.h2`
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  cursor: pointer;
-  margin: 0;
-  padding: 0.5em;
-  font-size: 1em;
-  text-align: center;
-  &:hover {
-    transition: all 0.5s ease;
-    opacity: 0.7;
-  }
+position: fixed;
+bottom: 0;
+right: 0;
+cursor: pointer;
+margin: 0;
+padding: 0.5em;
+font-size: 1em;
+text-align: center;
+&:hover {
+  transition: all 0.5s ease;
+  opacity: 0.7;
+}
 `;
 

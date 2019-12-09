@@ -60,16 +60,16 @@ function Todos(props) {
     set(allLists);
   }
 
-  function deleteTodo(i) {
-    const allLists = {...lists};
-    const todos = allLists[active].todos;
-    todos.length<=1&&todos.push({exist:true});
-    todos.splice(i,1);
-    console.log(todos);
-    console.log(allLists);
-    setLists(allLists);
-    set(allLists);
-  }
+  // function deleteTodo(i) {
+  //   const allLists = {...lists};
+  //   const todos = allLists[active].todos;
+  //   todos.length<=1&&todos.push({exist:true});
+  //   todos.splice(i,1);
+  //   console.log(todos);
+  //   console.log(allLists);
+  //   setLists(allLists);
+  //   set(allLists);
+  // }
 
   function set(lists) {
     const itemsRef = firebase.database().ref(`/users/${user.uid}`);
@@ -162,11 +162,11 @@ function Todos(props) {
                       >
                         <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
                         <TodosItem
-                          className={todo.completed?'completed':null}
+                          className={todo.completed?'completed':undefined}
                           color={todo.priority?'#ef3f3f':'#071e17'}
-                          textDecoration={todo.completed?'line-through':null}
-                          opacity={todo.completed?'0.5':null}
-                          animation={todo.completed?'fade 1s forwards':null}
+                          textDecoration={todo.completed?'line-through':undefined}
+                          opacity={todo.completed.toString()}
+                          animation={todo.completed?'fade 1s forwards':undefined}
                         >{todo.name}                        
                           <ButtonsWrapper >
                             {toggleButtons === i ?
