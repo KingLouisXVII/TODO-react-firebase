@@ -5,8 +5,8 @@ export const StyledSidebar = styled.div`
   background-color: #232b2b;
   border-right: 7px solid #071e17;
   text-align: center;
-  display: grid;
-  grid-template-columns: 100%;
+  display: flex;
+  flex-direction: column;
   @media (max-width: 700px) {
     height: ${props => props.height ? '100vh' : 'auto'};
     z-index: 99;   
