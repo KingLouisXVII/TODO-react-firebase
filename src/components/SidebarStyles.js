@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledSidebar = styled.div`
-  font-family: 'Anton', sans-serif;
   height: 100vh;
   background-color: #232b2b;
   border-right: 7px solid #071e17;
