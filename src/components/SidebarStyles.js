@@ -106,9 +106,6 @@ font-size: 0.9em;
 border: 0;
 outline: none;
 padding: 0.3em;
-border-bottom: 2px solid;
-border-top: 2px solid;
-border-color: #071e17;
 @media (max-width: 700px) {
   width: 100%;
 }
@@ -151,6 +148,12 @@ export const List = styled.div`
   background-color: #232b2b;
   border-bottom: 2px solid 	#071e17;
   color: 	#8f9779;
+  &:nth-child(1) {
+  border-top: 2px solid 	#071e17;
+  }
+  &:active {
+      border: 2px solid 	#071e17;
+  }
   &.active {
     border-color: #ef3f3f;
     background-color:	#25584f;
