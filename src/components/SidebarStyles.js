@@ -74,7 +74,7 @@ export const LoginButtons = styled.div`
     background-color: transparent;
     width: 40%;
     margin: 0 auto;
-    padding-top: 2em;
+    padding-top: 3em;
   }
 `;
 
