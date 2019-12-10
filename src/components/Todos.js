@@ -134,7 +134,7 @@ function Todos(props) {
           autoComplete="off"
           type="text"
           placeholder="..."
-          value={input}
+          value={input.toUpperCase()}
           onChange={onChange}
           onKeyDown={e =>handleKeyDown(e)}
           name="todo"

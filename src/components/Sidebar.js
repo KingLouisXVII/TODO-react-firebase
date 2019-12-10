@@ -126,7 +126,7 @@ function Sidebar(props) {
                         autoComplete="off"
                         type="text"
                         placeholder="..."
-                        value={input}
+                        value={input.toUpperCase()}
                         onChange={onChange}
                         onKeyDown={ e => handleKeyDown(e) }
                         id="new-list"
