@@ -1,9 +1,9 @@
 import React, { useState } from 'react';import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reorderTodos } from '../utils/Reorder';
-import deleteButton from '../assets/delete.svg'
-import priorityButton from '../assets/important.svg'
-import editButton from '../assets/edit.svg'
 import firebase from '../utils/Firebase.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faExclamation, faTimes, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import {
   StyledTodos,
   InputWrapper,
@@ -14,7 +14,6 @@ import {
   Checkbox,
   ButtonsWrapper,
   ToggleButtons,
-  ImageButton,
   ClearDone
 } from './TodosStyles.js'
 
@@ -108,6 +107,7 @@ function Todos(props) {
     todos.sort(function(a,b){return b.priority-a.priority});
     setLists(allLists);
     set(allLists);
+    setToggleButtons(-1);
   }
 
   function onDragEnd(result) {
@@ -168,17 +168,17 @@ function Todos(props) {
                           opacity={todo.completed.toString()}
                           animation={todo.completed?'fade 1s forwards':undefined}
                         >{todo.name}                        
-                          <ButtonsWrapper >
                             {toggleButtons === i ?
-                            <>
-                            <ImageButton onClick={e=>editTodo(i)} alt="edit-todo" src={editButton}/>
-                            <ImageButton onClick={e=>prioritize(i)} alt="prioritize-todo" src={priorityButton}/>
-                            <ImageButton onClick={e=>setToggleButtons(-1)} alt="delete-todo" src={deleteButton}/>
-                          </>
-                                :
-                            <ToggleButtons onClick={e=>setToggleButtons(i)} alt="toggle-buttons">...</ToggleButtons>
-                            }
+                                  <ButtonsWrapper justify={toggleButtons===i?1:0}>
+                          <FontAwesomeIcon icon={faEdit} onClick={e=>editTodo(i)}/>
+                          <FontAwesomeIcon icon={faExclamation} onClick={e=>prioritize(i)}/>
+                          <FontAwesomeIcon icon={faTimes} onClick={e=>setToggleButtons(-1)}/>
                           </ButtonsWrapper> 
+                                :
+                                  <ButtonsWrapper justify={toggleButtons===i?1:0}>
+                          <FontAwesomeIcon icon={faEllipsisH} onClick={e=>setToggleButtons(i)}/>
+                          </ButtonsWrapper> 
+                            }
                         </TodosItem>
                       </TodoItemWrapper>
                     )

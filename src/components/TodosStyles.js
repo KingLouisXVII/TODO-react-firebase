@@ -74,6 +74,7 @@ align-items: center;
 cursor: default !important;
 width: 92%;
 margin-left: 0.8em;
+outline: 0;
 @media (max-width: 1200px) {
   margin-left: 0.2em;
 }
@@ -83,11 +84,11 @@ margin-left: 0.8em;
 `;
 
 export const TodosItem = styled.li`
-display: flex;
-justify-content: space-between;
+display: grid;
+grid-template-columns: 80% 20%;
 height: auto;
 width: 100%;
-padding: 0.2em;
+padding: 0.5em;
 margin: 0.5em;
 cursor: pointer;
 align-self: center;
@@ -122,7 +123,11 @@ box-shadow: 3px 3px #071e17;
 export const ButtonsWrapper = styled.div`
 display: flex;
 align-self: baseline;
+justify-content: ${props => props.justify?'space-between':'flex-end'}
 height: 1em;
+color: #ef3f3f;
+font-size: 1.3em;
+padding-right: 0.1em;
 `;
 
 export const ToggleButtons = styled.div`
