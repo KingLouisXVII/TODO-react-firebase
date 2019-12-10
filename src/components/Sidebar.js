@@ -96,7 +96,7 @@ function Sidebar(props) {
   }
 
   return (
-    <StyledSidebar height={toggle.toString()}>
+    <StyledSidebar height={toggle}>
       <DragDropContext onDragEnd={onDragEnd}>
         <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>

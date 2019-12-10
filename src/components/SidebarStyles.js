@@ -8,7 +8,7 @@ export const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: 700px) {
-    height: ${props => props.height ? '100vh' : 'auto'};
+    height: ${props => props.height ? '100vh' : '100%'};
     z-index: 99;   
     border: 0;
     width: 100vw;
