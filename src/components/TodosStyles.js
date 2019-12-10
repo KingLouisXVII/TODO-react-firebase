@@ -104,6 +104,7 @@ opacity: ${props => props.opacity === true ? '0.5' : '1'};
 animation: ${props => props.animation};
 @media (max-width: 700px) {
   font-size: 0.7em;
+grid-template-columns: 70% 30%;
 }
 `;
 
