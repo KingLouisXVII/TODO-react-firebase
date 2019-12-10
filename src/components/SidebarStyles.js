@@ -158,12 +158,17 @@ export const List = styled.div`
   }
   &:active {
       border: 2px solid #071e17;
+    cursor: grab;
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;
 
 export const ListNameWrapper = styled.div`
   width: 90%;
   text-align: left;
+  cursor: pointer;
 `;
 
 export const DeleteList = styled.div`
