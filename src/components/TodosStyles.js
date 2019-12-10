@@ -84,8 +84,8 @@ outline: 0;
 `;
 
 export const TodosItem = styled.li`
-display: grid;
-grid-template-columns: 80% 20%;
+display: flex;
+justify-content: space-between;
 height: auto;
 width: 100%;
 padding: 0.3em;
@@ -122,13 +122,13 @@ box-shadow: 3px 3px #071e17;
 }
 `;
 export const ButtonsWrapper = styled.div`
+width: 30%;
 display: flex;
 align-self: baseline;
 justify-content: ${props => props.justify?'space-between':'flex-end'}
 height: 1em;
 color: #071e17;
 font-size: 1.3em;
-padding-right: 0.1em;
 `;
 
 export const ToggleButtons = styled.div`
