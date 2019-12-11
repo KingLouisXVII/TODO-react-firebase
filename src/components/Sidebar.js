@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import firebase from '../utils/Firebase.js';
 import { reorderLists, reposition } from '../utils/Reorder';
-import editButton from '../assets/edit.svg'
-import deleteButton from '../assets/delete.svg'
 import '../assets/hamburgers/hamburgers.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import {
   StyledSidebar,
   ListHeadline,
@@ -13,13 +13,11 @@ import {
   Logo, 
   LoginButtons, 
   LoginOutButton, 
-  EditToggle, 
   SidebarInput, 
   ListsWrapper,
   Lists, 
   List, 
   ListNameWrapper,
-  DeleteList, 
   DeleteDialog 
 } from './SidebarStyles.js'
 
@@ -28,7 +26,6 @@ function Sidebar(props) {
   const [input, setInput] = useState('');
   const [toggle, setToggle] = useState(false);
   const [deleting, setDeleting] = useState(-1);
-  const [editToggle, setEditToggle] = useState(false);
   const { active, setActive, lists, setLists, user, login, logout } = props;
 
   function onChange(e) {
@@ -96,7 +93,7 @@ function Sidebar(props) {
   }
 
   return (
-    <StyledSidebar height={toggle}>
+    <StyledSidebar height={toggle?1:0}>
       <DragDropContext onDragEnd={onDragEnd}>
         <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>
@@ -115,23 +112,22 @@ function Sidebar(props) {
                   </span>
                 </Hamburger>
               </MobileHamburger>
-                      <LoginButtons>
-                        {user
-                            ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
-                            : <LoginOutButton onClick={login}>login</LoginOutButton>
-                        }
-                        <EditToggle onClick={() => setEditToggle(!editToggle)}><img alt="edit-toggle" src={editButton}/></EditToggle >
-                      </LoginButtons>
-                      <SidebarInput
-                        autoComplete="off"
-                        type="text"
-                        placeholder="..."
-                        value={input.toUpperCase()}
-                        onChange={onChange}
-                        onKeyDown={ e => handleKeyDown(e) }
-                        id="new-list"
-                        name="list"
-                      />
+              <LoginButtons>
+                {user
+                    ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
+                    : <LoginOutButton onClick={login}>login</LoginOutButton>
+                }
+              </LoginButtons>
+              <SidebarInput
+                autoComplete="off"
+                type="text"
+                placeholder="..."
+                value={input.toUpperCase()}
+                onChange={onChange}
+                onKeyDown={ e => handleKeyDown(e) }
+                id="new-list"
+                name="list"
+              />
               <Droppable droppableId="sidebar">
                 {provided => (
                   <ListsWrapper>
@@ -154,16 +150,16 @@ function Sidebar(props) {
                                 >
                                   {deleting === i
                                       ? <DeleteDialog>Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></DeleteDialog >
-                                      : <ListNameWrapper onClick={e => switchList(list[0])}>{list[0]}</ListNameWrapper>
+                                      : <><ListNameWrapper onClick={e => switchList(list[0])}>{list[0]}</ListNameWrapper>
+                                        <FontAwesomeIcon icon={faTimes} style={{'color':'#071e17','opacity':'0.5'}} onClick={e=>setDeleting(i)}/></>
                                   }
-                                  <DeleteList onClick={()=>setDeleting(i)} visibility={editToggle?'visible':'hidden'}><img alt="delete-list" src={deleteButton}/></DeleteList>
                                 </List>
                               )}
                             </Draggable>
                           )}
                           {provided.placeholder}
                         </Lists>
-                        </ListsWrapper>
+                      </ListsWrapper>
                 )}
               </Droppable>
     </DragDropContext>
