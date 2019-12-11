@@ -90,8 +90,6 @@ function Todos(props) {
   //   const todos = allLists[active].todos;
   //   todos.length<=1&&todos.push({exist:true});
   //   todos.splice(i,1);
-  //   console.log(todos);
-  //   console.log(allLists);
   //   setLists(allLists);
   //   set(allLists);
   // }
@@ -114,16 +112,6 @@ function Todos(props) {
     setInput('');
     set(allLists);
   }
-
-  // function editTodo(i) {
-  //   const allLists = {...lists};
-  //   const todos = allLists[active].todos;
-  //   const todo = todos[i].name;
-  //   todos.splice(i,1);
-  //   setLists(allLists);
-  //   setInput(todo);
-  //   set(allLists);
-  // }
 
   function prioritize(i) {
     const allLists = {...lists};
@@ -149,7 +137,6 @@ function Todos(props) {
       completed: completed,
       position: position,
     };
-    console.log(newTodo);
     setEditValue(newTodo);
     setEditName(name);
     setEdit(i);
