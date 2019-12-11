@@ -279,6 +279,10 @@ function Todos(props) {
           ?<ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive>
         :null
       }
+    {!archive
+        ? null
+        : <div style={{'textAlign':'center'}}><h3>Archived Todos:</h3></div>
+    }
           {!archive
               ? null
               : lists[active].archive 
