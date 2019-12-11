@@ -108,6 +108,19 @@ grid-template-columns: 70% 30%;
 }
 `;
 
+export const EditTodo = styled.input`
+height: auto;
+width: 100%;
+padding: 0.3em;
+margin: 0.3em;
+border: 2px solid;
+border-color: ${props => props.color};
+font-size: 0.7em;
+background-color: #232b2b;
+color: 	#8f9779;
+box-shadow: 5px 5px #071e17;
+outline: 0;
+`;
 export const Checkbox = styled.div`
 width: 20px;
 height: 20px;
