@@ -164,7 +164,6 @@ export const List = styled.div`
     cursor: pointer;
   }
   @media (max-width: 700px) {
-    opacity: 0.6;
     padding-right: 0.5em;
     font-size: 1em;
   }

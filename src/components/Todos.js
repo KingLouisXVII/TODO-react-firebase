@@ -187,10 +187,11 @@ function Todos(props) {
                 }, []).map((todo,i) =>
                   edit === i ?
                     <TodoItemWrapper
+                      key={i.toString()}
                     >
                       <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
                       <EditTodo 
-                        autofocus='autofocus' 
+                        autoFocus
                         color={todo.priority?'#ef3f3f':'#071e17'}
                         type="text"
                         value={editName.toUpperCase()}
