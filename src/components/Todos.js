@@ -14,7 +14,9 @@ import {
   EditTodo,
   Checkbox,
   ButtonsWrapper,
-  ClearDone
+  ClearDone,
+  ToggleArchive,
+  ArchivedTodosItem
 } from './TodosStyles.js'
 
 
@@ -24,12 +26,13 @@ function Todos(props) {
   const [editName, setEditName] = useState('');
   const [editValue, setEditValue] = useState({});
   const [toggleButtons, setToggleButtons] = useState(-1);
+  const [archive, setArchive] = useState(false);
   const { lists, setLists, active, user } = props;
 
 
   function onChange(e) {
     if(e.target.name === 'todo') {
-    setInput(e.target.value);
+      setInput(e.target.value);
     } else if(e.target.name === 'edit') {
       setEditName(e.target.value);
     }
@@ -103,13 +106,45 @@ function Todos(props) {
     return todo.completed === false;
   } 
 
+  function returnCompleted(todo) {
+    return todo.completed === true;
+  } 
+
   function clearDone() {
     const allLists = {...lists};
+    const prevArchive = allLists[active].archive;
+    console.log(prevArchive)
     const newTodos = allLists[active].todos.filter(removeCompleted);
+    const archivedTodos = allLists[active].todos.filter(returnCompleted);
+
     newTodos.length<=1&&newTodos.push({exist:true});
     allLists[active].todos = newTodos;
+
+    allLists[active].archive = [...prevArchive, ...archivedTodos];
     setLists(allLists);
     setInput('');
+    set(allLists);
+  }
+
+  function unarchive(name, i) {
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
+    const newTodo = {
+      name: name,
+      completed: false,
+      priority: false
+    }
+    todos.unshift(newTodo);
+    todos.sort(function(a,b){return b.priority-a.priority});
+    
+    const archive = allLists[active].archive;
+
+    allLists[active].archive = archive.filter(function (todo) {
+      return todo.name !== name;
+    });
+    archive.length<1 && archive.push({exist:true});
+
+    setLists(allLists);
     set(allLists);
   }
 
@@ -199,7 +234,7 @@ function Todos(props) {
                         onKeyDown={e =>handleKeyDown(e)}
                         name="edit"
                       />
-              </TodoItemWrapper>
+                    </TodoItemWrapper>
                   : <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
                     {provided => (
                       <TodoItemWrapper
@@ -240,13 +275,36 @@ function Todos(props) {
           )}
         </Droppable>
       </DragDropContext>
-  { 
-    lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
-      <ClearDone onClick={clearDone}>clear done</ClearDone> 
-    : 
-    null
-  }
-  </StyledTodos>
+      {lists[active] && lists[active].archive && lists[active].archive.length>1
+          ?<ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive>
+        :null
+      }
+          {!archive
+              ? null
+              : lists[active].archive 
+              && lists[active].archive.length > 1 
+              && lists[active].archive
+              .reduce((todos, todo) => {
+                if (!todo.exist) {
+                  todos.push(todo);
+                }
+                return todos;
+              }, [])
+              .map((todo,i) => 
+                <TodosList key={Math.random()}>
+                  <TodoItemWrapper>
+                    <Checkbox className={todo.completed?'checked':''} onClick={()=>unarchive(todo.name,i)}></Checkbox>
+                    <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
+                  </TodoItemWrapper>
+                </TodosList>
+              )
+          } 
+            { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
+            <ClearDone onClick={clearDone}>clear done</ClearDone> 
+                : 
+                null
+            }
+          </StyledTodos>
   )
 }
 

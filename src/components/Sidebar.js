@@ -42,7 +42,7 @@ function Sidebar(props) {
   function addList() {
     const allLists = {...lists};
     const position = Object.keys(allLists).length;
-    const newList = {todos:[{exist:true}],position:position};
+    const newList = {todos:[{exist:true}],position:position,archive:[{exist:true}]};
     if ( !(input in allLists ) ) {
       allLists[input] = newList;
     }
