@@ -108,6 +108,9 @@ export const TodosItem = styled.li`
   @media (max-width: 700px) {
     font-size: 0.7em;
     grid-template-columns: 70% 30%;
+    span {
+      width: 60%;
+    }
   }
 `;
 
@@ -161,6 +164,9 @@ export const ButtonsWrapper = styled.div`
   height: 1em;
   color: #071e17;
   font-size: 1.3em;
+  @media (max-width: 700px) {
+    width: 40%;
+  }
 `;
 
 export const ToggleButtons = styled.div`
