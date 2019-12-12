@@ -175,7 +175,7 @@ export const ImageButton = styled.img`
 
 export const ClearDone = styled.h2`
   position: fixed;
-  bottom: 2em;
+  bottom: 4em;
   right: 0;
   cursor: pointer;
   margin: 0;
@@ -200,8 +200,8 @@ export const ToggleArchive = styled.h2`
 
 export const ClearArchive = styled.h2`
   position: fixed;
-  bottom: 0;
-  right: 8em;
+  bottom: 2em;
+  right: 0;
   margin: 0;
   padding: 0.5em;
   font-size: 1em;
