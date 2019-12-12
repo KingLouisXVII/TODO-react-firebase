@@ -3,7 +3,7 @@ import { reorderTodos } from '../utils/Reorder';
 import firebase from '../utils/Firebase.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
-import { faExclamation, faTimes, faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import { faExclamation, faTimes, faEllipsisH, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {
   StyledTodos,
   InputWrapper,
@@ -136,7 +136,7 @@ function Todos(props) {
     }
     todos.unshift(newTodo);
     todos.sort(function(a,b){return b.priority-a.priority});
-    
+
     const archive = allLists[active].archive;
 
     allLists[active].archive = archive.filter(function (todo) {
@@ -175,6 +175,16 @@ function Todos(props) {
     setEditValue(newTodo);
     setEditName(name);
     setEdit(i);
+  }
+
+  function deleteTodo(i) {
+    const allLists = {...lists};
+    const todos = allLists[active].todos;
+    todos.splice(i,1);
+    todos.length<=1&&todos.push({exist:true});
+    setLists(allLists);
+    set(allLists);
+    setToggleButtons(-1);
   }
 
   function onDragEnd(result) {
@@ -254,6 +264,7 @@ function Todos(props) {
                           <ButtonsWrapper justify={toggleButtons===i?1:0}>
                             <FontAwesomeIcon icon={faEdit} onClick={e=>editTodo(i)}/>
                             <FontAwesomeIcon icon={faExclamation} onClick={e=>prioritize(i)}/>
+                            <FontAwesomeIcon icon={faTrashAlt} onClick={e=>deleteTodo(i)}/>
                             <FontAwesomeIcon icon={faTimes} onClick={e=>setToggleButtons(-1)}/>
                           </ButtonsWrapper> 
                               :
@@ -277,38 +288,38 @@ function Todos(props) {
       </DragDropContext>
       {lists[active] && lists[active].archive && lists[active].archive.length>1
           ?<ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive>
-        :null
+          :null
       }
-    {!archive
-        ? null
-        : <div style={{'textAlign':'center'}}><h3>Archived Todos:</h3></div>
-    }
-          {!archive
-              ? null
-              : lists[active].archive 
-              && lists[active].archive.length > 1 
-              && lists[active].archive
-              .reduce((todos, todo) => {
-                if (!todo.exist) {
-                  todos.push(todo);
-                }
-                return todos;
-              }, [])
-              .map((todo,i) => 
-                <TodosList key={Math.random()}>
-                  <TodoItemWrapper>
-                    <Checkbox className={todo.completed?'checked':''} onClick={()=>unarchive(todo.name,i)}></Checkbox>
-                    <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
-                  </TodoItemWrapper>
-                </TodosList>
-              )
-          } 
-            { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
-            <ClearDone onClick={clearDone}>clear done</ClearDone> 
-                : 
-                null
+      {!archive
+          ? null
+          : <div style={{'textAlign':'center'}}><h3>Archived Todos:</h3></div>
+      }
+      {!archive
+          ? null
+          : lists[active].archive 
+          && lists[active].archive.length > 1 
+          && lists[active].archive
+          .reduce((todos, todo) => {
+            if (!todo.exist) {
+              todos.push(todo);
             }
-          </StyledTodos>
+            return todos;
+          }, [])
+          .map((todo,i) => 
+            <TodosList key={Math.random()}>
+              <TodoItemWrapper>
+                <Checkbox className={todo.completed?'checked':''} onClick={()=>unarchive(todo.name,i)}></Checkbox>
+                <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
+              </TodoItemWrapper>
+            </TodosList>
+          )
+      } 
+        { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
+        <ClearDone onClick={clearDone}>clear done</ClearDone> 
+            : 
+            null
+        }
+      </StyledTodos>
   )
 }
 
