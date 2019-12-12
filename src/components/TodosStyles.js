@@ -197,3 +197,14 @@ export const ToggleArchive = styled.h2`
   font-size: 1em;
   cursor: pointer;
 `;
+
+export const ClearArchive = styled.h2`
+  position: fixed;
+  bottom: 3em;
+  right: 0;
+  margin: 0;
+  padding: 0.5em;
+  font-size: 1em;
+  cursor: pointer;
+`;
+

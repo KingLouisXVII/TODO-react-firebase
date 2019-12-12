@@ -16,7 +16,8 @@ import {
   ButtonsWrapper,
   ClearDone,
   ToggleArchive,
-  ArchivedTodosItem
+  ArchivedTodosItem,
+  ClearArchive
 } from './TodosStyles.js'
 
 
@@ -87,15 +88,6 @@ function Todos(props) {
     setLists(allLists);
     set(allLists);
   }
-
-  // function deleteTodo(i) {
-  //   const allLists = {...lists};
-  //   const todos = allLists[active].todos;
-  //   todos.length<=1&&todos.push({exist:true});
-  //   todos.splice(i,1);
-  //   setLists(allLists);
-  //   set(allLists);
-  // }
 
   function set(lists) {
     const itemsRef = firebase.database().ref(`/users/${user.uid}`);
@@ -187,6 +179,15 @@ function Todos(props) {
     setToggleButtons(-1);
   }
 
+  function clearArchive(active) {
+    console.log(active);
+    const allLists = {...lists};
+    allLists[active].archive = [{exist:true}];
+    setLists(allLists);
+    set(allLists);
+    setArchive(false);
+  }
+
   function onDragEnd(result) {
     if (!result.destination) {
       return;
@@ -272,54 +273,57 @@ function Todos(props) {
                                   <FontAwesomeIcon icon={faEllipsisH} onClick={e=>setToggleButtons(i)}/>
                                 </ButtonsWrapper> 
                           }
-                        </TodosItem>
-                      </TodoItemWrapper>
+                          </TodosItem>
+                          </TodoItemWrapper>
                     )
                     }
-                  </Draggable>
+                    </Draggable>
                 )
                 :
                 null
               }
-              {provided.placeholder}
+            {provided.placeholder}
             </TodosList>
           )}
-        </Droppable>
-      </DragDropContext>
-      {lists[active] && lists[active].archive && lists[active].archive.length>1
-          ?<ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive>
-          :null
-      }
-      {!archive
-          ? null
-          : <div style={{'textAlign':'center'}}><h3>Archived Todos:</h3></div>
-      }
-      {!archive
-          ? null
-          : lists[active].archive 
-          && lists[active].archive.length > 1 
-          && lists[active].archive
-          .reduce((todos, todo) => {
-            if (!todo.exist) {
-              todos.push(todo);
-            }
-            return todos;
-          }, [])
-          .map((todo,i) => 
-            <TodosList key={Math.random()}>
-              <TodoItemWrapper>
-                <Checkbox className={todo.completed?'checked':''} onClick={()=>unarchive(todo.name,i)}></Checkbox>
-                <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
-              </TodoItemWrapper>
-            </TodosList>
-          )
-      } 
-        { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
-        <ClearDone onClick={clearDone}>clear done</ClearDone> 
-            : 
-            null
-        }
-      </StyledTodos>
+          </Droppable>
+          </DragDropContext>
+    {lists[active] && lists[active].archive && lists[active].archive.length > 1
+      ?  <ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive>
+      : null
+    }
+    {!archive
+        ? null
+        : <div style={{'textAlign':'center'}}>
+          <h3>Archived Todos:</h3>
+          <ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive>
+        </div>
+    }
+    {!archive
+        ? null
+        : lists[active].archive 
+        && lists[active].archive.length > 1 
+        && lists[active].archive
+        .reduce((todos, todo) => {
+          if (!todo.exist) {
+            todos.push(todo);
+          }
+          return todos;
+        }, [])
+        .map((todo,i) => 
+          <TodosList key={Math.random()}>
+            <TodoItemWrapper>
+              <Checkbox className={todo.completed?'checked':''} onClick={()=>unarchive(todo.name,i)}></Checkbox>
+              <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
+            </TodoItemWrapper>
+          </TodosList>
+        )
+    } 
+    { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
+      <ClearDone onClick={clearDone}>clear done</ClearDone> 
+        : 
+        null
+    }
+    </StyledTodos>
   )
 }
 
