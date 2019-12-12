@@ -102,6 +102,9 @@ export const TodosItem = styled.li`
   text-decoration: ${props => props.textDecoration};
   opacity: ${props => props.opacity === true ? '0.5' : '1'};
   animation: ${props => props.animation};
+  span {
+    width: 70%;
+  }
   @media (max-width: 700px) {
     font-size: 0.7em;
     grid-template-columns: 70% 30%;

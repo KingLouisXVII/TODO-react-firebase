@@ -260,7 +260,7 @@ function Todos(props) {
                           textDecoration={todo.completed?'line-through':undefined}
                           opacity={todo.completed.toString()}
                           animation={todo.completed?'fade 1s forwards':undefined}
-                        >{todo.name}                        
+                        ><span>{todo.name}</span>                        
                           {toggleButtons === i ?
                           <ButtonsWrapper justify={toggleButtons===i?1:0}>
                             <FontAwesomeIcon icon={faEdit} onClick={e=>editTodo(i)}/>
