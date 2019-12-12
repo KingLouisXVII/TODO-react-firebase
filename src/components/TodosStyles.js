@@ -200,8 +200,8 @@ export const ToggleArchive = styled.h2`
 
 export const ClearArchive = styled.h2`
   position: fixed;
-  bottom: 3em;
-  right: 0;
+  bottom: 0;
+  right: 8em;
   margin: 0;
   padding: 0.5em;
   font-size: 1em;
