@@ -6,7 +6,7 @@ import firebase, { auth, provider } from './utils/Firebase.js';
 import './App.scss';
 import AppContainer from './AppStyles.js';
 import './assets/hamburgers/hamburgers.scss';
-import { push as Menu } from 'react-burger-menu'
+import { scaleDown as Menu } from 'react-burger-menu'
 
 import {
   MobileHamburger, 
