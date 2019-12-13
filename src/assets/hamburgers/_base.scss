@@ -5,7 +5,7 @@
   display: inline-block;
   cursor: pointer;
   z-index: 99;
-
+  opacity: 0.5;
   transition-property: opacity, filter;
   transition-duration: 0.15s;
   transition-timing-function: linear;
@@ -19,32 +19,6 @@
   margin-right: 0.7em;
   margin-top: 0.7em;
   overflow: visible;
-
-  &:hover {
-    @if $hamburger-hover-use-filter == true {
-      filter: $hamburger-hover-filter;
-    }
-    @else {
-      opacity: $hamburger-hover-opacity;
-    }
-  }
-
-  &.is-active {
-    &:hover {
-      @if $hamburger-hover-use-filter == true {
-        filter: $hamburger-active-hover-filter;
-      }
-      @else {
-        opacity: $hamburger-active-hover-opacity;
-      }
-    }
-
-    .hamburger-inner,
-    .hamburger-inner::before,
-    .hamburger-inner::after {
-      background-color: $hamburger-active-layer-color;
-    }
-  }
 }
 
 .hamburger-box {
