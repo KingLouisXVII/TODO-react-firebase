@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
-  height: 95vh;
+  height: 100vh;
   width: 80%;
   margin: 0 auto;
   padding-top: 2em;
