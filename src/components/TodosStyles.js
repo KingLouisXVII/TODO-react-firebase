@@ -2,19 +2,17 @@ import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
   height: 95vh;
-  margin-top: 1em;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 2em;
+  overflow:scroll;
   @media (max-width: 700px) {
-    height: 90vh;
-    overflow:scroll;
-    margin-top: 2em;
+    width: 100%;
   }
 `;
 
 
 export const InputWrapper = styled.div`
-  width: 90%;
   display: flex;
   flex-direction: column;
   position: sticky;
@@ -49,21 +47,18 @@ export const TodosInput = styled.input`
 `;
 
 export const TodosList = styled.ul`
-  width: 90%;
   list-style-type: none;
   flex: 2;
   padding: 0;
-  padding-left: 0.8em;
+  padding-left: 2em;
   display: flex;
   flex-direction: column;
   align-items: baseline;
   margin: 0;
+  overflow: scroll;
   @media (max-width: 700px) {
-    width: 100%;
-    padding: 0;
-    align-items: center;
-    overflow: scroll;
-    height: initial;
+    padding-left: 0.8em;
+  }
   }
 `;
 
@@ -72,14 +67,11 @@ export const TodoItemWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   cursor: default !important;
-  width: 92%;
+  width: 95%;
   margin-left: 0.8em;
   outline: 0;
   @media (max-width: 1200px) {
     margin-left: 0.2em;
-  }
-  @media (max-width: 700px) {
-    width: 90%;
   }
 `;
 
@@ -217,3 +209,11 @@ export const ClearArchive = styled.h2`
   cursor: pointer;
 `;
 
+export const ListHeadline = styled.h3`
+  position: fixed;
+  top: 0;
+  right: 0.3em;
+  display: block;
+  width: 70%;
+  text-align: center;
+`;

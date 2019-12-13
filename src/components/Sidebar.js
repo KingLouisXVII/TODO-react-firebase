@@ -22,7 +22,7 @@ import {
 function Sidebar(props) {
   const [input, setInput] = useState('');
   const [deleting, setDeleting] = useState(-1);
-  const { active, setActive, lists, setLists, user, login, logout, toggle, toggleLists} = props;
+  const { active, setActive, lists, setLists, user, login, logout, toggle, toggleSidebar} = props;
 
   function onChange(e) {
     setInput(e.target.value);
@@ -63,7 +63,7 @@ function Sidebar(props) {
   }
 
   function switchList(list) {
-    toggleLists();
+    toggleSidebar();
     setActive(list);
   }
 

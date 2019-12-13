@@ -8,78 +8,57 @@ export const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: 700px) {
-    height: ${props => props.animation ? '100vh' : 0}
     z-index: 99;   
     border: 0;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
-    animation: ${props => props.animation ? 'fadeIn .4s ease-in' : 'slideOut .4s forwards'}
   }
 `;
 
 export const MobileHamburger = styled.div`
-  display: none;
-  @media (max-width: 700px) {
-    position: fixed;
-    top: 0.3em;
-    right: 0.3em;
-    display: flex;
-    justify-content: space-between;
-    height: 1.5em;
-    border: 0;
-    align-items: baseline;
-    z-index: 999;
-  }
+  position: fixed;
+  top: 0.3em;
+  left: 0.3em;
+  display: flex;
+  justify-content: space-between;
+  height: 1.5em;
+  border: 0;
+  align-items: baseline;
+  z-index: 99999;
 `;
 
 export const Hamburger = styled.button`
-  display: none;
-  @media (max-width: 700px) {
-    display: flex;
-    padding: 0;
-    margin: 0;
-  } 
+  display: flex;
+  padding: 0;
+  margin: 0;
+  z-index: 99999;
 `;
 
 export const Logo = styled.h1`
   font-family: 'Anton', sans-serif;
-  font-size: 2em;
   margin: 0;
   cursor: pointer;
   opacity: 0.8;
-  @media (max-width: 700px) {
-    font-size: 1.3em; 
-    display: none;
-  }
 `;
 
 export const ListHeadline = styled.h3`
-  display: none;
-  background-color: #232b2b;
+  position: fixed;
+  top: 0;
+  right: 0.3em;
+  display: block;
+  width: 100%;
   margin: 0;
-  z-index: 9999;
-  @media (max-width: 700px) {
-    position: fixed;
-    top: 0;
-    left: 0.3em;
-    display: block;
-    width: 70%;
-    text-align: left;
-  }
+  text-align: center;
+background-color: #232b2b;
+height: 2em;
 `;
 
 export const LoginButtons = styled.div`
   display: flex;
   justify-content: space-evenly;
-  padding: 1em;
+  padding: 0.5em;
   height: 1em;
   opacity: 0.5;
-  @media (max-width: 700px) {
-    background-color: transparent;
-    width: 40%;
-    margin: 0 auto;
-    padding-top: 3em;
-  }
 `;
 
 export const LoginOutButton = styled.button`
@@ -157,10 +136,10 @@ export const List = styled.div`
     color: #8f9779;
   }
   &:nth-child(1) {
-  border-top: 2px solid #071e17;
+    border-top: 2px solid #071e17;
   }
   &:active {
-      border: 2px solid #071e17;
+    border: 2px solid #071e17;
     cursor: grab;
   }
   &:hover {

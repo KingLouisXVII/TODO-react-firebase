@@ -6,6 +6,7 @@ import firebase, { auth, provider } from './utils/Firebase.js';
 import './App.scss';
 import AppContainer from './AppStyles.js';
 import './assets/hamburgers/hamburgers.scss';
+import { push as Menu } from 'react-burger-menu'
 
 import {
   MobileHamburger, 
@@ -18,7 +19,7 @@ function App() {
   const [lists, setLists] = useState({});
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -63,47 +64,55 @@ function App() {
       });
   }
 
-  function toggleLists() {
+  function toggleSidebar() {
     setToggle(!toggle);
   }
+
   return (
-    <AppContainer toggle={toggle}>
-      <Sidebar
-        lists={lists}
-        setLists={setLists}
-        active={active}
-        setActive={setActive}
-        user={user}
-        login={login}
-        logout={logout}
-        toggle={toggle}
-        setToggle={setToggle}
-        toggleLists={toggleLists}
-      />
-      {active?<ListHeadline>{active}</ListHeadline>:null}
-        <MobileHamburger>
-      <Hamburger
-        className={
-          toggle ?
-            'hamburger  hamburger--collapse is-active'
-            :
-            'hamburger  hamburger--collapse'}
-              onClick={toggleLists}
-              type="button"
-            >
-              <span className="hamburger-box">
-                <span className="hamburger-inner"></span>
-              </span>
-            </Hamburger>
-          </MobileHamburger>
-          <Todos
-            lists={lists}
-            setLists={setLists}
-            active={active}
-            setActive={setActive}
-            user={user}
-          />
-        </AppContainer  >
+    <AppContainer toggle={toggle} id="outer-container">
+      <Menu 
+        isOpen={toggle} 
+        pageWrapId={ "page-wrap" } 
+        outerContainerId={ "outer-container" } 
+        customBurgerIcon={ false }
+        customCrossIcon={ false }
+      >
+        <Sidebar
+          lists={lists}
+          setLists={setLists}
+          active={active}
+          setActive={setActive}
+          user={user}
+          login={login}
+          logout={logout}
+          toggle={toggle}
+          toggleSidebar={toggleSidebar}
+        /></Menu>
+          <MobileHamburger>
+            <Hamburger
+              className={
+                toggle ?
+                  'hamburger  hamburger--collapse is-active'
+                  :
+                  'hamburger  hamburger--collapse'}
+                    onClick={toggleSidebar}
+                    type="button"
+                  >
+                    <span className="hamburger-box">
+                      <span className="hamburger-inner"></span>
+                    </span>
+                  </Hamburger>
+                </MobileHamburger>
+        <div id="page-wrap">
+          {active?<ListHeadline>{active}</ListHeadline>:null}
+                <Todos
+                  lists={lists}
+                  setLists={setLists}
+                  active={active}
+                  setActive={setActive}
+                  user={user}
+                /></div>
+              </AppContainer  >
   );
 }
 
