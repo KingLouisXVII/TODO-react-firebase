@@ -5,12 +5,20 @@ import { checkTheme } from './utils/darkmode.js';
 import firebase, { auth, provider } from './utils/Firebase.js';
 import './App.scss';
 import AppContainer from './AppStyles.js';
+import './assets/hamburgers/hamburgers.scss';
+
+import {
+  MobileHamburger, 
+  Hamburger, 
+  ListHeadline
+} from './components/SidebarStyles.js'
 
 
 function App() {
   const [lists, setLists] = useState({});
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -55,8 +63,11 @@ function App() {
       });
   }
 
+  function toggleLists() {
+    setToggle(!toggle);
+  }
   return (
-    <AppContainer>
+    <AppContainer toggle={toggle}>
       <Sidebar
         lists={lists}
         setLists={setLists}
@@ -65,15 +76,34 @@ function App() {
         user={user}
         login={login}
         logout={logout}
+        toggle={toggle}
+        setToggle={setToggle}
+        toggleLists={toggleLists}
       />
-      <Todos
-        lists={lists}
-        setLists={setLists}
-        active={active}
-        setActive={setActive}
-        user={user}
-      />
-    </AppContainer  >
+      {active?<ListHeadline>{active}</ListHeadline>:null}
+        <MobileHamburger>
+      <Hamburger
+        className={
+          toggle ?
+            'hamburger  hamburger--collapse is-active'
+            :
+            'hamburger  hamburger--collapse'}
+              onClick={toggleLists}
+              type="button"
+            >
+              <span className="hamburger-box">
+                <span className="hamburger-inner"></span>
+              </span>
+            </Hamburger>
+          </MobileHamburger>
+          <Todos
+            lists={lists}
+            setLists={setLists}
+            active={active}
+            setActive={setActive}
+            user={user}
+          />
+        </AppContainer  >
   );
 }
 

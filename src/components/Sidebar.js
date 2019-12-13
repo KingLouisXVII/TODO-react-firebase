@@ -7,9 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import {
   StyledSidebar,
-  ListHeadline,
-  MobileHamburger, 
-  Hamburger, 
   Logo, 
   LoginButtons, 
   LoginOutButton, 
@@ -24,9 +21,8 @@ import {
 
 function Sidebar(props) {
   const [input, setInput] = useState('');
-  const [toggle, setToggle] = useState(false);
   const [deleting, setDeleting] = useState(-1);
-  const { active, setActive, lists, setLists, user, login, logout } = props;
+  const { active, setActive, lists, setLists, user, login, logout, toggle, toggleLists} = props;
 
   function onChange(e) {
     setInput(e.target.value);
@@ -71,9 +67,6 @@ function Sidebar(props) {
     setActive(list);
   }
 
-  function toggleLists() {
-    setToggle(!toggle);
-  }
 
   function onDragEnd(result) {
     if (!result.destination) {
@@ -93,25 +86,10 @@ function Sidebar(props) {
   }
 
   return (
-    <StyledSidebar height={toggle?1:0}>
+    <StyledSidebar                       animation={toggle}
+>
       <DragDropContext onDragEnd={onDragEnd}>
-        <MobileHamburger>
           <Logo onClick={() => {setActive('')} } >TODO!</Logo>
-          <ListHeadline>{active}</ListHeadline>
-          <Hamburger
-            className={
-              toggle ?
-                'hamburger  hamburger--collapse is-active'
-                :
-                'hamburger  hamburger--collapse'}
-                  onClick={toggleLists}
-                  type="button"
-                >
-                  <span className="hamburger-box">
-                    <span className="hamburger-inner"></span>
-                  </span>
-                </Hamburger>
-              </MobileHamburger>
               <LoginButtons>
                 {user
                     ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
@@ -132,7 +110,6 @@ function Sidebar(props) {
                 {provided => (
                   <ListsWrapper>
                     <Lists 
-                      animation={toggle}
                       ref={provided.innerRef} 
                       {...provided.droppableProps}
                     >

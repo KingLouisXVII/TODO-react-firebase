@@ -8,7 +8,7 @@ export const StyledTodos = styled.div`
   @media (max-width: 700px) {
     height: 90vh;
     overflow:scroll;
-    margin-top: 0.3em;
+    margin-top: 2em;
   }
 `;
 

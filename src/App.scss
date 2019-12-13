@@ -13,12 +13,11 @@
 
 @keyframes fadeOut {
   from {opacity:1;}
-  to {opacity:0;}
+  to {opacity:0;display:none;}
 }
 
 @keyframes slideIn {
   0%{
-    display: none;
     transform: translateX(+500px);
   }
   100%{
@@ -32,6 +31,5 @@
   }
   100%{
     transform: translateX(+900px);
-    display: none;
   }
 }

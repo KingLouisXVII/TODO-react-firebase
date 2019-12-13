@@ -8,15 +8,17 @@ export const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: 700px) {
-    height: ${props => props.height ? '100vh' : '100%'};
+    height: ${props => props.animation ? '100vh' : 0}
     z-index: 99;   
     border: 0;
     width: 100vw;
     overflow: hidden;
+    animation: ${props => props.animation ? 'fadeIn .4s ease-in' : 'slideOut .4s forwards'}
   }
 `;
 
 export const MobileHamburger = styled.div`
+  display: none;
   @media (max-width: 700px) {
     position: fixed;
     top: 0.3em;
@@ -55,6 +57,7 @@ export const ListHeadline = styled.h3`
   display: none;
   background-color: #232b2b;
   margin: 0;
+  z-index: 9999;
   @media (max-width: 700px) {
     position: fixed;
     top: 0;
@@ -132,7 +135,7 @@ export const Lists = styled.div`
   }
   @media (max-width: 700px) {
     height: 100vh;
-    animation: ${props => props.animation ? 'fadeIn .4s ease-in' : 'fadeOut .4s forwards'}
+    // animation: ${props => props.animation ? 'fadeIn .4s ease-in' : 'fadeOut .4s forwards'}
   }
 `;
 
