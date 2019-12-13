@@ -288,6 +288,11 @@ function Todos(props) {
           )}
           </Droppable>
           </DragDropContext>
+    { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
+      <ClearDone onClick={clearDone}>clear done</ClearDone> 
+        : 
+        null
+    }
     {lists[active] && lists[active].archive && lists[active].archive.length > 1
       ?  <ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive>
       : null
@@ -319,11 +324,6 @@ function Todos(props) {
           </TodosList>
         )
     } 
-    { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
-      <ClearDone onClick={clearDone}>clear done</ClearDone> 
-        : 
-        null
-    }
     </StyledTodos>
   )
 }

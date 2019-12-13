@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
-  height: 100vh;
-  width: 80%;
+  height: 90vh;
+  width: 100%;
   margin: 0 auto;
   padding-top: 2em;
   overflow:scroll;
-  @media (max-width: 700px) {
-    width: 100%;
-  }
 `;
 
 
@@ -210,9 +207,6 @@ export const ClearArchive = styled.h2`
 `;
 
 export const ListHeadline = styled.h3`
-  position: fixed;
-  top: 0;
-  right: 0.3em;
   display: block;
   width: 70%;
   text-align: center;
