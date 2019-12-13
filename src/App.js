@@ -71,6 +71,8 @@ function App() {
   return (
     <AppContainer toggle={toggle} id="outer-container">
       <Menu 
+        disableOverlayClick
+        noOverlay
         isOpen={toggle} 
         pageWrapId={ "page-wrap" } 
         outerContainerId={ "outer-container" } 
