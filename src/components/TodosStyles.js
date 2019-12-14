@@ -81,7 +81,7 @@ export const TodosItem = styled.li`
   height: auto;
   width: 100%;
   padding: 0.3em;
-  margin: 0.3em;
+  margin: 0.5em;
   cursor: pointer;
   align-self: center;
   word-break: break-word;
