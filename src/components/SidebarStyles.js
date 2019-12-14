@@ -2,14 +2,13 @@ import styled from 'styled-components';
 
 export const StyledSidebar = styled.div`
   height: 100vh;
+    border: 0;
   background-color: #232b2b;
-  border-right: 7px solid #071e17;
   text-align: center;
   display: flex;
   flex-direction: column;
   @media (max-width: 700px) {
     z-index: 99;   
-    border: 0;
     width: 100%;
     overflow: hidden;
   }
