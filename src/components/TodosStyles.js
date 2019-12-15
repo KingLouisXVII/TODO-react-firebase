@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
   height: 90vh;
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
   padding-top: 2em;
   overflow:scroll;
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     width: 100%;
   }
 `;
