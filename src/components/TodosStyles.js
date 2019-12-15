@@ -144,7 +144,7 @@ export const Checkbox = styled.div`
     background-color: 	#8f9779;
   }
 `;
-export const ButtonsWrapper = styled.div`
+export const TodoButtonsWrapper = styled.div`
   width: 30%;
   display: flex;
   align-self: baseline;
@@ -170,12 +170,17 @@ export const ImageButton = styled.img`
   opacity: 0.5;
 `;
 
+export const ButtonWrapper  = styled.div`
+text-align: left;
+`;
+
+
 export const ClearDone = styled.h2`
+width: 7em;
   cursor: pointer;
   margin: 0;
   padding: 0.5em;
   font-size: 1em;
-  text-align: center;
   &:hover {
     transition: all 0.5s ease;
     opacity: 0.7;
@@ -183,14 +188,15 @@ export const ClearDone = styled.h2`
 `;
 
 export const ToggleArchive = styled.h2`
+width: 7em;
   margin: 0;
   padding: 0.5em;
   font-size: 1em;
   cursor: pointer;
-text-align: right;
 `;
 
 export const ClearArchive = styled.h2`
+width: 7em;
   margin: 0;
   padding: 0.5em;
   font-size: 1em;

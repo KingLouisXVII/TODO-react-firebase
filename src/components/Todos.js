@@ -13,12 +13,12 @@ import {
   TodosItem,
   EditTodo,
   Checkbox,
-  ButtonsWrapper,
+  TodoButtonsWrapper,
+  ButtonWrapper,
   ClearDone,
   ToggleArchive,
   ArchivedTodosItem,
   ClearArchive,
-  ListHeadline
 } from './TodosStyles.js'
 
 
@@ -263,16 +263,16 @@ function Todos(props) {
                           animation={todo.completed?'fade 1s forwards':undefined}
                         ><span>{todo.name}</span>                        
                           {toggleButtons === i ?
-                          <ButtonsWrapper justify={toggleButtons===i?1:0}>
+                          <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
                             <FontAwesomeIcon icon={faEdit} onClick={e=>editTodo(i)}/>
                             <FontAwesomeIcon icon={faExclamation} onClick={e=>prioritize(i)}/>
                             <FontAwesomeIcon icon={faTrashAlt} onClick={e=>deleteTodo(i)}/>
                             <FontAwesomeIcon icon={faTimes} onClick={e=>setToggleButtons(-1)}/>
-                          </ButtonsWrapper> 
+                          </TodoButtonsWrapper> 
                               :
-                                <ButtonsWrapper justify={toggleButtons===i?1:0}>
+                                <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
                                   <FontAwesomeIcon icon={faEllipsisH} onClick={e=>setToggleButtons(i)}/>
-                                </ButtonsWrapper> 
+                                </TodoButtonsWrapper> 
                           }
                           </TodosItem>
                           </TodoItemWrapper>
@@ -289,19 +289,19 @@ function Todos(props) {
           </Droppable>
           </DragDropContext>
     { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
-      <ClearDone onClick={clearDone}>clear done</ClearDone> 
+      <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
         : 
         null
     }
     {lists[active] && lists[active].archive && lists[active].archive.length > 1
-      ?  <ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive>
+        ?  <ButtonWrapper><ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive></ButtonWrapper>
       : null
     }
     {!archive
         ? null
         : <div style={{'textAlign':'center'}}>
           <h3>Archived Todos:</h3>
-          <ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive>
+          <ButtonWrapper><ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive></ButtonWrapper>
         </div>
     }
     {!archive
