@@ -20,6 +20,8 @@ function App() {
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
   const [toggle, setToggle] = useState(true);
+  const [edit, setEdit] = useState(-1);
+  const [editName, setEditName] = useState('');
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -66,6 +68,8 @@ function App() {
 
   function toggleSidebar() {
     setToggle(!toggle);
+      setEdit(-1);
+      setEditName('');
   }
 
   return (
@@ -88,6 +92,10 @@ function App() {
           logout={logout}
           toggle={toggle}
           toggleSidebar={toggleSidebar}
+          edit={edit}
+          setEdit={setEdit}
+          editName={editName}
+          setEditName={setEditName}
         /></Menu>
           <MobileHamburger>
             <Hamburger

@@ -118,6 +118,7 @@ export const ArchivedTodosItem = styled.li`
   color: 	#8f9779;
   box-shadow: 5px 5px #071e17;
 `;
+
 export const EditTodo = styled.input`
   height: auto;
   width: 100%;
@@ -131,6 +132,7 @@ export const EditTodo = styled.input`
   box-shadow: 5px 5px #071e17;
   outline: 0;
 `;
+
 export const Checkbox = styled.div`
   width: 20px;
   height: 20px;

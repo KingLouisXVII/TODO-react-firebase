@@ -156,6 +156,19 @@ export const ListNameWrapper = styled.div`
   cursor: pointer;
 `;
 
+export const EditList = styled.input`
+  height: auto;
+  width: 100%;
+background-color: #232b2b;
+color: 	#8f9779;
+font-size: 0.9em;
+border: 0;
+outline: none;
+padding: 0.3em;
+border-bottom: 2px solid #071e17;
+`;
+
+
 export const DeleteList = styled.div`
   visibility: ${props => props.visibility};
   opacity: 0.3;
