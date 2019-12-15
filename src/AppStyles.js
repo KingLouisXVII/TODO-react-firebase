@@ -8,11 +8,8 @@ const AppContainer = styled.div`
   background-color:	#232b2b;
   color: 	#8f9779;
   overflow: hidden;
-  @media (max-width: 700px) {
-    border: 0;
-    box-shadow: none;
-    overflow: hidden;
-  }
+  border: 0;
+  box-shadow: none;
 `;
 
 export default AppContainer;

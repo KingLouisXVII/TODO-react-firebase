@@ -6,7 +6,7 @@ export const StyledTodos = styled.div`
   margin: 0 auto;
   padding-top: 2em;
   overflow:scroll;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     width: 100%;
   }
 `;
@@ -17,9 +17,9 @@ export const InputWrapper = styled.div`
   flex-direction: column;
   position: sticky;
   top: 0;
+    margin: 0;
   @media (max-width: 700px) {
     width: 100%;
-    margin: 0;
     height: 2em;
     justify-content: center;
   }
@@ -40,9 +40,8 @@ export const TodosInput = styled.input`
   color: #071e17;
   border-color: #071e17;
   box-shadow: 5px 5px #071e17;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     width: 85%;
-    margin: 0;
   }
 `;
 
@@ -50,15 +49,12 @@ export const TodosList = styled.ul`
   list-style-type: none;
   flex: 2;
   padding: 0;
-  padding-left: 2em;
+  padding-left: 0.9em;
   display: flex;
   flex-direction: column;
   align-items: baseline;
   margin: 0;
   overflow: scroll;
-  @media (max-width: 700px) {
-    padding-left: 0.8em;
-  }
   }
 `;
 
