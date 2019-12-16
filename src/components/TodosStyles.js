@@ -2,11 +2,14 @@ import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
   height: 90vh;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   padding-top: 2em;
   overflow:scroll;
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
+    width: 90%;
+  }
+  @media (max-width: 500px) {
     width: 100%;
   }
 `;
@@ -63,12 +66,9 @@ export const TodoItemWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   cursor: default !important;
-  width: 95%;
+  width: 90%;
   margin-left: 0.8em;
   outline: 0;
-  @media (max-width: 1200px) {
-    margin-left: 0.2em;
-  }
 `;
 
 export const TodosItem = styled.li`
