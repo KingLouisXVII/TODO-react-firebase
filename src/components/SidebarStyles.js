@@ -128,7 +128,6 @@ export const List = styled.div`
   background-color: #232b2b;
   border-bottom: 2px solid 	#071e17;
   color: 	#8f9779;
-  font-size: 0.8em;
   &.active {
     border-color: #ef3f3f;
     background-color:	#25584f;
@@ -146,7 +145,6 @@ export const List = styled.div`
   }
   @media (max-width: 700px) {
     padding-right: 0.5em;
-    font-size: 1em;
   }
 `;
 
