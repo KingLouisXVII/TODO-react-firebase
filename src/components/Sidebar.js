@@ -38,14 +38,15 @@ function Sidebar(props) {
     if (e.key === 'Enter' && e.target.name === 'list' && input.length !== 0) {
       addList();
       setInput('');
-    } else if (e.key === 'Enter' && e.target.name === 'edit' && editName.length !== 0) {
+    } else if (e.key === 'Enter' && e.target.name === 'edit') {
       addEditedList(e);
     }
   }
 
   function addList() {
     const allLists = {...lists};
-    const position = Object.keys(allLists).length + 1;
+    const position = Object.keys(allLists).length;
+    console.log(position)
     const newList = {todos:[{exist:true}],position:position,archive:[{exist:true}]};
     if ( !(input in allLists ) ) {
       allLists[input] = newList;
@@ -61,9 +62,11 @@ function Sidebar(props) {
     const todos = allLists[active].todos;
     const position = allLists[active].position;
     const archive = allLists[active].archive;
+    const oldName = active;
+    const newName = editName.length < 1 ? oldName : editName;
     const listCopy = {todos:todos,position:position,archive:archive};
-    allLists[editName] = listCopy;
     delete allLists[active];
+    allLists[newName] = listCopy;
     set(allLists);
     setActive(editName)
     setEdit(-1);
