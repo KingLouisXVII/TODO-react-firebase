@@ -10,7 +10,7 @@ export const StyledTodos = styled.div`
     width: 90%;
   }
   @media (max-width: 500px) {
-    width: 100%;
+    width: 95%;
   }
 `;
 
@@ -30,9 +30,8 @@ export const InputWrapper = styled.div`
 
 export const TodosInput = styled.input`
   height: 1.4em;
-  width: 93%;
+  width: 90%;
   padding: 0.3em;
-  margin-left: 0.4em;
   align-self: center;
   word-break: break-word;
   border: 2px solid;
@@ -43,9 +42,6 @@ export const TodosInput = styled.input`
   color: #071e17;
   border-color: #071e17;
   box-shadow: 5px 5px #071e17;
-  @media (max-width: 800px) {
-    width: 85%;
-  }
 `;
 
 export const TodosList = styled.ul`
@@ -69,6 +65,10 @@ export const TodoItemWrapper = styled.div`
   width: 90%;
   margin-left: 0.8em;
   outline: 0;
+  @media (max-width: 800px) {
+  margin-left: 0;
+  width: 95%;
+  }
 `;
 
 export const TodosItem = styled.li`
