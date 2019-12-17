@@ -49,6 +49,7 @@ export const TodosList = styled.ul`
   flex: 2;
   padding: 0;
   padding-left: 0.9em;
+  padding-bottom: 2em;
   display: flex;
   flex-direction: column;
   align-items: baseline;
