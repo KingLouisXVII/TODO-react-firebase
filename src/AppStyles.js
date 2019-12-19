@@ -7,7 +7,6 @@ const AppContainer = styled.div`
   height: 100vh;
   background-color:	#232b2b;
   color: 	#8f9779;
-  overflow: hidden;
   border: 0;
   box-shadow: none;
 `;

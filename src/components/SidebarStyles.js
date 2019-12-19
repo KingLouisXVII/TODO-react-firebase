@@ -56,7 +56,7 @@ export const LoginButtons = styled.div`
   display: flex;
   justify-content: space-evenly;
   padding: 0.5em;
-  height: 1em;
+  height: 2em;
   opacity: 0.5;
 `;
 

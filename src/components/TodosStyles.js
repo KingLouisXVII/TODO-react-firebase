@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledTodos = styled.div`
-  height: 90vh;
   width: 70%;
   margin: 0 auto;
   padding-top: 2em;
-  overflow:scroll;
   @media (max-width: 900px) {
     width: 90%;
   }
@@ -19,7 +17,7 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: sticky;
-  top: 0;
+  top: 2em;
     margin: 0;
   @media (max-width: 700px) {
     width: 100%;
@@ -54,7 +52,6 @@ export const TodosList = styled.ul`
   flex-direction: column;
   align-items: baseline;
   margin: 0;
-  overflow: scroll;
   }
 `;
 
@@ -89,8 +86,6 @@ export const TodosItem = styled.li`
   border-color: ${props => props.color};
   box-shadow: 5px 5px #071e17;
   text-decoration: ${props => props.textDecoration};
-  opacity: ${props => props.opacity === true ? '0.5' : '1'};
-  animation: ${props => props.animation};
   span {
     width: 70%;
   }
