@@ -53,11 +53,7 @@ function Sidebar(props) {
     input && setLists(allLists);
     setActive(input);
     setInput('');
-    connectedRef.on("value", function(snap) {
-      if (snap.val() === true) {
         set(allLists);
-      }
-    });
 
   }
 

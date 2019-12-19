@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
-import firebase, { auth, provider } from './utils/Firebase.js';
+import firebase, { auth, provider, connectedRef } from './utils/Firebase.js';
 import './App.scss';
 import AppContainer from './AppStyles.js';
 import './assets/hamburgers/hamburgers.scss';
@@ -22,12 +22,16 @@ function App() {
   const [editName, setEditName] = useState('');
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(
-          user
-        );
-      }})
+    connectedRef.on("value", function(snap) {
+      if (snap.val() === true) {
+        auth.onAuthStateChanged((user) => {
+          if (user) {
+            setUser(
+              user
+            );
+          }})
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -65,8 +69,8 @@ function App() {
 
   function toggleSidebar() {
     setToggle(!toggle);
-      setEdit(-1);
-      setEditName('');
+    setEdit(-1);
+    setEditName('');
   }
 
   return (
@@ -94,23 +98,23 @@ function App() {
           editName={editName}
           setEditName={setEditName}
         /></Menu>
-          <MobileHamburger>
-            <Hamburger
-              className={
-                toggle ?
-                  'hamburger  hamburger--collapse is-active'
-                  :
-                  'hamburger  hamburger--collapse'}
-                    onClick={toggleSidebar}
-                    type="button"
-                  >
-                    <span className="hamburger-box">
-                      <span className="hamburger-inner"></span>
-                    </span>
-                  </Hamburger>
-                </MobileHamburger>
-        <div id="page-wrap">
-          {active?<ListHeadline>{active}</ListHeadline>:null}
+        <MobileHamburger>
+          <Hamburger
+            className={
+              toggle ?
+                'hamburger  hamburger--collapse is-active'
+                :
+                'hamburger  hamburger--collapse'}
+                  onClick={toggleSidebar}
+                  type="button"
+                >
+                  <span className="hamburger-box">
+                    <span className="hamburger-inner"></span>
+                  </span>
+                </Hamburger>
+              </MobileHamburger>
+              <div id="page-wrap">
+                {active?<ListHeadline>{active}</ListHeadline>:null}
                 <Todos
                   lists={lists}
                   setLists={setLists}
