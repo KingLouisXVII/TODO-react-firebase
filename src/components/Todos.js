@@ -262,20 +262,20 @@ function Todos(props) {
                           opacity={todo.completed.toString()}
                           animation={todo.completed?'fade 1s forwards':undefined}
                         ><span>{todo.name}</span>                        
-                          {toggleButtons === i ?
-                          <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
-                            <FontAwesomeIcon icon={faEdit} onClick={e=>editTodo(i)}/>
-                            <FontAwesomeIcon icon={faExclamation} onClick={e=>prioritize(i)}/>
-                            <FontAwesomeIcon icon={faTrashAlt} onClick={e=>deleteTodo(i)}/>
-                            <FontAwesomeIcon icon={faTimes} onClick={e=>setToggleButtons(-1)}/>
-                          </TodoButtonsWrapper> 
-                              :
-                                <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
-                                  <FontAwesomeIcon icon={faEllipsisH} onClick={e=>setToggleButtons(i)}/>
-                                </TodoButtonsWrapper> 
-                          }
-                          </TodosItem>
-                          </TodoItemWrapper>
+                        {toggleButtons === i ?
+                        <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
+                          <FontAwesomeIcon icon={faEdit} onClick={e=>editTodo(i)}/>
+                          <FontAwesomeIcon icon={faExclamation} onClick={e=>prioritize(i)}/>
+                          <FontAwesomeIcon icon={faTrashAlt} onClick={e=>deleteTodo(i)}/>
+                          <FontAwesomeIcon icon={faTimes} onClick={e=>setToggleButtons(-1)}/>
+                        </TodoButtonsWrapper> 
+                            :
+                              <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
+                                <FontAwesomeIcon icon={faEllipsisH} onClick={e=>setToggleButtons(i)}/>
+                              </TodoButtonsWrapper> 
+                        }
+                        </TodosItem>
+                        </TodoItemWrapper>
                     )
                     }
                     </Draggable>
@@ -290,12 +290,12 @@ function Todos(props) {
           </DragDropContext>
     { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
       <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
-        : 
-        null
+      : 
+      null
     }
     {lists[active] && lists[active].archive && lists[active].archive.length > 1
         ?  <ButtonWrapper><ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive></ButtonWrapper>
-      : null
+        : null
     }
     {!archive
         ? null
@@ -304,26 +304,27 @@ function Todos(props) {
           <ButtonWrapper><ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive></ButtonWrapper>
         </div>
     }
-    {!archive
-        ? null
-        : lists[active].archive 
-        && lists[active].archive.length > 1 
-        && lists[active].archive
-        .reduce((todos, todo) => {
-          if (!todo.exist) {
-            todos.push(todo);
-          }
-          return todos;
-        }, [])
-        .map((todo,i) => 
-          <TodosList key={Math.random()}>
+      <TodosList key={Math.random()}>
+        {!archive
+          ? null
+          : lists[active].archive 
+          && lists[active].archive.length > 1 
+          && 
+          lists[active].archive
+          .reduce((todos, todo) => {
+            if (!todo.exist) {
+              todos.push(todo);
+            }
+            return todos;
+          }, [])
+          .map((todo,i) => 
             <TodoItemWrapper>
               <Checkbox className={todo.completed?'checked':''} onClick={()=>unarchive(todo.name,i)}></Checkbox>
               <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
             </TodoItemWrapper>
-          </TodosList>
-        )
-    } 
+          )
+        } 
+      </TodosList>
     </StyledTodos>
   )
 }

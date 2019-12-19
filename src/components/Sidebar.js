@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import firebase, { connectedRef } from '../utils/Firebase.js';
+import firebase from '../utils/Firebase.js';
 import { reorderLists, reposition } from '../utils/Reorder';
 import '../assets/hamburgers/hamburgers.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
