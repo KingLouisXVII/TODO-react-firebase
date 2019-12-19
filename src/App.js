@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
-import { checkTheme } from './utils/darkmode.js';
 import firebase, { auth, provider } from './utils/Firebase.js';
 import './App.scss';
 import AppContainer from './AppStyles.js';
 import './assets/hamburgers/hamburgers.scss';
 import { scaleDown as Menu } from 'react-burger-menu'
-
 import {
   MobileHamburger, 
   Hamburger, 
@@ -33,7 +31,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    checkTheme();
     const itemsRef = firebase.database().ref(`/users/${user.uid}`);
     itemsRef.on('value', (snapshot) => {
       let items = snapshot.val();

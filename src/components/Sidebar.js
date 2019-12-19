@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import firebase from '../utils/Firebase.js';
+import firebase, { connectedRef } from '../utils/Firebase.js';
 import { reorderLists, reposition } from '../utils/Reorder';
 import '../assets/hamburgers/hamburgers.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -46,7 +46,6 @@ function Sidebar(props) {
   function addList() {
     const allLists = {...lists};
     const position = Object.keys(allLists).length;
-    console.log(position)
     const newList = {todos:[{exist:true}],position:position,archive:[{exist:true}]};
     if ( !(input in allLists ) ) {
       allLists[input] = newList;
@@ -54,7 +53,12 @@ function Sidebar(props) {
     input && setLists(allLists);
     setActive(input);
     setInput('');
-    set(allLists);
+    connectedRef.on("value", function(snap) {
+      if (snap.val() === true) {
+        set(allLists);
+      }
+    });
+
   }
 
   function addEditedList() {
