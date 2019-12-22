@@ -17,9 +17,8 @@ import {
   ButtonWrapper,
   ClearDone,
   ToggleArchive,
-  ArchivedTodosItem,
-  ClearArchive,
 } from './TodosStyles.js'
+import Archive from './Archive';
 
 
 function Todos(props) {
@@ -272,58 +271,38 @@ function Todos(props) {
                         </TodosItem>
                       </TodoItemWrapper>
                     )}
-                  </Draggable>
+                    </Draggable>
                 )
                 : null
               }
-              {provided.placeholder}
+            {provided.placeholder}
             </TodosList>
           )}
-        </Droppable>
-      </DragDropContext>
-      { lists[active] && lists[active].todos.some(todo => todo.completed === true) 
-          ? <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
-          : null
-      }
-      { lists[active] && lists[active].archive && lists[active].archive.length > 1
-          ? <ButtonWrapper>
-            <ToggleArchive onClick={()=>setArchive(!archive)}>
-              {archive?'hide':'show'} archive
-            </ToggleArchive>
-          </ButtonWrapper>
-          : null
-      }
-      {!archive
-          ? null
-          : <div style={{'textAlign':'center'}}>
-            <h3>Archived Todos:</h3>
-            <ButtonWrapper>
-              <ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive>
-            </ButtonWrapper>
-          </div>
-      }
-      <TodosList key={Math.random()}>
-        {!archive
-          ? null
-          : lists[active].archive 
-          && lists[active].archive.length > 1 
-          && lists[active].archive
-          .reduce((todos, todo) => {
-            if (!todo.exist) {
-              todos.push(todo);
-            }
-            return todos;
-          }, [])
-          .map((todo,i) => 
-            <TodoItemWrapper key={i}>
-              <Checkbox 
-                className={todo.completed?'checked':''} 
-                onClick={()=>unarchive(todo.name,i)}
-              />
-              <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
-            </TodoItemWrapper>
-          )} 
-      </TodosList>
+          </Droppable>
+          </DragDropContext>
+    { lists[active] && lists[active].todos.some(todo => todo.completed === true) 
+      ? <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
+      : null
+    }
+    { lists[active] && lists[active].archive && lists[active].archive.length > 1
+        ? <ButtonWrapper>
+          <ToggleArchive onClick={()=>setArchive(!archive)}>
+            {archive?'hide':'show'} archive
+          </ToggleArchive>
+        </ButtonWrapper>
+        : null
+    }
+    {!archive 
+        ? null 
+        : <Archive 
+          lists={lists}
+          setLists={setLists}
+          active={active}
+          set={set}
+          archive={archive}
+          setArchive={setArchive}
+        />
+    }
     </StyledTodos>
   )
 }
