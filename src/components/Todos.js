@@ -33,9 +33,9 @@ function Todos(props) {
 
 
   function onChange(e) {
-    if(e.target.name === 'todo') {
+    if (e.target.name === 'todo') {
       setInput(e.target.value);
-    } else if(e.target.name === 'edit') {
+    } else if (e.target.name === 'edit') {
       setEditName(e.target.value);
     }
   }
@@ -106,13 +106,10 @@ function Todos(props) {
   function clearDone() {
     const allLists = {...lists};
     const prevArchive = allLists[active].archive;
-    console.log(prevArchive)
     const newTodos = allLists[active].todos.filter(removeCompleted);
     const archivedTodos = allLists[active].todos.filter(returnCompleted);
-
-    newTodos.length<=1&&newTodos.push({exist:true});
+    newTodos.length <= 1 && newTodos.push({exist:true});
     allLists[active].todos = newTodos;
-
     allLists[active].archive = [...prevArchive, ...archivedTodos];
     setLists(allLists);
     setInput('');
@@ -129,14 +126,11 @@ function Todos(props) {
     }
     todos.unshift(newTodo);
     todos.sort(function(a,b){return b.priority-a.priority});
-
     const archive = allLists[active].archive;
-
     allLists[active].archive = archive.filter(function (todo) {
       return todo.name !== name;
     });
-    archive.length<1 && archive.push({exist:true});
-
+    archive.length < 1 && archive.push({exist:true});
     setLists(allLists);
     set(allLists);
   }
@@ -174,14 +168,13 @@ function Todos(props) {
     const allLists = {...lists};
     const todos = allLists[active].todos;
     todos.splice(i,1);
-    todos.length<=1&&todos.push({exist:true});
+    todos.length <= 1 && todos.push({exist:true});
     setLists(allLists);
     set(allLists);
     setToggleButtons(-1);
   }
 
   function clearArchive(active) {
-    console.log(active);
     const allLists = {...lists};
     allLists[active].archive = [{exist:true}];
     setLists(allLists);
@@ -202,23 +195,23 @@ function Todos(props) {
       result.source.index,
       result.destination.index
     );
-    props.setLists(allLists);
+    setLists(allLists);
   }
 
   return (
     <StyledTodos id="todos">
-      {active?
-      <InputWrapper>
-        <TodosInput
-          autoComplete="off"
-          type="text"
-          placeholder="..."
-          value={input.toUpperCase()}
-          onChange={onChange}
-          onKeyDown={e =>handleKeyDown(e)}
-          name="todo"
-        />
-      </InputWrapper>
+      {active
+          ? <InputWrapper>
+            <TodosInput
+              autoComplete="off"
+              type="text"
+              placeholder="..."
+              value={input.toUpperCase()}
+              onChange={onChange}
+              onKeyDown={e =>handleKeyDown(e)}
+              name="todo"
+            />
+          </InputWrapper>
           : null
       }
       <DragDropContext onDragEnd={onDragEnd}>
@@ -236,14 +229,16 @@ function Todos(props) {
                     <TodoItemWrapper
                       key={i.toString()}
                     >
-                      <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
+                      <Checkbox 
+                        className={todo.completed ? 'checked' : ''} 
+                        onClick={e => toggleTodo(i)}
+                      />
                       <EditTodo 
                         autoFocus
-                        color={todo.priority?'#ef3f3f':'#071e17'}
                         type="text"
                         value={editName.toUpperCase()}
                         onChange={onChange}
-                        onKeyDown={e =>handleKeyDown(e)}
+                        onKeyDown={e => handleKeyDown(e)}
                         name="edit"
                       />
                     </TodoItemWrapper>
@@ -254,63 +249,65 @@ function Todos(props) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Checkbox className={todo.completed?'checked':''} onClick={e=>toggleTodo(i)}></Checkbox>
+                        <Checkbox 
+                          className={todo.completed?'checked':''} 
+                          onClick={e=>toggleTodo(i)}/>
                         <TodosItem
-                          className={todo.completed?'completed':undefined}
-                          color={todo.priority?'#ef3f3f':'#071e17'}
-                          textDecoration={todo.completed?'line-through':undefined}
-                          opacity={todo.completed.toString()}
-                          animation={todo.completed?'fade 1s forwards':undefined}
-                        ><span>{todo.name}</span>                        
-                        {toggleButtons === i ?
-                        <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
-                          <FontAwesomeIcon icon={faEdit} onClick={e=>editTodo(i)}/>
-                          <FontAwesomeIcon icon={faExclamation} onClick={e=>prioritize(i)}/>
-                          <FontAwesomeIcon icon={faTrashAlt} onClick={e=>deleteTodo(i)}/>
-                          <FontAwesomeIcon icon={faTimes} onClick={e=>setToggleButtons(-1)}/>
-                        </TodoButtonsWrapper> 
-                            :
-                              <TodoButtonsWrapper justify={toggleButtons===i?1:0}>
-                                <FontAwesomeIcon icon={faEllipsisH} onClick={e=>setToggleButtons(i)}/>
+                          className={todo.completed ? 'completed' : undefined}
+                          bordercolor={todo.priority ? '#ef3f3f' : '#071e17'}
+                          textDecoration={todo.completed ? 'line-through': undefined}
+                        >
+                          <span>{todo.name}</span>                        
+                          {toggleButtons === i 
+                              ? <TodoButtonsWrapper justify={toggleButtons === i ? 1 : 0}>
+                                <FontAwesomeIcon icon={faEdit} onClick={e => editTodo(i)}/>
+                                <FontAwesomeIcon icon={faExclamation} onClick={e => prioritize(i)}/>
+                                <FontAwesomeIcon icon={faTrashAlt} onClick={e => deleteTodo(i)}/>
+                                <FontAwesomeIcon icon={faTimes} onClick={e => setToggleButtons(-1)}/>
                               </TodoButtonsWrapper> 
-                        }
+                              : <TodoButtonsWrapper justify={toggleButtons === i ? 1 : 0}>
+                                <FontAwesomeIcon icon={faEllipsisH} onClick={e => setToggleButtons(i)}/>
+                              </TodoButtonsWrapper> 
+                          }
                         </TodosItem>
-                        </TodoItemWrapper>
-                    )
-                    }
-                    </Draggable>
+                      </TodoItemWrapper>
+                    )}
+                  </Draggable>
                 )
-                :
-                null
+                : null
               }
-            {provided.placeholder}
+              {provided.placeholder}
             </TodosList>
           )}
-          </Droppable>
-          </DragDropContext>
-    { lists[active] && lists[active].todos.some(todo => todo.completed === true) ? 
-      <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
-      : 
-      null
-    }
-    {lists[active] && lists[active].archive && lists[active].archive.length > 1
-        ?  <ButtonWrapper><ToggleArchive onClick={()=>setArchive(!archive)}>{archive?'hide':'show'} archive</ToggleArchive></ButtonWrapper>
-        : null
-    }
-    {!archive
-        ? null
-        : <div style={{'textAlign':'center'}}>
-          <h3>Archived Todos:</h3>
-          <ButtonWrapper><ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive></ButtonWrapper>
-        </div>
-    }
+        </Droppable>
+      </DragDropContext>
+      { lists[active] && lists[active].todos.some(todo => todo.completed === true) 
+          ? <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
+          : null
+      }
+      { lists[active] && lists[active].archive && lists[active].archive.length > 1
+          ? <ButtonWrapper>
+            <ToggleArchive onClick={()=>setArchive(!archive)}>
+              {archive?'hide':'show'} archive
+            </ToggleArchive>
+          </ButtonWrapper>
+          : null
+      }
+      {!archive
+          ? null
+          : <div style={{'textAlign':'center'}}>
+            <h3>Archived Todos:</h3>
+            <ButtonWrapper>
+              <ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive>
+            </ButtonWrapper>
+          </div>
+      }
       <TodosList key={Math.random()}>
         {!archive
           ? null
           : lists[active].archive 
           && lists[active].archive.length > 1 
-          && 
-          lists[active].archive
+          && lists[active].archive
           .reduce((todos, todo) => {
             if (!todo.exist) {
               todos.push(todo);
@@ -318,12 +315,14 @@ function Todos(props) {
             return todos;
           }, [])
           .map((todo,i) => 
-            <TodoItemWrapper>
-              <Checkbox className={todo.completed?'checked':''} onClick={()=>unarchive(todo.name,i)}></Checkbox>
+            <TodoItemWrapper key={i}>
+              <Checkbox 
+                className={todo.completed?'checked':''} 
+                onClick={()=>unarchive(todo.name,i)}
+              />
               <ArchivedTodosItem >{todo.name}</ArchivedTodosItem>
             </TodoItemWrapper>
-          )
-        } 
+          )} 
       </TodosList>
     </StyledTodos>
   )

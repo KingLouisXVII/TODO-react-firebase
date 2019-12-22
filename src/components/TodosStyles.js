@@ -83,7 +83,7 @@ export const TodosItem = styled.li`
   font-size: 0.7em;
   background-color: #232b2b;
   color: 	#8f9779;
-  border-color: ${props => props.color};
+  border-color: ${props => props.bordercolor};
   box-shadow: 5px 5px #071e17;
   text-decoration: ${props => props.textDecoration};
   span {

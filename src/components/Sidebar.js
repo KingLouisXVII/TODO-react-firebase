@@ -27,9 +27,9 @@ function Sidebar(props) {
   const { active, setActive, lists, setLists, user, login, logout, toggle, toggleSidebar, edit, setEdit, editName, setEditName } = props;
 
   function onChange(e) {
-    if(e.target.name === 'list') {
+    if (e.target.name === 'list') {
       setInput(e.target.value);
-    } else if(e.target.name === 'edit') {
+    } else if (e.target.name === 'edit') {
       setEditName(e.target.value);
     }
   }
@@ -46,15 +46,18 @@ function Sidebar(props) {
   function addList() {
     const allLists = {...lists};
     const position = Object.keys(allLists).length;
-    const newList = {todos:[{exist:true}],position:position,archive:[{exist:true}]};
-    if ( !(input in allLists ) ) {
+    const newList = {
+      todos:[{exist:true}],
+      position:position,
+      archive:[{exist:true}]
+    };
+    if (!(input in allLists)) {
       allLists[input] = newList;
     }
     input && setLists(allLists);
     setActive(input);
     setInput('');
-        set(allLists);
-
+    set(allLists);
   }
 
   function addEditedList() {
@@ -94,7 +97,6 @@ function Sidebar(props) {
     setEditName('');
   }
 
-
   function onDragEnd(result) {
     if (!result.destination) {
       return;
@@ -113,10 +115,9 @@ function Sidebar(props) {
   }
 
   return (
-    <StyledSidebar                       animation={toggle}
-    >
+    <StyledSidebar animation={toggle}>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Logo onClick={() => {setActive('')} } >TODO!</Logo>
+        <Logo onClick={() => {setActive('')} }>TODO!</Logo>
         <LoginButtons>
           {user
               ? <LoginOutButton onClick={logout}>logout</LoginOutButton>
@@ -144,48 +145,46 @@ function Sidebar(props) {
                     Object.entries(lists)
                     .sort((a, b) => a[1].position - b[1].position)
                     .map((list,i) =>
-                      edit === i ?
-                        <EditList 
-                          autoFocus
-                          type="text"
-                          value={editName.toUpperCase()}
-                          onChange={onChange}
-                          onKeyDown={e =>handleKeyDown(e)}
-                          name="edit"
-                        />
-                      :
-                        <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
-                          {provided => (
-                            <List 
-                              className={list[0]&&list[0]===active?"active":""}
-                              name={list[0]}
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                            >
-                              {deleting === i
-                                  ? <DeleteDialog>Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></DeleteDialog >
-                                  : <>
-                                    <ListNameWrapper onClick={e => switchList(list[0])}>{list[0]}</ListNameWrapper>
-                                    {active === list[0] ?
-                                    <>
-                                      <FontAwesomeIcon 
-                                        icon={faEdit} 
-                                        style={{'color':'#071e17','opacity':'0.5', 'paddingRight':'1em'}} 
-                                        onClick={e=>setEdit(i)}/>
-                                      <FontAwesomeIcon 
-                                        icon={faTrashAlt} 
-                                        style={{'color':'#071e17','opacity':'0.5'}} 
-                                        onClick={e=>setDeleting(i)}/>
-                                      </>
-                                        :
-                                        null
-                                    }
-                                  </>
-                              }
-                            </List>
-                          )}
-                        </Draggable>
+                      edit === i 
+                      ? <EditList 
+                        autoFocus
+                        type="text"
+                        value={editName.toUpperCase()}
+                        onChange={onChange}
+                        onKeyDown={e =>handleKeyDown(e)}
+                        name="edit"
+                      />
+                      : <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
+                        {provided => (
+                          <List 
+                            className={list[0] && list[0] === active ? "active" : ""}
+                            name={list[0]}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            {deleting === i
+                                ? <DeleteDialog>Delete? <span onClick={ (e) => deleteList(list[0]) } id="yes">Yes</span><span onClick={()=> setDeleting(-1)} id="no">No</span></DeleteDialog >
+                                : <>
+                                  <ListNameWrapper onClick={e => switchList(list[0])}>{list[0]}</ListNameWrapper>
+                                  {active === list[0] 
+                                      ? <>
+                                        <FontAwesomeIcon 
+                                          icon={faEdit} 
+                                          style={{'color':'#071e17','opacity':'0.5', 'paddingRight':'1em'}} 
+                                          onClick={e=>setEdit(i)}/>
+                                        <FontAwesomeIcon 
+                                          icon={faTrashAlt} 
+                                          style={{'color':'#071e17','opacity':'0.5'}} 
+                                          onClick={e=>setDeleting(i)}/>
+                                        </>
+                                      : null
+                                  }
+                                </>
+                            }
+                          </List>
+                        )}
+                      </Draggable>
                     )}
                     {provided.placeholder}
                   </Lists>

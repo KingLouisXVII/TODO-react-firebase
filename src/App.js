@@ -97,32 +97,34 @@ function App() {
           setEdit={setEdit}
           editName={editName}
           setEditName={setEditName}
-        /></Menu>
-        <MobileHamburger>
-          <Hamburger
-            className={
-              toggle ?
-                'hamburger  hamburger--collapse is-active'
-                :
-                'hamburger  hamburger--collapse'}
-                  onClick={toggleSidebar}
-                  type="button"
-                >
-                  <span className="hamburger-box">
-                    <span className="hamburger-inner"></span>
-                  </span>
-                </Hamburger>
-              </MobileHamburger>
-              <div id="page-wrap">
-                {active?<ListHeadline>{active}</ListHeadline>:null}
-                <Todos
-                  lists={lists}
-                  setLists={setLists}
-                  active={active}
-                  setActive={setActive}
-                  user={user}
-                /></div>
-              </AppContainer  >
+        />
+      </Menu>
+      <MobileHamburger>
+        <Hamburger
+          className={
+            toggle ?
+              'hamburger  hamburger--collapse is-active'
+              :
+              'hamburger  hamburger--collapse'}
+                onClick={toggleSidebar}
+                type="button"
+              >
+                <span className="hamburger-box">
+                  <span className="hamburger-inner"></span>
+                </span>
+        </Hamburger>
+      </MobileHamburger>
+      <div id="page-wrap">
+        {active?<ListHeadline>{active}</ListHeadline>:null}
+        <Todos
+          lists={lists}
+          setLists={setLists}
+          active={active}
+          setActive={setActive}
+          user={user}
+        />
+      </div>
+    </AppContainer>
   );
 }
 
