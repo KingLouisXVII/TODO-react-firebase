@@ -1,24 +1,15 @@
-import React, { useState } from 'react';import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { reorderTodos } from '../utils/Reorder';
+import React, { useState } from 'react';
 import firebase from '../utils/Firebase.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-regular-svg-icons'
-import { faExclamation, faTimes, faEllipsisH, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {
   StyledTodos,
   InputWrapper,
   TodosInput,
-  TodosList,
-  TodoItemWrapper,
-  TodosItem,
-  EditTodo,
-  Checkbox,
-  TodoButtonsWrapper,
   ButtonWrapper,
   ClearDone,
   ToggleArchive,
 } from './TodosStyles.js'
 import Archive from './Archive';
+import TodosListWrapper from './TodosListWrapper';
 
 
 function Todos(props) {
@@ -115,25 +106,6 @@ function Todos(props) {
     set(allLists);
   }
 
-  function unarchive(name, i) {
-    const allLists = {...lists};
-    const todos = allLists[active].todos;
-    const newTodo = {
-      name: name,
-      completed: false,
-      priority: false
-    }
-    todos.unshift(newTodo);
-    todos.sort(function(a,b){return b.priority-a.priority});
-    const archive = allLists[active].archive;
-    allLists[active].archive = archive.filter(function (todo) {
-      return todo.name !== name;
-    });
-    archive.length < 1 && archive.push({exist:true});
-    setLists(allLists);
-    set(allLists);
-  }
-
   function prioritize(i) {
     const allLists = {...lists};
     const todos = allLists[active].todos;
@@ -173,30 +145,6 @@ function Todos(props) {
     setToggleButtons(-1);
   }
 
-  function clearArchive(active) {
-    const allLists = {...lists};
-    allLists[active].archive = [{exist:true}];
-    setLists(allLists);
-    set(allLists);
-    setArchive(false);
-  }
-
-  function onDragEnd(result) {
-    if (!result.destination) {
-      return;
-    }
-    if (result.destination.index === result.source.index) {
-      return;
-    }
-    const allLists = {...lists};
-    reorderTodos(
-      allLists[active].todos,
-      result.source.index,
-      result.destination.index
-    );
-    setLists(allLists);
-  }
-
   return (
     <StyledTodos id="todos">
       {active
@@ -213,73 +161,21 @@ function Todos(props) {
           </InputWrapper>
           : null
       }
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="todos">
-          {provided => (
-            <TodosList ref={provided.innerRef} {...provided.droppableProps}>
-              {lists[active] ?
-                lists[active].todos.reduce((todos, todo) => {
-                  if (!todo.exist) {
-                    todos.push(todo);
-                  }
-                  return todos;
-                }, []).map((todo,i) =>
-                  edit === i ?
-                    <TodoItemWrapper
-                      key={i.toString()}
-                    >
-                      <Checkbox 
-                        className={todo.completed ? 'checked' : ''} 
-                        onClick={e => toggleTodo(i)}
-                      />
-                      <EditTodo 
-                        autoFocus
-                        type="text"
-                        value={editName.toUpperCase()}
-                        onChange={onChange}
-                        onKeyDown={e => handleKeyDown(e)}
-                        name="edit"
-                      />
-                    </TodoItemWrapper>
-                  : <Draggable key={i.toString()} draggableId={i.toString()} index={i}>
-                    {provided => (
-                      <TodoItemWrapper
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <Checkbox 
-                          className={todo.completed?'checked':''} 
-                          onClick={e=>toggleTodo(i)}/>
-                        <TodosItem
-                          className={todo.completed ? 'completed' : undefined}
-                          bordercolor={todo.priority ? '#ef3f3f' : '#071e17'}
-                          textDecoration={todo.completed ? 'line-through': undefined}
-                        >
-                          <span>{todo.name}</span>                        
-                          {toggleButtons === i 
-                              ? <TodoButtonsWrapper justify={toggleButtons === i ? 1 : 0}>
-                                <FontAwesomeIcon icon={faEdit} onClick={e => editTodo(i)}/>
-                                <FontAwesomeIcon icon={faExclamation} onClick={e => prioritize(i)}/>
-                                <FontAwesomeIcon icon={faTrashAlt} onClick={e => deleteTodo(i)}/>
-                                <FontAwesomeIcon icon={faTimes} onClick={e => setToggleButtons(-1)}/>
-                              </TodoButtonsWrapper> 
-                              : <TodoButtonsWrapper justify={toggleButtons === i ? 1 : 0}>
-                                <FontAwesomeIcon icon={faEllipsisH} onClick={e => setToggleButtons(i)}/>
-                              </TodoButtonsWrapper> 
-                          }
-                        </TodosItem>
-                      </TodoItemWrapper>
-                    )}
-                    </Draggable>
-                )
-                : null
-              }
-            {provided.placeholder}
-            </TodosList>
-          )}
-          </Droppable>
-          </DragDropContext>
+            <TodosListWrapper
+              lists={lists}
+              setLists={setLists}
+              active={active}
+              edit={edit}
+              toggleTodo={toggleTodo}
+              editName={editName}
+              handleKeyDown={handleKeyDown}
+              toggleButtons={toggleButtons}
+              editTodo={editTodo}
+              prioritize={prioritize}
+              deleteTodo={deleteTodo}
+              setToggleButtons={setToggleButtons}
+              onChange={onChange}
+            />
     { lists[active] && lists[active].todos.some(todo => todo.completed === true) 
       ? <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
       : null
