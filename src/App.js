@@ -20,6 +20,7 @@ function App() {
   const [toggle, setToggle] = useState(true);
   const [edit, setEdit] = useState(-1);
   const [editName, setEditName] = useState('');
+  const [archive, setArchive] = useState(false);
 
   useEffect(() => {
     connectedRef.on("value", function(snap) {
@@ -97,6 +98,8 @@ function App() {
           setEdit={setEdit}
           editName={editName}
           setEditName={setEditName}
+          archive={archive}
+          setArchive={setArchive}
         />
       </Menu>
       <MobileHamburger>
@@ -112,19 +115,21 @@ function App() {
                 <span className="hamburger-box">
                   <span className="hamburger-inner"></span>
                 </span>
-        </Hamburger>
-      </MobileHamburger>
-      <div id="page-wrap">
-        {active?<ListHeadline>{active}</ListHeadline>:null}
-        <Todos
-          lists={lists}
-          setLists={setLists}
-          active={active}
-          setActive={setActive}
-          user={user}
-        />
-      </div>
-    </AppContainer>
+              </Hamburger>
+            </MobileHamburger>
+            <div id="page-wrap">
+              {active?<ListHeadline>{active}</ListHeadline>:null}
+              <Todos
+                lists={lists}
+                setLists={setLists}
+                active={active}
+                setActive={setActive}
+                user={user}
+                archive={archive}
+                setArchive={setArchive}
+              />
+            </div>
+          </AppContainer>
   );
 }
 

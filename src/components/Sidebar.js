@@ -24,7 +24,7 @@ import {
 function Sidebar(props) {
   const [input, setInput] = useState('');
   const [deleting, setDeleting] = useState(-1);
-  const { active, setActive, lists, setLists, user, login, logout, toggle, toggleSidebar, edit, setEdit, editName, setEditName } = props;
+  const { active, setActive, lists, setLists, user, login, logout, toggle, toggleSidebar, edit, setEdit, editName, setEditName, setArchive } = props;
 
   function onChange(e) {
     if (e.target.name === 'list') {
@@ -80,6 +80,7 @@ function Sidebar(props) {
     const allLists = {...lists};
     reposition(allLists, list);
     delete allLists[list];
+    setArchive(false);
     setLists(allLists);
     set(allLists);
     setDeleting(-1)

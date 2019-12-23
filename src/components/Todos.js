@@ -18,8 +18,7 @@ function Todos(props) {
   const [editName, setEditName] = useState('');
   const [editValue, setEditValue] = useState({});
   const [toggleButtons, setToggleButtons] = useState(-1);
-  const [archive, setArchive] = useState(false);
-  const { lists, setLists, active, user } = props;
+  const { lists, setLists, active, user, archive, setArchive } = props;
 
 
   function onChange(e) {
@@ -161,44 +160,44 @@ function Todos(props) {
           </InputWrapper>
           : null
       }
-            <TodosListWrapper
-              lists={lists}
-              setLists={setLists}
-              active={active}
-              edit={edit}
-              toggleTodo={toggleTodo}
-              editName={editName}
-              handleKeyDown={handleKeyDown}
-              toggleButtons={toggleButtons}
-              editTodo={editTodo}
-              prioritize={prioritize}
-              deleteTodo={deleteTodo}
-              setToggleButtons={setToggleButtons}
-              onChange={onChange}
-            />
-    { lists[active] && lists[active].todos.some(todo => todo.completed === true) 
-      ? <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
-      : null
-    }
-    { lists[active] && lists[active].archive && lists[active].archive.length > 1
-        ? <ButtonWrapper>
-          <ToggleArchive onClick={()=>setArchive(!archive)}>
-            {archive?'hide':'show'} archive
-          </ToggleArchive>
-        </ButtonWrapper>
-        : null
-    }
-    {!archive 
-        ? null 
-        : <Archive 
-          lists={lists}
-          setLists={setLists}
-          active={active}
-          set={set}
-          archive={archive}
-          setArchive={setArchive}
-        />
-    }
+      <TodosListWrapper
+        lists={lists}
+        setLists={setLists}
+        active={active}
+        edit={edit}
+        toggleTodo={toggleTodo}
+        editName={editName}
+        handleKeyDown={handleKeyDown}
+        toggleButtons={toggleButtons}
+        editTodo={editTodo}
+        prioritize={prioritize}
+        deleteTodo={deleteTodo}
+        setToggleButtons={setToggleButtons}
+        onChange={onChange}
+      />
+      { lists[active] && lists[active].todos.some(todo => todo.completed === true) 
+          ? <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
+          : null
+      }
+      { lists[active] && lists[active].archive && lists[active].archive.length > 1
+          ? <ButtonWrapper>
+            <ToggleArchive onClick={()=>setArchive(!archive)}>
+              {archive?'hide':'show'} archive
+            </ToggleArchive>
+          </ButtonWrapper>
+          : null
+      }
+      {!archive 
+          ? null 
+          : <Archive 
+            lists={lists}
+            setLists={setLists}
+            active={active}
+            set={set}
+            archive={archive}
+            setArchive={setArchive}
+          />
+      }
     </StyledTodos>
   )
 }
