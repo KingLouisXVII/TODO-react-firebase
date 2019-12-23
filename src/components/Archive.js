@@ -43,9 +43,6 @@ function Archive(props) {
     <>
       <div style={{'textAlign':'center'}}>
         <h3>Archived Todos:</h3>
-        <ButtonWrapper>
-          <ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive>
-        </ButtonWrapper>
       </div>
       <TodosList key={Math.random()}>
         {!archive
@@ -69,6 +66,9 @@ function Archive(props) {
             </TodoItemWrapper>
           )} 
           </TodosList>
+        <ButtonWrapper>
+          <ClearArchive onClick={()=>clearArchive(active)}>clear archive</ClearArchive>
+        </ButtonWrapper>
         </>
   )
 }
