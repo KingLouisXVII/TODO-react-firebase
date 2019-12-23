@@ -11,7 +11,7 @@ import {
   EditTodo,
   Checkbox,
   TodoButtonsWrapper,
-} from './TodosStyles.js'
+} from './styled/TodosStyles.js'
 
 
 function TodosListWrapper(props) {

@@ -10,7 +10,7 @@ import {
   MobileHamburger, 
   Hamburger, 
   ListHeadline
-} from './components/SidebarStyles.js'
+} from './components/styled/SidebarStyles.js'
 
 
 function App() {

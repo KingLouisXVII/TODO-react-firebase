@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import firebase from '../utils/Firebase.js';
+import Archive from './Archive';
+import TodosListWrapper from './TodosListWrapper';
 import {
   StyledTodos,
   InputWrapper,
@@ -7,9 +9,7 @@ import {
   ButtonWrapper,
   ClearDone,
   ToggleArchive,
-} from './TodosStyles.js'
-import Archive from './Archive';
-import TodosListWrapper from './TodosListWrapper';
+} from './styled/TodosStyles.js'
 
 
 function Todos(props) {

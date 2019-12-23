@@ -6,7 +6,7 @@ import {
   ButtonWrapper,
   ArchivedTodosItem,
   ClearArchive,
-} from './TodosStyles.js'
+} from './styled/TodosStyles.js'
 
 
 function Archive(props) {

@@ -18,7 +18,7 @@ import {
   ListNameWrapper,
   EditList,
   DeleteDialog 
-} from './SidebarStyles.js'
+} from './styled/SidebarStyles.js'
 
 
 function Sidebar(props) {
@@ -192,7 +192,7 @@ function Sidebar(props) {
                 </ListsWrapper>
           )}
         </Droppable>
-      </DragDropContext>
+    </DragDropContext>
     </StyledSidebar>
   );
 }
