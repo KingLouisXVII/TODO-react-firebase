@@ -3,8 +3,8 @@ import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
 import firebase, { auth, provider, connectedRef } from './utils/Firebase.js';
 import './App.scss';
-import AppContainer from './AppStyles.js';
 import './assets/hamburgers/hamburgers.scss';
+import AppContainer from './AppStyles.js';
 import { scaleDown as Menu } from 'react-burger-menu'
 import {
   MobileHamburger, 
