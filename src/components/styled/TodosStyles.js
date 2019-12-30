@@ -146,7 +146,7 @@ export const TodoButtonsWrapper = styled.div`
   width: 30%;
   display: flex;
   align-self: baseline;
-  justify-content: ${props => props.justify?'space-between':'flex-end'}
+justify-content: ${props => props.justify?'space-between':'flex-end'};
   height: 1em;
   color: #071e17;
   font-size: 1.3em;
