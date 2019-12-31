@@ -154,7 +154,7 @@ font-size: 1.3em;
   100%{ transform: translateX(0%); }
 }
 @media (max-width: 700px) {
-  width: 40%;
+  width: 100%;
 }
 `;
 
