@@ -86,28 +86,14 @@ padding: 0.3em;
 ;`
 
 export const ListsWrapper = styled.div`
+  height: 80vh;
   overflow: scroll;
-  height: auto;
 `;
 
 export const Lists = styled.div`
   display: flex;
-  max-height: 80vh;
   flex-direction: column;
   background-color: #232b2b;
-  @keyframes fadeIn {
-    from {opacity:0;}
-    to {opacity:1;}
-  }
-
-  @keyframes fadeOut {
-    from {opacity:1;}
-    to {opacity:0;}
-  }
-  @media (max-width: 700px) {
-    height: 100vh;
-    // animation: ${props => props.animation ? 'fadeIn .4s ease-in' : 'fadeOut .4s forwards'}
-  }
 `;
 
 export const List = styled.div`
