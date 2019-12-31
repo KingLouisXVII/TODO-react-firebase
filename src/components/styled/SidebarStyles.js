@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const StyledSidebar = styled.div`
   height: 100vh;
-    border: 0;
+  border: 0;
   background-color: #232b2b;
   text-align: center;
   display: flex;
@@ -41,8 +41,10 @@ export const Logo = styled.h1`
 `;
 
 export const ListHeadline = styled.h3`
+  margin: 0;
+  padding-top: 1em;
   text-align: center;
-background-color: #232b2b;
+  background-color: #232b2b;
 `;
 
 export const LoginButtons = styled.div`
@@ -136,13 +138,13 @@ export const ListNameWrapper = styled.div`
 export const EditList = styled.input`
   height: auto;
   width: 100%;
-background-color: #232b2b;
-color: 	#8f9779;
-font-size: 0.9em;
-border: 0;
-outline: none;
-padding: 0.3em;
-border-bottom: 2px solid #071e17;
+  background-color: #232b2b;
+  color: 	#8f9779;
+  font-size: 0.9em;
+  border: 0;
+  outline: none;
+  padding: 0.3em;
+  border-bottom: 2px solid #071e17;
 `;
 
 
