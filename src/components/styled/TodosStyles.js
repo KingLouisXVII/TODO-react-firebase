@@ -16,11 +16,12 @@ export const StyledTodos = styled.div`
 export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  position: sticky;
+  position: fixed;
   top: 2em;
-    margin: 0;
-  @media (max-width: 700px) {
-    width: 100%;
+  margin: 0;
+  width: 70%;
+  @media (max-width: 900px) {
+    width: 90%;
     height: 2em;
     justify-content: center;
   }
@@ -48,6 +49,7 @@ export const TodosList = styled.ul`
   padding: 0;
   padding-left: 0.9em;
   padding-bottom: 2em;
+  padding-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: baseline;
