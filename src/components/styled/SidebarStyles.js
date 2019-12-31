@@ -92,7 +92,7 @@ export const ListsWrapper = styled.div`
 
 export const Lists = styled.div`
   display: flex;
-  height: auto;
+  max-height: 80vh;
   flex-direction: column;
   background-color: #232b2b;
   @keyframes fadeIn {
