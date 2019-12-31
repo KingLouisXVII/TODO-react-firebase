@@ -86,7 +86,7 @@ align-self: center;
     width: 70%;
   }
   @media (max-width: 700px) {
-    font-size: 0.7em;
+    font-size: 0.65em;
     grid-template-columns: 70% 30%;
     span {
       width: 60%;
