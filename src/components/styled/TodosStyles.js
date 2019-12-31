@@ -147,14 +147,11 @@ height: 1em;
 color: #071e17;
 font-size: 1.3em;
 &.slideIn {
-  animation: slideIn 0.4s;
+  animation: slideIn 0.4s forwards;
 }
 @keyframes slideIn {
   0%{ transform: translateX(10%); }
-  100%{ transform: translateX(0%); }
-}
-@media (max-width: 700px) {
-  width: 100%;
+  100%{ transform: translateX(0%); width: 100%;}
 }
 `;
 
