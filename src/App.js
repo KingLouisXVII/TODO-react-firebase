@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Todos from './components/Todos';
 import firebase, { auth, provider, connectedRef } from './utils/Firebase.js';
-import { resize } from './utils/ViewportHeightFix.js';
 import './App.scss';
 import './assets/hamburgers/hamburgers.scss';
 import { AppContainer, PageWrap } from './AppStyles.js';
@@ -34,10 +33,6 @@ function App() {
           }})
       }
     });
-    resize();
-    window.addEventListener('resize', () => {
-      resize();
-});
   }, []);
 
   useEffect(() => {
