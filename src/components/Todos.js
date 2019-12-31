@@ -177,7 +177,7 @@ function Todos(props) {
         onChange={onChange}
       />
       { lists[active] && lists[active].todos.some(todo => todo.completed === true) 
-          ? <ButtonWrapper><ClearDone onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
+          ? <ButtonWrapper><ClearDone class="fadein" onClick={clearDone}>clear done</ClearDone></ButtonWrapper> 
           : null
       }
       { lists[active] && lists[active].archive && lists[active].archive.length > 1

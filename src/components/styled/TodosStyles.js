@@ -179,6 +179,11 @@ cursor: pointer;
 margin: 0;
 padding: 0.5em;
 font-size: 1em;
+animation: fadeIn 0.4s ease-in forwards;
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
 &:hover {
   transition: all 0.5s ease;
   opacity: 0.7;
@@ -191,6 +196,11 @@ margin: 0;
 padding: 0.5em;
 font-size: 1em;
 cursor: pointer;
+animation: fadeIn 0.4s ease-in forwards;
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
 `;
 
 export const ClearArchive = styled.h2`
