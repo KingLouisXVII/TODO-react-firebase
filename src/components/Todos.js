@@ -145,7 +145,7 @@ function Todos(props) {
   }
 
   return (
-    <StyledTodos id="todos">
+    <>
       {active
           ? <InputWrapper>
             <TodosInput
@@ -160,6 +160,7 @@ function Todos(props) {
           </InputWrapper>
           : null
       }
+    <StyledTodos id="todos">
       <TodosListWrapper
         lists={lists}
         setLists={setLists}
@@ -199,6 +200,7 @@ function Todos(props) {
           />
       }
     </StyledTodos>
+  </>
   )
 }
 

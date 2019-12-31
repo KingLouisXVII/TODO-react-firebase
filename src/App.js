@@ -4,7 +4,7 @@ import Todos from './components/Todos';
 import firebase, { auth, provider, connectedRef } from './utils/Firebase.js';
 import './App.scss';
 import './assets/hamburgers/hamburgers.scss';
-import AppContainer from './AppStyles.js';
+import { AppContainer, PageWrap } from './AppStyles.js';
 import { scaleDown as Menu } from 'react-burger-menu'
 import {
   MobileHamburger, 
@@ -117,7 +117,7 @@ function App() {
                 </span>
               </Hamburger>
             </MobileHamburger>
-            <div id="page-wrap">
+            <PageWrap id="page-wrap">
               {active?<ListHeadline>{active}</ListHeadline>:null}
               <Todos
                 lists={lists}
@@ -128,7 +128,7 @@ function App() {
                 archive={archive}
                 setArchive={setArchive}
               />
-            </div>
+            </PageWrap>
           </AppContainer>
   );
 }

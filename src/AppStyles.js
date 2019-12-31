@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const AppContainer = styled.div`
+export const AppContainer = styled.div`
   font-family: 'Staatliches', sans-serif;
   width: 100vw;
   height: 100vh;
@@ -10,4 +10,9 @@ const AppContainer = styled.div`
   box-shadow: none;
 `;
 
-export default AppContainer;
+export const PageWrap = styled.div`
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+`;
