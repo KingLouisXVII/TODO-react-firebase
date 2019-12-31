@@ -1,9 +1,10 @@
 import styled from 'styled-components/macro';
 
 export const StyledTodos = styled.div`
+  max-height: 80vh;
+  overflow: scroll;
   width: 70%;
   margin: 0 auto;
-  padding-top: 2em;
   @media (max-width: 900px) {
     width: 90%;
   }
@@ -14,16 +15,10 @@ export const StyledTodos = styled.div`
 
 
 export const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 2em;
-  margin: 0;
+  text-align: center;
   width: 70%;
   @media (max-width: 900px) {
     width: 90%;
-    height: 2em;
-    justify-content: center;
   }
 `;
 
@@ -49,7 +44,6 @@ export const TodosList = styled.ul`
   padding: 0;
   padding-left: 0.9em;
   padding-bottom: 2em;
-  padding-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: baseline;

@@ -41,15 +41,8 @@ export const Logo = styled.h1`
 `;
 
 export const ListHeadline = styled.h3`
-  position: fixed;
-  top: 0;
-  right: 0.3em;
-  display: block;
-  width: 100%;
-  margin: 0;
   text-align: center;
 background-color: #232b2b;
-height: 2em;
 `;
 
 export const LoginButtons = styled.div`
