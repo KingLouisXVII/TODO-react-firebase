@@ -46,34 +46,34 @@ export const TodosList = styled.ul`
   padding-bottom: 2em;
   display: flex;
   flex-direction: column;
-  align-items: baseline;
-  margin: 0;
-  }
+align-items: baseline;
+margin: 0;
+}
 `;
 
 export const TodoItemWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: default !important;
-  width: 90%;
-  margin-left: 0.8em;
-  outline: 0;
-  @media (max-width: 800px) {
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: default !important;
+width: 90%;
+margin-left: 0.8em;
+outline: 0;
+@media (max-width: 800px) {
   margin-left: 0;
   width: 95%;
-  }
+}
 `;
 
 export const TodosItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  height: auto;
-  width: 100%;
-  padding: 0.3em;
-  margin: 0.5em;
-  cursor: pointer;
-  align-self: center;
+display: flex;
+justify-content: space-between;
+height: auto;
+width: 100%;
+padding: 0.3em;
+margin: 0.5em;
+cursor: pointer;
+align-self: center;
   word-break: break-word;
   border: 2px solid;
   font-size: 0.7em;
@@ -95,73 +95,80 @@ export const TodosItem = styled.li`
 `;
 
 export const ArchivedTodosItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  height: auto;
-  width: 100%;
-  padding: 0.3em;
-  margin: 0.3em;
-  cursor: pointer;
-  align-self: center;
-  word-break: break-word;
-  border: 2px solid #071e17;
-  font-size: 0.7em;
-  background-color: #232b2b;
-  color: 	#8f9779;
-  box-shadow: 5px 5px #071e17;
+display: flex;
+justify-content: space-between;
+height: auto;
+width: 100%;
+padding: 0.3em;
+margin: 0.3em;
+cursor: pointer;
+align-self: center;
+word-break: break-word;
+border: 2px solid #071e17;
+font-size: 0.7em;
+background-color: #232b2b;
+color: 	#8f9779;
+box-shadow: 5px 5px #071e17;
 `;
 
 export const EditTodo = styled.input`
-  height: auto;
-  width: 100%;
-  padding: 0.3em;
-  margin: 0.3em;
-  border: 2px solid;
-  border-color: ${props => props.color};
-  font-size: 0.7em;
-  background-color: #232b2b;
-  color: 	#8f9779;
-  box-shadow: 5px 5px #071e17;
-  outline: 0;
+height: auto;
+width: 100%;
+padding: 0.3em;
+margin: 0.3em;
+border: 2px solid;
+border-color: ${props => props.color};
+font-size: 0.7em;
+background-color: #232b2b;
+color: 	#8f9779;
+box-shadow: 5px 5px #071e17;
+outline: 0;
 `;
 
 export const Checkbox = styled.div`
-  width: 20px;
-  height: 20px;
-  margin: 0.1em;
-  cursor: pointer;
-  text-align: center;
-  border: 3px solid #071e17;
-  background-color: #232b2b;
-  box-shadow: 3px 3px #071e17;
-  &.checked {
-    background-color: 	#8f9779;
-  }
+width: 20px;
+height: 20px;
+margin: 0.1em;
+cursor: pointer;
+text-align: center;
+border: 3px solid #071e17;
+background-color: #232b2b;
+box-shadow: 3px 3px #071e17;
+&.checked {
+  background-color: 	#8f9779;
+}
 `;
 export const TodoButtonsWrapper = styled.div`
-  width: 30%;
-  display: flex;
-  align-self: baseline;
+width: 30%;
+display: flex;
+align-self: baseline;
 justify-content: ${props => props.justify?'space-between':'flex-end'};
-  height: 1em;
-  color: #071e17;
-  font-size: 1.3em;
-  @media (max-width: 700px) {
-    width: 40%;
-  }
+height: 1em;
+color: #071e17;
+font-size: 1.3em;
+&.slideIn {
+  animation: slideIn 0.4s;
+}
+@keyframes slideIn {
+  0%{ transform: translateX(10%); }
+  100%{ transform: translateX(0%); }
+}
+@media (max-width: 700px) {
+  width: 40%;
+}
 `;
 
 export const ToggleButtons = styled.div`
-  cursor: pointer;
-  width: 0.9em;
-  padding-left: 0.5em;
+cursor: pointer;
+width: 0.9em;
+padding-left: 0.5em;
 `;
 
 export const ImageButton = styled.img`
-  cursor: pointer;
-  width: 0.9em;
-  padding-left: 0.5em;
-  opacity: 0.5;
+cursor: pointer;
+width: 0.9em;
+padding-left: 0.5em;
+opacity: 0.5;
 `;
 
 export const ButtonWrapper  = styled.div`
@@ -171,34 +178,34 @@ text-align: left;
 
 export const ClearDone = styled.h2`
 width: 7em;
-  cursor: pointer;
-  margin: 0;
-  padding: 0.5em;
-  font-size: 1em;
-  &:hover {
-    transition: all 0.5s ease;
-    opacity: 0.7;
-  }
+cursor: pointer;
+margin: 0;
+padding: 0.5em;
+font-size: 1em;
+&:hover {
+  transition: all 0.5s ease;
+  opacity: 0.7;
+}
 `;
 
 export const ToggleArchive = styled.h2`
 width: 7em;
-  margin: 0;
-  padding: 0.5em;
-  font-size: 1em;
-  cursor: pointer;
+margin: 0;
+padding: 0.5em;
+font-size: 1em;
+cursor: pointer;
 `;
 
 export const ClearArchive = styled.h2`
 width: 7em;
-  margin: 0;
-  padding: 0.5em;
-  font-size: 1em;
-  cursor: pointer;
+margin: 0;
+padding: 0.5em;
+font-size: 1em;
+cursor: pointer;
 `;
 
 export const ListHeadline = styled.h3`
-  display: block;
-  width: 70%;
-  text-align: center;
+display: block;
+width: 70%;
+text-align: center;
 `;

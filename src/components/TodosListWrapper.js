@@ -79,7 +79,7 @@ function TodosListWrapper(props) {
                       >
                         <span>{todo.name}</span>                        
                         {toggleButtons === i 
-                            ? <TodoButtonsWrapper justify={toggleButtons === i ? 1 : 0}>
+                            ? <TodoButtonsWrapper className={toggleButtons === i ? 'slideIn' : null} justify={toggleButtons === i ? 1 : 0}>
                               <FontAwesomeIcon icon={faEdit} onClick={e => editTodo(i)}/>
                               <FontAwesomeIcon icon={faExclamation} onClick={e => prioritize(i)}/>
                               <FontAwesomeIcon icon={faTrashAlt} onClick={e => deleteTodo(i)}/>
