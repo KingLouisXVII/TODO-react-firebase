@@ -14,7 +14,7 @@ import {
 
 
 function App() {
-  const [lists, setLists] = useState({});
+  const [lists, setLists] = useState({test:'test'});
   const [active, setActive] = useState('');
   const [user, setUser] = useState(false);
   const [toggle, setToggle] = useState(true);
@@ -23,25 +23,21 @@ function App() {
   const [archive, setArchive] = useState(false);
 
   useEffect(() => {
-    connectedRef.on("value", function(snap) {
-      if (snap.val() === true) {
         auth.onAuthStateChanged((user) => {
           if (user) {
             setUser(
               user
             );
           }})
-      }
-    });
   }, []);
 
-  useEffect(() => {
-    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
-    itemsRef.on('value', (snapshot) => {
-      let items = snapshot.val();
-      set(items);
-    });
-  }, [user]);
+  // useEffect(() => {
+  //   const itemsRef = firebase.database().ref(`/users/${user.uid}`);
+  //   itemsRef.on('value', (snapshot) => {
+  //     let items = snapshot.val();
+  //     set(items);
+  //   });
+  // }, [user]);
 
   function set(items) {
     items !== null ?

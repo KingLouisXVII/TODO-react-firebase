@@ -87,7 +87,7 @@ function Sidebar(props) {
   }
 
   function set(lists) {
-    const itemsRef = firebase.database().ref(`/users/${user.uid}`);
+    const itemsRef = firebase.collection(`${user.uid}`).doc('lists');
     itemsRef.set(lists);
   }
 
