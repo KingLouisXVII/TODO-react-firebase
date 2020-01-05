@@ -83,14 +83,11 @@ align-self: center;
   box-shadow: 5px 5px #071e17;
   text-decoration: ${props => props.textDecoration};
   span {
-    width: 70%;
+    width: 90%;
   }
   @media (max-width: 700px) {
     font-size: 0.65em;
     grid-template-columns: 70% 30%;
-    span {
-      width: 60%;
-    }
   }
 `;
 
@@ -151,7 +148,13 @@ font-size: 1.3em;
 }
 @keyframes slideIn {
   0%{ transform: translateX(10%); }
-  100%{ transform: translateX(0%); width: 100%;}
+  100%{ transform: translateX(0%);}
+}
+@media (max-width: 900px) {
+  width: 40%;
+}
+@media (max-width: 400px) {
+  width: 70%;
 }
 `;
 
