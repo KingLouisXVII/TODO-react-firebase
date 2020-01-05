@@ -72,6 +72,7 @@ function App() {
     setToggle(!toggle);
     setEdit(-1);
     setEditName('');
+    setArchive(false);
   }
 
   return (
