@@ -151,7 +151,7 @@ export const TodoButtonsWrapper = styled.div`
     animation: slideIn 0.4s forwards;
   }
   @keyframes slideIn {
-    0%{ transform: translateX(10%);background-color: #232b2b;}
+    0%{ transform: translateX(3%);background-color: #232b2b;}
     100%{ transform: translateX(0%);background-color: #232b2b;}
   }
   @media (max-width: 900px) {
