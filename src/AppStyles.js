@@ -4,6 +4,7 @@ export const AppContainer = styled.div`
   font-family: 'Staatliches', sans-serif;
   width: 100vw;
   height: 100vh;
+  min-height: -webkit-fill-available;
   background-color:	#232b2b;
   color: 	#8f9779;
   border: 0;
