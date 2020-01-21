@@ -17,6 +17,7 @@ export const AppContainer = styled.div`
 `;
 
 export const PageWrap = styled.div`
+  height: 100%;
   display: flex;
     flex-direction: column;
     align-items: center;
