@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const StyledSidebar = styled.div`
-  height: 100vh;
+  height: 100%;
   border: 0;
   background-color: #232b2b;
   text-align: center;
@@ -88,7 +88,7 @@ padding: 0.3em;
 ;`
 
 export const ListsWrapper = styled.div`
-  height: 80vh;
+  height: 80%;
   overflow: scroll;
 `;
 
